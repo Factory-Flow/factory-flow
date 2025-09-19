@@ -12,8 +12,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-    // You're serving at the domain root, so keep "/"
-    base: '/factoryflow/',
+    // Serve from domain root in production
+    base: '/',
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
