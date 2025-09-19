@@ -1,7 +1,10 @@
 // vite.config.ts
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig(({ mode }) => {
   // Load VITE_* vars from .env, .env.development, .env.production, etc.
@@ -13,7 +16,7 @@ export default defineConfig(({ mode }) => {
     base: '/factoryflow/',
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@': resolve(__dirname, './src'),
       },
     },
     // Dev-only server/proxy (ignored in production build)
