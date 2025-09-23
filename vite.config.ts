@@ -14,8 +14,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-    // Serve from domain root (Vercel) or project path (GitHub Pages)
-    base: isGhPages ? '/factory-flow/' : '/',
+    // Always serve from domain root
+    base: '/',
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
