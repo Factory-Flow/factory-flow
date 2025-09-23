@@ -10,10 +10,12 @@ export default defineConfig(({ mode }) => {
   // Load VITE_* vars from .env, .env.development, .env.production, etc.
   const env = loadEnv(mode, process.cwd(), '')
 
+  const isGhPages = mode === 'gh' || env.GITHUB_PAGES === 'true'
+
   return {
     plugins: [react()],
-    // Serve from domain root in production
-    base: '/',
+    // Serve from domain root (Vercel) or project path (GitHub Pages)
+    base: isGhPages ? '/factory-flow/' : '/',
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
@@ -34,7 +36,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      outDir: 'dist',
+      outDir: isGhPages ? 'docs' : 'dist',
       assetsDir: 'assets',
       sourcemap: false,
       target: 'es2018',
