@@ -52,3 +52,7 @@ export default tseslint.config({
   },
 })
 ```
+
+## Analytics
+
+Google Analytics 4 is wired up with measurement ID `G-MBRSNLKTMD`, which is embedded directly in the client build. The tracker initializes automatically and records page views for every route change.
