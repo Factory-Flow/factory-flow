@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 
 type FormState = "init" | "submitting" | "success" | "error";
 
-const loopsFormId = import.meta.env.VITE_LOOPS_FORM_ID ?? "";
+const loopsFormId = "cmgql2ir8e5fo180ietgz744n";
 const loopsEndpoint = loopsFormId
   ? `https://app.loops.so/api/newsletter-form/${loopsFormId}`
   : "";
