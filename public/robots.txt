@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://factoryflow.io/sitemap.xml

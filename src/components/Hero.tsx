@@ -1,11 +1,12 @@
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+
+import WaitlistInlineForm from './WaitlistInlineForm';
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -41,10 +42,10 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
 
         backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
+          'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(136, 136, 136, 0.27), transparent)',
         ...theme.applyStyles('dark', {
           backgroundImage:
-            'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)',
+            'radial-gradient(ellipse 80% 50% at 50% 0, rgba(168, 197, 255, 0.21), transparent)',
         }),
       })}
     >
@@ -55,6 +56,7 @@ export default function Hero() {
           alignItems: 'center',
           pt: { xs: 14, sm: 20 },
           pb: { xs: 8, sm: 12 },
+          textAlign: 'center',
         }}
       >
         <Stack
@@ -63,43 +65,31 @@ export default function Hero() {
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >
           <Typography
+            component="h1"
             variant="h1"
             sx={{
               display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
+              flexDirection: 'column',
               alignItems: 'center',
-              fontSize: 'clamp(3rem, 10vw, 3.5rem)',
+              fontSize: 'clamp(3rem, 10vw, 1rem)',
             }}
           >
-            <span>
-            <div>Real-time&nbsp;
-            <Typography
+            <Box
               component="span"
-              variant="h1"
-              sx={(theme) => ({
-                fontSize: 'inherit',
-                color: 'primary.main',
-                ...theme.applyStyles('dark', {
-                  color: 'primary.light',
-                }),
-              })}
+              sx={{
+                display: 'inherit',
+                flexDirection: 'inherit',
+                alignItems: 'inherit',
+                gap: 1,
+              }}
             >
-              visibility.
-            </Typography></div>
-            <div>Smarter&nbsp;
-            <Typography
-              component="span"
-              variant="h1"
-              sx={(theme) => ({
-                fontSize: 'inherit',
-                color: 'primary.main',
-                ...theme.applyStyles('dark', {
-                  color: 'primary.light',
-                }),
-              })}
-            >
-              decisions.
-            </Typography></div></span>
+              <Box
+                component="span"
+                sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+              >
+                Poduction monitoring for any machine, in minutes.
+              </Box>
+            </Box>
           </Typography>
           <Typography
             sx={{
@@ -108,43 +98,44 @@ export default function Hero() {
               width: { sm: '100%', md: '100%' },
             }}
           >
-            Drag, drop, and monitor your factory floor in 3D—machines, workstations, and live data all in one place.
+            Send data to our API and start tracking performance across your entire plant instantly.
           </Typography>
-          <Stack
-            direction='row'
-            spacing={1}
-            useFlexGap
+          <Box
+            id="waitlist"
+            sx={{
+              width: { xs: '100%', sm: '80%' },
+              maxWidth: 420,
+              scrollMarginTop: { xs: '112px', sm: '136px' },
+            }}
           >
-            <Button
-              variant="outlined"
-              color="primary"
-              size="small"
-              sx={{ minWidth: 'fit-content' }}
-            >
-              Demo
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              sx={{ minWidth: 'fit-content' }}
-            >
-              Sign in
-            </Button>
-          </Stack>
+            <WaitlistInlineForm />
+          </Box>
           <Typography
             variant="caption"
             color="text.secondary"
             sx={{ textAlign: 'center' }}
           >
-            By clicking &quot;Sign in&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
+            By clicking &quot;Join waitlist&quot; you agree to our&nbsp;
+            <Link href="/legal#terms" color="primary">
               Terms & Conditions
             </Link>
             .
           </Typography>
         </Stack>
         <StyledBox id="image" />
+        <Typography
+          variant="h5"
+          sx={{
+            mt: { xs: 4, sm: 6 },
+            textAlign: 'center',
+            color: 'text.secondary',
+            width: { sm: '100%', md: '100%' },
+          }}
+        >
+          Our mission is to make factory performance visible, effortless, and universal — empowering
+          manufacturers to monitor every machine in real time, no matter the brand or age, with setup
+          that takes minutes, not months.
+        </Typography>
       </Container>
     </Box>
   );

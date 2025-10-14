@@ -11,8 +11,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
-import Sitemark from './SitemarkIcon';
+import Sitemark from './Logo';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -32,17 +33,42 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
+  React.useEffect(() => {
+    if (!location.hash) {
+      return;
+    }
+
+    const targetId = location.hash.slice(1);
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [location.pathname, location.hash]);
+
   const scrollToSection = (id: string) => {
+    const targetHash = `#${id}`;
+    toggleDrawer(false)();
+
+    if (location.pathname !== '/') {
+      navigate({ pathname: '/', hash: targetHash });
+      return;
+    }
+
+    if (location.hash !== targetHash) {
+      navigate({ pathname: '/', hash: targetHash });
+    }
+
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    toggleDrawer(false)(); // close drawer
   };
 
   return (
@@ -64,15 +90,15 @@ export default function AppAppBar() {
               <Button variant="text" color="info" size="small" onClick={() => scrollToSection("features")}>
                 Features
               </Button>
-              <Button variant="text" color="info" size="small" onClick={() => scrollToSection("testimonials")}>
+              {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("testimonials")}>
                 Testimonials
-              </Button>
+              </Button>*/}
               <Button variant="text" color="info" size="small" onClick={() => scrollToSection("highlights")}>
                 Highlights
               </Button>
-              <Button variant="text" color="info" size="small" onClick={() => scrollToSection("pricing")}>
+              {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("pricing")}>
                 Pricing
-              </Button>
+              </Button>*/}
               <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }} onClick={() => scrollToSection("faq")}>
                 FAQ
               </Button>
@@ -85,8 +111,8 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >
-            <Button color="primary" variant="contained" size="small">
-              Sign in
+            <Button color="primary" variant="contained" size="small" onClick={() => scrollToSection("waitlist")}>
+              Join waitlist
             </Button>
             <ColorModeIconDropdown />
           </Box>
@@ -123,9 +149,9 @@ export default function AppAppBar() {
                 <MenuItem onClick={() => scrollToSection("pricing")}>Pricing</MenuItem>
                 <MenuItem onClick={() => scrollToSection("faq")}>FAQ</MenuItem>
                 <Divider sx={{ my: 3 }} />
-                <MenuItem>
+                <MenuItem onClick={() => scrollToSection("waitlist")}>
                   <Button color="primary" variant="contained" fullWidth>
-                    Sign in
+                    Join waitlist
                   </Button>
                 </MenuItem>
               </Box>

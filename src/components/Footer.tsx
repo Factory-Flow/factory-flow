@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import SitemarkIcon from './SitemarkIcon';
+import { useLocation, useNavigate } from 'react-router-dom';
+import SitemarkIcon from './Logo';
 
 function Copyright() {
   return (
@@ -18,7 +20,33 @@ function Copyright() {
 }
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!location.hash) {
+      return;
+    }
+
+    const targetId = location.hash.slice(1);
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [location.pathname, location.hash]);
+
   const scrollToSection = (id: string) => {
+    const targetHash = `#${id}`;
+
+    if (location.pathname !== '/') {
+      navigate({ pathname: '/', hash: targetHash });
+      return;
+    }
+
+    if (location.hash !== targetHash) {
+      navigate({ pathname: '/', hash: targetHash });
+    }
+
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -55,7 +83,7 @@ export default function Footer() {
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
             <div onClick={() => scrollToSection("hero")} style={{cursor: 'pointer',display: 'inline-flex', alignItems: 'center'}}><SitemarkIcon /></div>
             <Typography variant="body2" gutterBottom sx={{ color: 'text.secondary', fontWeight: 600, mt: 2 }}>
-              Real-time visibility. Smarter decisions.
+              Visibility. Compatibility. Smarter decisions.
             </Typography>
             {/*<Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
               Join the newsletter
@@ -102,19 +130,19 @@ export default function Footer() {
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
             Product
           </Typography>
-          <Link color="text.secondary" variant="body2" onClick={() => scrollToSection("features")} style={{cursor: 'pointer'}}>
+          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("features"); }} style={{cursor: 'pointer'}}>
             Features
           </Link>
-          <Link color="text.secondary" variant="body2" onClick={() => scrollToSection("testimonials")} style={{cursor: 'pointer'}}>
+          {/*<Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("testimonials"); }} style={{cursor: 'pointer'}}>
             Testimonials
-          </Link>
-          <Link color="text.secondary" variant="body2" onClick={() => scrollToSection("highlights")} style={{cursor: 'pointer'}}>
+          </Link>*/}
+          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("highlights"); }} style={{cursor: 'pointer'}}>
             Highlights
           </Link>
-          <Link color="text.secondary" variant="body2" onClick={() => scrollToSection("pricing")} style={{cursor: 'pointer'}}>
+          {/*<Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("pricing"); }} style={{cursor: 'pointer'}}>
             Pricing
-          </Link>
-          <Link color="text.secondary" variant="body2" onClick={() => scrollToSection("faq")} style={{cursor: 'pointer'}}>
+          </Link>*/}
+          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("faq"); }} style={{cursor: 'pointer'}}>
             FAQs
           </Link>
         </Box>
@@ -148,13 +176,16 @@ export default function Footer() {
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
             Legal
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/legal#terms">
             Terms
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/legal#privacy">
             Privacy
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/legal#cookies">
+            Cookie Policy
+          </Link>
+          <Link color="text.secondary" variant="body2" href="mailto:support@factoryflow.io">
             Contact
           </Link>
         </Box>
@@ -170,13 +201,13 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/legal#privacy">
             Privacy Policy
           </Link>
           <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="/legal#terms">
             Terms of Service
           </Link>
           <Copyright />

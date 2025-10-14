@@ -55,8 +55,6 @@ export default function Highlights() {
       sx={{
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
-        color: 'white',
-        bgcolor: 'grey.900',
       }}
     >
       <Container
@@ -64,14 +62,14 @@ export default function Highlights() {
           position: 'relative',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'start',
           gap: { xs: 3, sm: 6 },
         }}
       >
         <Box
           sx={{
             width: { sm: '100%', md: '60%' },
-            textAlign: { sm: 'left', md: 'center' },
+            textAlign: { sm: 'left', md: 'left' },
           }}
         >
           <Typography component="h2" variant="h4" gutterBottom>
@@ -95,8 +93,6 @@ export default function Highlights() {
                   color: 'inherit',
                   p: 3,
                   height: '100%',
-                  borderColor: 'hsla(220, 25%, 25%, 0.3)',
-                  backgroundColor: 'grey.800',
                 }}
               >
                 <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
