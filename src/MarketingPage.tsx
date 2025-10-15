@@ -5,7 +5,7 @@ import AppTheme from '../shared-theme/AppTheme';
 import AppAppBar from './components/AppAppBar';
 import Hero from './components/Hero';
 import Features from './components/Features';
-import Highlights from './components/Highlights';
+//import Highlights from './components/Highlights';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CookieConsentToast from './components/CookieConsentToast';
