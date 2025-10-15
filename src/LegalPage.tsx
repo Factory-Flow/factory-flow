@@ -13,17 +13,25 @@ import Paper from '@mui/material/Paper';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Typography from '@mui/material/Typography';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import AppTheme from '../shared-theme/AppTheme';
 import AppAppBar from './components/AppAppBar';
 import Footer from './components/Footer';
 
+type LegalSectionId = 'terms' | 'privacy' | 'cookies';
+
 type LegalSection = {
-  id: string;
+  id: LegalSectionId;
   label: string;
   title: string;
   body: ReactNode;
+};
+
+const sectionRoutes: Record<LegalSectionId, string> = {
+  terms: '/terms',
+  privacy: '/privacy',
+  cookies: '/cookies',
 };
 
 function useLegalSections(): LegalSection[] {
@@ -191,36 +199,46 @@ function useLegalSections(): LegalSection[] {
   );
 }
 
-export default function LegalPage(props: { disableCustomTheme?: boolean }) {
+export default function LegalPage(props: {
+  disableCustomTheme?: boolean;
+  activeSectionId?: LegalSectionId;
+}) {
+  const { activeSectionId, ...themeProps } = props;
   const sections = useLegalSections();
-  const [tabIndex, setTabIndex] = useState(0);
-  const location = useLocation();
+  const defaultSectionId = sections[0]?.id;
+  const [tabIndex, setTabIndex] = useState(() => {
+    if (!defaultSectionId) {
+      return 0;
+    }
+    const targetId = activeSectionId ?? defaultSectionId;
+    const initialIndex = sections.findIndex((section) => section.id === targetId);
+    return initialIndex === -1 ? 0 : initialIndex;
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!location.hash) {
+    const targetId = activeSectionId ?? defaultSectionId;
+    if (!targetId) {
       return;
     }
-    const index = sections.findIndex(
-      (section) => `#${section.id}` === location.hash,
-    );
+    const index = sections.findIndex((section) => section.id === targetId);
     if (index !== -1 && index !== tabIndex) {
       setTabIndex(index);
     }
-  }, [location.hash, sections, tabIndex]);
+  }, [activeSectionId, defaultSectionId, sections, tabIndex]);
 
   const handleTabChange = (_event: SyntheticEvent, newValue: number) => {
     setTabIndex(newValue);
-    navigate(
-      { pathname: '/legal', hash: `#${sections[newValue].id}` },
-      { replace: true },
-    );
+    const nextSectionId = sections[newValue]?.id;
+    if (nextSectionId) {
+      navigate(sectionRoutes[nextSectionId]);
+    }
   };
 
   const activeSection = sections[tabIndex];
 
   return (
-    <AppTheme {...props}>
+    <AppTheme {...themeProps}>
       <CssBaseline enableColorScheme />
       <AppAppBar />
       <Box

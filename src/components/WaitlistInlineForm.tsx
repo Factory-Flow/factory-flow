@@ -58,7 +58,7 @@ export default function WaitlistInlineForm() {
 
     try {
       const body = new URLSearchParams({
-        userGroup: "",
+        userGroup: "waitlist",
         mailingLists: "",
         email: email.trim(),
       });

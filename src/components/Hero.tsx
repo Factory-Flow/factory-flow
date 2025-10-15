@@ -87,7 +87,7 @@ export default function Hero() {
                 component="span"
                 sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
               >
-                Poduction monitoring for any machine, in minutes.
+                Poduction monitoring for any machine. In minutes.
               </Box>
             </Box>
           </Typography>
@@ -116,7 +116,7 @@ export default function Hero() {
             sx={{ textAlign: 'center' }}
           >
             By clicking &quot;Join waitlist&quot; you agree to our&nbsp;
-            <Link href="/legal#terms" color="primary">
+            <Link href="/terms" color="primary">
               Terms & Conditions
             </Link>
             .

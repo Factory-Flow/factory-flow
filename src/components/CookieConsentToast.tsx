@@ -75,7 +75,7 @@ export default function CookieConsentToast() {
           <Typography variant="body2" color="text.secondary">
             We use cookies to improve your experience. By clicking accept, you
             agree to our{' '}
-            <Link href="/legal#privacy" color="primary">
+            <Link href="/privacy" color="primary">
               privacy policy
             </Link>
             .

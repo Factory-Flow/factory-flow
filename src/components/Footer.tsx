@@ -176,13 +176,13 @@ export default function Footer() {
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
             Legal
           </Typography>
-          <Link color="text.secondary" variant="body2" href="/legal#terms">
+          <Link color="text.secondary" variant="body2" href="/terms">
             Terms
           </Link>
-          <Link color="text.secondary" variant="body2" href="/legal#privacy">
+          <Link color="text.secondary" variant="body2" href="/privacy">
             Privacy
           </Link>
-          <Link color="text.secondary" variant="body2" href="/legal#cookies">
+          <Link color="text.secondary" variant="body2" href="/cookies">
             Cookie Policy
           </Link>
           <Link color="text.secondary" variant="body2" href="mailto:support@factoryflow.io">
@@ -201,13 +201,13 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" variant="body2" href="/legal#privacy">
+          <Link color="text.secondary" variant="body2" href="/privacy">
             Privacy Policy
           </Link>
           <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" variant="body2" href="/legal#terms">
+          <Link color="text.secondary" variant="body2" href="/terms">
             Terms of Service
           </Link>
           <Copyright />
