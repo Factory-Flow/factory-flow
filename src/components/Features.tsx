@@ -3,12 +3,12 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-
-const placeholderLine = (color: string) => ({
-  height: 8,
-  borderRadius: 999,
-  backgroundColor: color,
-});
+import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
+import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
+import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
+import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
+import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
+import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 
 export default function Features() {
   return (
@@ -17,7 +17,7 @@ export default function Features() {
         <Typography
           component="h2"
           variant="h3"
-          sx={{ fontWeight: 600, color: 'text.primary', mb: 2 }}
+          sx={{ fontWeight: 600, color: 'text.primary' }}
         >
           Built for the teams who run the floor
         </Typography>
@@ -45,11 +45,10 @@ export default function Features() {
             flexDirection: { xs: 'column', md: 'row' },
             alignItems: 'center',
             gap: { xs: 3, md: 6 },
-            background:
-              'linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #22d3ee 100%)',
-            color: '#f8fafc',
-            boxShadow: '0 40px 80px rgba(15, 23, 42, 0.35)',
             overflow: 'hidden',
+            background: 'linear-gradient(135deg, rgba(240, 248, 255, 1), rgba(205, 219, 234, 1))',
+            minHeight: { xs: 260, md: 320 },
+            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.1)',
           }}
         >
           <Box
@@ -60,22 +59,36 @@ export default function Features() {
               gap: { xs: 2, md: 3 },
             }}
           >
-            <Typography
-              variant="body2"
-              sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.8 }}
-            >
-              Layout Studio
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box
+                sx={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(255, 247, 237, 0.15)',
+                  color: '#22d3ee',
+                }}
+              >
+                <AutoGraphIcon sx={{ fontSize: 24 }} />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{ textTransform: 'uppercase', letterSpacing: 1 }}
+              >
+                Analytics
+              </Typography>
+            </Box>
             <Typography
               variant="h3"
               sx={{ fontWeight: 600, fontSize: { xs: 32, md: 40 } }}
             >
-              Blueprint every inch.
+              Turn data into decisions.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 480 }}>
-              Drop machines, conveyors, and work cells into a snap-to-grid
-              workspace. Watch throughput, travel distances, and capacity update
-              instantly as you shape the factory floor.
+              Gain full visibility into production performance. Track part counts, cycle times, and OEE across every workstation in real time. Identify bottlenecks, monitor downtime trends, and make data-driven decisions that improve throughput and efficiency.
             </Typography>
           </Box>
           <Box
@@ -90,7 +103,7 @@ export default function Features() {
               sx={{
                 width: '100%',
                 maxWidth: 360,
-                height: { xs: 200, md: 240 },
+                height: { xs: 220, md: 260 },
                 borderRadius: 4,
                 border: '1px solid rgba(255, 255, 255, 0.25)',
                 background:
@@ -99,22 +112,110 @@ export default function Features() {
                 backdropFilter: 'blur(18px)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 2,
+                gap: 2.5,
                 p: 3,
               }}
             >
-              <Box sx={placeholderLine('rgba(255,255,255,0.5)')} />
-              <Box sx={placeholderLine('rgba(226,232,240,0.35)')} />
-              <Box sx={{ ...placeholderLine('rgba(226,232,240,0.35)'), width: '70%' }} />
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(34, 211, 238, 0.2)',
+                    color: '#22d3ee',
+                    boxShadow: '0 12px 24px rgba(34, 211, 238, 0.35)',
+                  }}
+                >
+                  <QueryStatsRoundedIcon sx={{ fontSize: 30 }} />
+                </Box>
+                <Box sx={{ textAlign: 'right' }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, opacity: 0.75 }}>
+                    Shift OEE
+                  </Typography>
+                  <Typography variant="h5" sx={{ fontWeight: 600, color: '#f8fafc' }}>
+                    92%
+                  </Typography>
+                </Box>
+              </Box>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                  gap: 1.5,
+                  color: '#f8fafc',
+                }}
+              >
+                {[
+                  { label: 'Throughput', value: '+14%' },
+                  { label: 'Downtime', value: '-9%' },
+                  { label: 'Scrap', value: '1.2%' },
+                ].map(({ label, value }) => (
+                  <Box
+                    key={label}
+                    sx={{
+                      borderRadius: 3,
+                      border: '1px solid rgba(255, 255, 255, 0.25)',
+                      background: 'rgba(15, 23, 42, 0.35)',
+                      px: 1.5,
+                      py: 1,
+                    }}
+                  >
+                    <Typography variant="caption" sx={{ opacity: 0.75 }}>
+                      {label}
+                    </Typography>
+                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                      {value}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
               <Box
                 sx={{
                   flex: 1,
                   borderRadius: 3,
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   background:
-                    'linear-gradient(135deg, rgba(226, 232, 240, 0.18), rgba(14, 165, 233, 0.24))',
+                    'linear-gradient(180deg, rgba(226, 232, 240, 0.08) 0%, rgba(14, 165, 233, 0.3) 100%)',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  gap: 1,
+                  px: 2,
+                  pb: 1.5,
+                  overflow: 'hidden',
                 }}
-              />
+              >
+                {[
+                  { id: 'shift-a', height: 48 },
+                  { id: 'shift-b', height: 72 },
+                  { id: 'shift-c', height: 66 },
+                  { id: 'shift-d', height: 94 },
+                  { id: 'shift-e', height: 82 },
+                  { id: 'shift-f', height: 110 },
+                ].map(({ id, height }) => (
+                  <Box
+                    key={id}
+                    sx={{
+                      flex: 1,
+                      minWidth: 10,
+                      height,
+                      borderRadius: 999,
+                      background:
+                        'linear-gradient(180deg, rgba(34, 211, 238, 0.6) 0%, rgba(14, 165, 233, 0.95) 100%)',
+                      boxShadow: '0 12px 24px rgba(14, 165, 233, 0.45)',
+                    }}
+                  />
+                ))}
+              </Box>
             </Box>
           </Box>
         </Card>
@@ -130,25 +231,54 @@ export default function Features() {
             flexDirection: 'column',
             gap: { xs: 2, md: 3 },
             justifyContent: 'space-between',
-            background: 'linear-gradient(135deg, #f97316 0%, #ef4444 100%)',
-            color: '#fff7ed',
+            background: 'linear-gradient(135deg, rgba(255, 238, 226, 1), rgba(233, 233, 233, 1))',
             minHeight: { xs: 260, md: 320 },
-            boxShadow: '0 30px 60px rgba(194, 65, 12, 0.25)',
+            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.1)',
           }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
-            <Typography
-              variant="body2"
-              sx={{ textTransform: 'uppercase', letterSpacing: 1 }}
-            >
-              Asset Library
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box
+                sx={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: '#ff8800e2',
+                }}
+              >
+                <NotificationsActiveRoundedIcon sx={{ fontSize: 24 }} />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{ textTransform: 'uppercase', letterSpacing: 1 }}
+              >
+                Smart Alerts
+              </Typography>
+              <Box
+                  component="span"
+                  sx={{
+                    px: 1.25,
+                    py: 0.25,
+                    borderRadius: 999,
+                    backgroundColor: 'rgba(0, 0, 0, 0.15)',
+                    color: '#000000ff',
+                    fontSize: 10,
+                    fontWeight: 600,
+                    letterSpacing: 0.75,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Coming soon
+                </Box>
+            </Box>
             <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 28, md: 32 } }}>
-              30+ ready-to-drop machines.
+              Never miss an event.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 420 }}>
-              Start from a living catalog of CNCs, welding cells, robots, and custom
-              fixtures. Brand, dimensions, and throughput are editable in seconds.
+              Stay proactive, not reactive. Configure thresholds for cycle time, downtime, or reject rates, and receive instant alerts when performance deviates from plan. Assign responsibility and close the loop within the same workspace.
             </Typography>
           </Box>
           <Box
@@ -159,23 +289,44 @@ export default function Features() {
               mt: { xs: 2, md: 0 },
             }}
           >
-            {['CNC 4020', 'ABB IRB 4600', 'Laser Cell', 'Cobot Station'].map(
-              (label) => (
+            {[
+              { label: 'CNC 04', status: 'Cycle time trending up', color: '#ff7700ff' },
+              { label: 'Robot 46', status: 'Idle for 10 mins', color: '#ff0000ff' },
+              { label: 'Press 10', status: 'Cycle time ', color: '#ff0000ff' },
+            ].map(({ label, status, color }) => (
+              <Box
+                key={label}
+                sx={{
+                  px: 1.5,
+                  py: 0.75,
+                  borderRadius: 999,
+                  border: '1px solid rgba(255,255,255,0.35)',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  background: 'rgba(255,255,255,0.08)',
+                }}
+              >
                 <Box
-                  key={label}
                   sx={{
-                    px: 1.5,
-                    py: 0.75,
-                    borderRadius: 999,
-                    border: '1px solid rgba(255,255,255,0.35)',
-                    fontSize: 12,
-                    fontWeight: 600,
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    backgroundColor: color,
+                    boxShadow: `0 0 12px ${color}`,
                   }}
+                />
+                <Box component="span">{label}</Box>
+                <Box
+                  component="span"
+                  sx={{ fontSize: 10, opacity: 0.8, textTransform: 'uppercase' }}
                 >
-                  {label}
+                  {status}
                 </Box>
-              ),
-            )}
+              </Box>
+            ))}
           </Box>
         </Card>
 
@@ -190,55 +341,95 @@ export default function Features() {
             flexDirection: 'column',
             gap: { xs: 2, md: 3 },
             justifyContent: 'space-between',
-            background:
-              'linear-gradient(135deg, rgba(15, 23, 42, 0.05), rgba(148, 163, 184, 0.2))',
-            color: 'text.primary',
             minHeight: { xs: 260, md: 320 },
-            boxShadow: '0 20px 50px rgba(15, 23, 42, 0.12)',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(233, 233, 233, 1))',
+            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.1)',
           }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
-            <Typography
-              variant="body2"
-              sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-            >
-              Scenario Planning
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box
+                sx={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(45, 171, 255, 0.87)',
+                  color: '#000000ff',
+                }}
+              >
+                <ViewInArRoundedIcon sx={{ fontSize: 24 }} />
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
+                >
+                  3D Layout Studio
+                </Typography>
+                <Box
+                  component="span"
+                  sx={{
+                    px: 1.25,
+                    py: 0.25,
+                    borderRadius: 999,
+                    backgroundColor: 'rgba(0, 0, 0, 0.15)',
+                    color: '#000000ff',
+                    fontSize: 10,
+                    fontWeight: 600,
+                    letterSpacing: 0.75,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Coming soon
+                </Box>
+              </Box>
+            </Box>
             <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 28, md: 32 } }}>
-              Test “what if” before you move anything.
+              Experience your factory in 3D.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 420, color: 'text.secondary' }}>
-              Duplicate a line, tweak routings, and compare takt time, WIP, and
-              utilization side-by-side before committing to changes on the floor.
+              Create an interactive 3D layout of your facility and overlay live analytics directly on each machine or cell. Visualize flow, utilization, and performance in real time within a digital representation of your plant.
             </Typography>
           </Box>
           <Box
             sx={{
               mt: { xs: 2, md: 0 },
-              display: 'flex',
-              alignItems: 'flex-end',
-              gap: 1.5,
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+              gap: 1,
+              p: 1.5,
+              borderRadius: 3,
+              border: '1px solid rgba(37, 99, 235, 0.2)',
+              background:
+                'linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(99, 102, 241, 0.18))',
             }}
           >
-            {[68, 82, 94].map((value, index) => (
+            {[
+              { name: 'Assembly', span: 2, color: 'rgba(37, 99, 235, 0.45)' },
+              { name: 'Inspection', span: 1, color: 'rgba(96, 165, 250, 0.45)' },
+              { name: 'Packout', span: 1, color: 'rgba(59, 130, 246, 0.6)' },
+              { name: 'Storage', span: 2, color: 'rgba(148, 163, 184, 0.35)' },
+              { name: 'Shipping', span: 2, color: 'rgba(59, 130, 246, 0.35)' },
+            ].map(({ name, span, color }) => (
               <Box
-                key={value}
+                key={`${name}-${color}`}
                 sx={{
-                  flex: 1,
-                  height: 120 + index * 20,
+                  gridColumn: `span ${span}`,
                   borderRadius: 2,
-                  background:
-                    'linear-gradient(180deg, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0.65) 100%)',
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  justifyContent: 'center',
-                  pb: 1,
-                  color: '#1e293b',
+                  background: color,
+                  color: '#0f172a',
                   fontWeight: 600,
-                  fontSize: 14,
+                  fontSize: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  py: 1,
                 }}
               >
-                {value}%
+                {name}
               </Box>
             ))}
           </Box>
@@ -262,29 +453,44 @@ export default function Features() {
           }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
-            <Typography
-              variant="body2"
-              sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.75 }}
-            >
-              Team Spaces
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box
+                sx={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(99, 102, 241, 0.25)',
+                  color: '#c7d2fe',
+                }}
+              >
+                <GroupsRoundedIcon sx={{ fontSize: 24 }} />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{ textTransform: 'uppercase', letterSpacing: 1, opacity: 0.75 }}
+              >
+                Team Collaboration
+              </Typography>
+            </Box>
             <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 28, md: 32 } }}>
-              Align engineering, ops, and leadership.
+              Single source of truth.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 380 }}>
-              Share designs, comment inline, and track approvals in one workspace so
-              every decision is captured and searchable.
+              Share dashboards and maintain full visibility into performance discussions and approvals — ensuring alignment from engineering to leadership.
             </Typography>
           </Box>
           <Box
             sx={{
               mt: { xs: 2, md: 0 },
               display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
+              gridTemplateColumns: 'repeat(2, 1fr)',
               gap: 1,
             }}
           >
-            {['ME', 'OPS', 'QA'].map((team) => (
+            {['IT', 'OT'].map((team) => (
               <Box
                 key={team}
                 sx={{
@@ -322,35 +528,57 @@ export default function Features() {
           }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
-            <Typography
-              variant="body2"
-              sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-            >
-              Live Metrics
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box
+                sx={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(16, 185, 129, 0.15)',
+                  color: '#047857',
+                }}
+              >
+                <CodeRoundedIcon sx={{ fontSize: 24 }} />
+              </Box>
+              <Typography
+                variant="body2"
+                sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
+              >
+                Easy setup
+              </Typography>
+            </Box>
             <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 28, md: 32 } }}>
-              Stay ahead of bottlenecks.
+              Developer friendly API.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 460, color: 'text.secondary' }}>
-              Stream downtime events, takt variance, and scrap causes into dashboards.
-              Trigger alerts when thresholds slip and assign owners on the spot.
+              Connect any machine or system in minutes. Factory Flow offers a simple, well-documented API that lets developers send production data or build custom integrations without complexity.
             </Typography>
           </Box>
           <Box
             sx={{
               mt: { xs: 2, md: 0 },
               display: 'grid',
-              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' },
               gap: 1.5,
             }}
           >
             {[
-              { label: 'Takt', value: '58s' },
-              { label: 'OEE', value: '91%' },
-              { label: 'Downtime', value: '-12%' },
-            ].map(({ label, value }) => (
+              {
+                method: 'GET',
+                path: '/api/v1/machines/status',
+                description: 'Pull live status for every cell on the floor.'
+              },
+              {
+                method: 'POST',
+                path: '/api/v1/events/downtime',
+                description: 'Log a downtime event with root cause notes.'
+              },
+            ].map(({ method, path, description }) => (
               <Box
-                key={label}
+                key={`${method}-${path}`}
                 sx={{
                   borderRadius: 3,
                   border: '1px solid rgba(15, 118, 110, 0.35)',
@@ -360,21 +588,41 @@ export default function Features() {
                   py: 1.5,
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 0.5,
-                  fontSize: 14,
-                  fontWeight: 600,
+                  gap: 0.75,
                   color: '#0f172a',
                 }}
               >
                 <Box
-                  component="span"
-                  sx={{ fontSize: 12, fontWeight: 500, opacity: 0.7 }}
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 1,
+                    fontSize: 12,
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5,
+                    opacity: 0.75,
+                  }}
                 >
-                  {label}
+                  {method}
                 </Box>
-                <Box component="span" sx={{ fontSize: 22 }}>
-                  {value}
+                <Box
+                  component="code"
+                  sx={{
+                    fontSize: 16,
+                    fontWeight: 600,
+                    backgroundColor: 'rgba(15, 118, 110, 0.08)',
+                    borderRadius: 2,
+                    px: 1,
+                    py: 0.5,
+                    display: 'inline-block',
+                  }}
+                >
+                  {path}
                 </Box>
+                <Typography variant="caption" sx={{ lineHeight: 1.4, color: 'text.secondary' }}>
+                  {description}
+                </Typography>
               </Box>
             ))}
           </Box>

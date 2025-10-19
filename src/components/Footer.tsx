@@ -85,6 +85,7 @@ export default function Footer() {
             <Typography variant="body2" gutterBottom sx={{ color: 'text.secondary', fontWeight: 600, mt: 2 }}>
               Visibility. Compatibility. Smarter decisions.
             </Typography>
+            <Copyright />
             {/*<Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
               Join the newsletter
             </Typography>
@@ -190,7 +191,7 @@ export default function Footer() {
           </Link>
         </Box>
       </Box>
-      <Box
+      {/*<Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
@@ -245,8 +246,8 @@ export default function Footer() {
           >
             <LinkedInIcon />
           </IconButton>
-        </Stack>*/}
-      </Box>
+        </Stack>
+      </Box>*/}
     </Container>
   );
 }

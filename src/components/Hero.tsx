@@ -123,19 +123,7 @@ export default function Hero() {
           </Typography>
         </Stack>
         <StyledBox id="image" />
-        <Typography
-          variant="h5"
-          sx={{
-            mt: { xs: 4, sm: 6 },
-            textAlign: 'center',
-            color: 'text.secondary',
-            width: { sm: '100%', md: '100%' },
-          }}
-        >
-          Our mission is to make factory performance visible, effortless, and universal — empowering
-          manufacturers to monitor every machine in real time, no matter the brand or age, with setup
-          that takes minutes, not months.
-        </Typography>
+
       </Container>
     </Box>
   );
