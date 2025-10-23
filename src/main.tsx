@@ -16,8 +16,9 @@ import MarketingPage from "./MarketingPage.tsx";
 import LegalPage from "./LegalPage.tsx";
 
 const gaMeasurementId = "G-MBRSNLKTMD";
+const isAnalyticsEnabled = import.meta.env.PROD && Boolean(gaMeasurementId);
 
-if (gaMeasurementId) {
+if (isAnalyticsEnabled) {
   ReactGA.initialize(gaMeasurementId);
 } else if (import.meta.env.DEV) {
   // eslint-disable-next-line no-console -- surface missing configuration during development
@@ -28,7 +29,7 @@ function AnalyticsTracker() {
   const location = useLocation();
 
   useEffect(() => {
-    if (!gaMeasurementId) {
+    if (!isAnalyticsEnabled) {
       return;
     }
 
@@ -36,7 +37,7 @@ function AnalyticsTracker() {
       hitType: "pageview",
       page: location.pathname + location.search,
     });
-  }, [location.pathname, location.search]);
+  }, [isAnalyticsEnabled, location.pathname, location.search]);
 
   return null;
 }
