@@ -93,9 +93,9 @@ export default function AppAppBar() {
               {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("testimonials")}>
                 Testimonials
               </Button>*/}
-              <Button variant="text" color="info" size="small" onClick={() => scrollToSection("highlights")}>
+              {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("highlights")}>
                 Highlights
-              </Button>
+              </Button>*/}
               {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("pricing")}>
                 Pricing
               </Button>*/}
@@ -145,7 +145,7 @@ export default function AppAppBar() {
 
                 <MenuItem onClick={() => scrollToSection("features")}>Features</MenuItem>
                 {/*<MenuItem onClick={() => scrollToSection("testimonials")}>Testimonials</MenuItem>*/}
-                <MenuItem onClick={() => scrollToSection("highlights")}>Highlights</MenuItem>
+                {/*<MenuItem onClick={() => scrollToSection("highlights")}>Highlights</MenuItem>*/}
                 {/*<MenuItem onClick={() => scrollToSection("pricing")}>Pricing</MenuItem>*/}
                 <MenuItem onClick={() => scrollToSection("faq")}>FAQ</MenuItem>
                 <Divider sx={{ my: 3 }} />

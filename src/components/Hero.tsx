@@ -5,6 +5,7 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import Chip from '@mui/material/Chip';
 
 import WaitlistInlineForm from './WaitlistInlineForm';
 
@@ -64,6 +65,12 @@ export default function Hero() {
           useFlexGap
           sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
         >
+          <Chip
+            label="Early access"
+            color="secondary"
+            variant="outlined"
+            sx={{marginTop: 8}}
+          />
           <Typography
             component="h1"
             variant="h1"
@@ -71,24 +78,32 @@ export default function Hero() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              fontSize: 'clamp(3rem, 10vw, 1rem)',
+              
+              fontSize: { xs: '2rem', sm: '2rem', md: '3rem' },
             }}
           >
-            <Box
-              component="span"
-              sx={{
-                display: 'inherit',
-                flexDirection: 'inherit',
-                alignItems: 'inherit',
-                gap: 1,
-              }}
-            >
+            <Box component="span">
+              Production monitoring for{' '}
               <Box
                 component="span"
-                sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                sx={{
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '0.25em',
+                }}
               >
-                Poduction monitoring for any machine. In minutes.
+                any
+              </Box>{' '}
+              machine{' '}
+              <Box
+                component="span"
+                sx={{
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '0.25em',
+                }}
+              >
+                in minutes
               </Box>
+              .
             </Box>
           </Typography>
           <Typography
@@ -115,12 +130,19 @@ export default function Hero() {
             color="text.secondary"
             sx={{ textAlign: 'center' }}
           >
+            Get notified when Factory Flow is available
+          </Typography>
+          {/*<Typography
+            variant="caption"
+            color="text.secondary"
+            sx={{ textAlign: 'center' }}
+          >
             By clicking &quot;Join waitlist&quot; you agree to our&nbsp;
             <Link href="/terms" color="primary">
               Terms & Conditions
             </Link>
             .
-          </Typography>
+          </Typography>*/}
         </Stack>
         <StyledBox id="image" />
 

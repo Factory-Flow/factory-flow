@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Collapse from "@mui/material/Collapse";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 
@@ -15,12 +16,16 @@ const loopsEndpoint = loopsFormId
 
 export default function WaitlistInlineForm() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [showNameField, setShowNameField] = useState(false);
   const [formState, setFormState] = useState<FormState>("init");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     if (formState === "success") {
       setEmail("");
+      setName("");
+      setShowNameField(false);
     }
   }, [formState]);
 
@@ -33,6 +38,19 @@ export default function WaitlistInlineForm() {
   }
 
   const isSubmitting = formState === "submitting";
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const collapseNameFieldIfEmpty = (nextTarget: EventTarget | null) => {
+    if (email.trim() !== "" || name.trim() !== "") {
+      return;
+    }
+
+    if (nextTarget instanceof Node && formRef.current?.contains(nextTarget)) {
+      return;
+    }
+
+    setShowNameField(false);
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -47,6 +65,12 @@ export default function WaitlistInlineForm() {
       return;
     }
 
+    if (showNameField && name.trim().length === 0) {
+      setFormState("error");
+      setErrorMessage("Please enter your name.");
+      return;
+    }
+
     if (!passesRateLimit()) {
       setFormState("error");
       setErrorMessage("Too many signups, please try again in a little while.");
@@ -57,11 +81,17 @@ export default function WaitlistInlineForm() {
     setErrorMessage(null);
 
     try {
+      const trimmedName = name.trim();
       const body = new URLSearchParams({
         userGroup: "waitlist",
         mailingLists: "",
         email: email.trim(),
       });
+
+      if (trimmedName) {
+        body.append("firstName", trimmedName);
+        body.append("name", trimmedName);
+      }
 
       const response = await fetch(loopsEndpoint, {
         method: "POST",
@@ -93,6 +123,8 @@ export default function WaitlistInlineForm() {
   const handleReset = () => {
     setFormState("init");
     setErrorMessage(null);
+    setName("");
+    setShowNameField(false);
   };
 
   return (
@@ -102,38 +134,63 @@ export default function WaitlistInlineForm() {
           Thanks! We&apos;ll be in touch!
         </Alert>
       ) : (
-        <Box component="form" onSubmit={handleSubmit} noValidate>
+        <Box component="form" ref={formRef} onSubmit={handleSubmit} noValidate>
           <Stack
-            direction={{ xs: "column", sm: "row" }}
             spacing={1}
             sx={{
-              alignItems: { xs: "stretch", sm: "center" },
-              justifyContent: "center",
+              alignItems: "stretch",
               width: "100%",
             }}
           >
-            <TextField
-              type="email"
-              label="Work email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              required
-              fullWidth
-              size="small"
-              disabled={isSubmitting}
-              autoComplete="email"
-            />
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="small"
-              sx={{ minWidth: { xs: "100%", sm: "fit-content" } }}
-              disabled={isSubmitting}
+            <Collapse in={showNameField} unmountOnExit timeout={250} sx={{ width: "100%" }}>
+              <TextField
+                type="text"
+                label="Name"
+                placeholder="Your name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                onBlur={(event) => collapseNameFieldIfEmpty(event.relatedTarget)}
+                required
+                fullWidth
+                size="small"
+                disabled={isSubmitting}
+                autoComplete="given-name"
+              />
+            </Collapse>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={1}
+              sx={{
+                alignItems: { xs: "stretch", sm: "center" },
+                justifyContent: "center",
+                width: "100%",
+              }}
             >
-              {isSubmitting ? "Please wait..." : "Join waitlist"}
-            </Button>
+              <TextField
+                type="email"
+                label="Email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                onFocus={() => setShowNameField(true)}
+                onBlur={(event) => collapseNameFieldIfEmpty(event.relatedTarget)}
+                required
+                fullWidth
+                size="small"
+                disabled={isSubmitting}
+                autoComplete="email"
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                size="small"
+                sx={{ minWidth: { xs: "100%", sm: "fit-content" } }}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Please wait..." : "Join waitlist"}
+              </Button>
+            </Stack>
           </Stack>
         </Box>
       )}

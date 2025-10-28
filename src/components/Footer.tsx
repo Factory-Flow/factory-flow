@@ -70,6 +70,9 @@ export default function Footer() {
           flexDirection: { xs: 'column', sm: 'row' },
           width: '100%',
           justifyContent: 'space-between',
+          alignItems: { xs: 'center', sm: 'flex-start' },
+          textAlign: { xs: 'center', sm: 'left' },
+          gap: { xs: 4, sm: 0 },
         }}
       >
         <Box
@@ -123,27 +126,29 @@ export default function Footer() {
         </Box>
         <Box
           sx={{
-            display: { xs: 'none', sm: 'flex' },
+            display: 'flex',
             flexDirection: 'column',
             gap: 1,
+            alignItems: { xs: 'center', sm: 'flex-start' },
+            mt: { xs: 4, sm: 0 },
           }}
         >
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
             Product
           </Typography>
-          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("features"); }} style={{cursor: 'pointer'}}>
+          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("features"); }} style={{cursor: 'pointer', textAlign: 'inherit'}}>
             Features
           </Link>
           {/*<Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("testimonials"); }} style={{cursor: 'pointer'}}>
             Testimonials
           </Link>*/}
-          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("highlights"); }} style={{cursor: 'pointer'}}>
+          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("highlights"); }} style={{cursor: 'pointer', textAlign: 'inherit'}}>
             Highlights
           </Link>
           {/*<Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("pricing"); }} style={{cursor: 'pointer'}}>
             Pricing
           </Link>*/}
-          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("faq"); }} style={{cursor: 'pointer'}}>
+          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("faq"); }} style={{cursor: 'pointer', textAlign: 'inherit'}}>
             FAQs
           </Link>
         </Box>
@@ -169,24 +174,26 @@ export default function Footer() {
         </Box> */}
         <Box
           sx={{
-            display: { xs: 'none', sm: 'flex' },
+            display: 'flex',
             flexDirection: 'column',
             gap: 1,
+            alignItems: { xs: 'center', sm: 'flex-start' },
+            mt: { xs: 4, sm: 0 },
           }}
         >
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
             Legal
           </Typography>
-          <Link color="text.secondary" variant="body2" href="/terms">
+          <Link color="text.secondary" variant="body2" href="/terms" sx={{ textAlign: 'inherit' }}>
             Terms
           </Link>
-          <Link color="text.secondary" variant="body2" href="/privacy">
+          <Link color="text.secondary" variant="body2" href="/privacy" sx={{ textAlign: 'inherit' }}>
             Privacy
           </Link>
-          <Link color="text.secondary" variant="body2" href="/cookies">
+          <Link color="text.secondary" variant="body2" href="/cookies" sx={{ textAlign: 'inherit' }}>
             Cookie Policy
           </Link>
-          <Link color="text.secondary" variant="body2" href="mailto:support@factoryflow.io">
+          <Link color="text.secondary" variant="body2" href="mailto:support@factoryflow.io" sx={{ textAlign: 'inherit' }}>
             Contact
           </Link>
         </Box>
