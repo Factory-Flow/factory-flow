@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
@@ -14,17 +15,32 @@ import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 export default function Features() {
   return (
     <Container id="features" sx={{ py: { xs: 8, sm: 12 } }}>
-      <Box sx={{ maxWidth: { xs: '100%', md: '60%' }, mb: { xs: 6, md: 8 } }}>
+      <Box
+        sx={{
+          maxWidth: { xs: '100%', md: '60%' },
+          mb: { xs: 6, md: 8 },
+          mx: 'auto',
+          textAlign: 'center',
+        }}
+      >
+        <Divider
+          sx={{
+            width: '70%',
+            height: 3,
+            borderRadius: 999,
+            mx: 'auto',
+            my: { xs: 2.5, md: 3 },
+          }}
+        />
         <Typography
           component="h2"
           variant="h3"
           sx={{ fontWeight: 600, color: 'text.primary' }}
         >
-          Built for the teams who run the floor
+          The digital layer for your production floor
         </Typography>
         <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1.5 }}>
-          Factory Flow gives operations leaders a visual command center for
-          layout planning, production analytics, and cross-team collaboration.
+          Reveal performance, inefficiencies, and opportunities hidden in your production processes
         </Typography>
       </Box>
 
@@ -67,7 +83,6 @@ export default function Features() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'primary.light',
                   color: 'primary.main',
                 }}
               >
@@ -119,20 +134,7 @@ export default function Features() {
                   justifyContent: 'space-between',
                 }}
               >
-                <Box
-                  sx={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'primary.light',
-                    color: 'primary.main',
-                  }}
-                >
-                  <QueryStatsRoundedIcon sx={{ fontSize: 24 }} />
-                </Box>
+                <div></div>
                 <Box sx={{ textAlign: 'right' }}>
                   <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.secondary' }}>
                     Shift OEE
@@ -234,8 +236,7 @@ export default function Features() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'warning.light',
-                  color: 'warning.dark',
+                  color: 'warning.light',
                 }}
               >
                 <NotificationsActiveRoundedIcon sx={{ fontSize: 22 }} />
@@ -261,7 +262,7 @@ export default function Features() {
               Never miss an event.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 420, color: 'text.secondary' }}>
-              Stay proactive, not reactive. Configure thresholds for cycle time, downtime, or reject rates, and receive instant alerts when performance deviates from plan. Assign responsibility and close the loop within the same workspace.
+              Stay proactive, not reactive. Configure thresholds for cycle time, downtime, or reject rates, and receive instant alerts when performance deviates from the plan.
             </Typography>
           </Box>
           <Box
@@ -339,8 +340,7 @@ export default function Features() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'info.light',
-                  color: 'info.dark',
+                  color: 'primary.light',
                 }}
               >
                 <ViewInArRoundedIcon sx={{ fontSize: 22 }} />
@@ -366,7 +366,7 @@ export default function Features() {
               Experience your factory in 3D.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 420, color: 'text.secondary' }}>
-              Create an interactive 3D layout of your facility and overlay live analytics directly on each machine or cell. Visualize flow, utilization, and performance in real time within a digital representation of your plant.
+              Create an interactive 3D layout of your facility and overlay live analytics directly on each machine or cell. Visualize performance in real time within a digital representation of your plant.
             </Typography>
           </Box>
           <Box
@@ -437,7 +437,6 @@ export default function Features() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'secondary.light',
                   color: 'secondary.main',
                 }}
               >
@@ -512,7 +511,6 @@ export default function Features() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: 'success.light',
                   color: 'success.main',
                 }}
               >
@@ -529,7 +527,7 @@ export default function Features() {
               Developer friendly API.
             </Typography>
             <Typography variant="body1" sx={{ maxWidth: 460, color: 'text.secondary' }}>
-              Connect any machine or system in minutes. Factory Flow offers a simple, well-documented API that lets developers send production data or build custom integrations without complexity.
+              Connect any machine or station in minutes. Factory Flow has a simple, well-documented API that lets developers send production data or build custom integrations without complexity.
             </Typography>
           </Box>
           <Box
@@ -542,66 +540,66 @@ export default function Features() {
           >
             {[
               {
-                method: 'GET',
-                path: '/api/v1/machines/status',
-                description: 'Pull live status for every cell on the floor.',
-              },
-              {
                 method: 'POST',
-                path: '/api/v1/events/downtime',
+                path: '/api/cnc_1/parts',
                 description: 'Log a downtime event with root cause notes.',
               },
-            ].map(({ method, path, description }) => (
-              <Box
-                key={`${method}-${path}`}
-                sx={{
-                  borderRadius: 2,
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  backgroundColor: 'background.default',
-                  px: 2,
-                  py: 1.5,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 0.75,
-                  color: 'text.primary',
-                }}
-              >
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 0.75,
-                    fontSize: 12,
-                    fontWeight: 600,
-                    textTransform: 'uppercase',
-                    letterSpacing: 0.75,
-                    color: 'text.secondary',
-                  }}
-                >
-                  {method}
-                </Box>
-                <Box
-                  component="code"
-                  sx={{
-                    fontSize: 16,
-                    fontWeight: 600,
-                    backgroundColor: 'background.paper',
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    borderRadius: 1,
-                    px: 1,
-                    py: 0.5,
-                    display: 'inline-block',
-                  }}
-                >
-                  {path}
-                </Box>
-                <Typography variant="caption" sx={{ lineHeight: 1.5, color: 'text.secondary' }}>
-                  {description}
-                </Typography>
-              </Box>
-            ))}
+              {
+                method: 'GET',
+                path: '/api/cnc_1/cycle_time',
+                description: 'Pull live status for every cell on the floor.',
+              },
+            ].map(({ method, path, description }) => {
+              const methodColor =
+                method === 'POST'
+                  ? 'warning.main'
+                  : method === 'GET'
+                  ? 'success.main'
+                  : 'text.secondary';
+              const methodBg ='background.default';
+
+              return (
+                <div key={`${method}-${path}`} className="flex flex-direction-column">
+                  <Box
+                    sx={{
+                      display: 'inline-block',
+                      alignItems: 'center',
+                      border: '1px solid',
+                      borderColor: methodColor,
+                      borderRadius: 1,
+                      gap: 0.75,
+                      fontSize: 16,
+                      fontWeight: 600,
+                      textTransform: 'uppercase',
+                      letterSpacing: 0.75,
+                      color: methodColor,
+                      backgroundColor: methodBg,
+                      px: 1,
+                      py: 0.5,
+                      mr: 1.5,
+                    }}
+                  >
+                    {method}
+                  </Box>
+                  <Box
+                    component="code"
+                    sx={{
+                      fontSize: 16,
+                      fontWeight: 600,
+                      backgroundColor: 'background.paper',
+                      border: '1px solid',
+                      borderColor: 'divider',
+                      borderRadius: 1,
+                      px: 1,
+                      py: 0.5,
+                      display: 'inline-block',
+                    }}
+                  >
+                    {path}
+                  </Box>
+                </div>
+              );
+            })}
           </Box>
         </Card>
       </Box>

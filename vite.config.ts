@@ -3,27 +3,50 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import fs from 'node:fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig(({ mode }) => {
-  // Load VITE_* vars from .env, .env.development, .env.production, etc.
   const env = loadEnv(mode, process.cwd(), '')
 
+  // Use mode=gh or env flag to toggle GH Pages settings
   const isGhPages = mode === 'gh' || env.GITHUB_PAGES === 'true'
 
+  const repoBase = '/'
+
   return {
-    plugins: [react()],
-    // Always serve from domain root
-    base: '/',
+    plugins: [
+      react(),
+      // Emit a SPA fallback for GH Pages: copy index.html to 404.html
+      {
+        name: 'emit-404-for-gh-pages',
+        closeBundle() {
+          const out = isGhPages ? 'docs' : 'dist'
+          const src = `${out}/index.html`
+          const dest = `${out}/404.html`
+          if (fs.existsSync(src)) {
+            fs.copyFileSync(src, dest)
+          }
+          // Optional: emit .nojekyll to avoid any Jekyll quirks
+          const nojekyll = `${out}/.nojekyll`
+          if (!fs.existsSync(nojekyll)) fs.writeFileSync(nojekyll, '')
+          // --- Emit CNAME for custom domain
+          const cname = 'factoryflow.io'
+          fs.writeFileSync(`${out}/CNAME`, cname)
+        }
+      }
+    ],
+
+    // ✅ Switch base depending on hosting
+    base: isGhPages ? (repoBase || '/') : '/',
+
     resolve: {
-      alias: {
-        '@': resolve(__dirname, './src'),
-      },
+      alias: { '@': resolve(__dirname, './src') },
     },
-    // Dev-only server/proxy (ignored in production build)
+
     server: {
-      host: 'factoryflow.local',          // or '0.0.0.0' if you want LAN dev access
+      host: 'factoryflow.local',
       allowedHosts: ['factoryflow.local'],
       port: 3000,
       strictPort: true,
@@ -35,16 +58,17 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
+
     build: {
+      // GitHub Pages can serve from /docs on the default branch
       outDir: isGhPages ? 'docs' : 'dist',
       assetsDir: 'assets',
       sourcemap: false,
       target: 'es2018',
-      // optional: speed/compat tweaks
       cssMinify: true,
       rollupOptions: {
         output: {
-          manualChunks: undefined, // single bundle for tiny sites; remove if you prefer code-splitting
+          manualChunks: undefined,
         }
       }
     }

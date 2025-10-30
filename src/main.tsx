@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "@fontsource/geist-sans/latin.css";
 import ReactDOM from "react-dom/client";
 import {
   BrowserRouter,

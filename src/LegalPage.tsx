@@ -85,8 +85,8 @@ function useLegalSections(): LegalSection[] {
             <Typography variant="body2">
               Questions about these terms can be directed to
               {' '}
-              <Typography component="span" color="primary" fontWeight="medium">
-                legal@factoryflow.io
+              <Typography component="a" color="primary" fontWeight="medium" href="mailto:support@factoryflow.io">
+                support@factoryflow.io
               </Typography>
               .
             </Typography>
@@ -140,8 +140,8 @@ function useLegalSections(): LegalSection[] {
             <Typography variant="body2">
               For privacy inquiries, email us at
               {' '}
-              <Typography component="span" color="primary" fontWeight="medium">
-                privacy@factoryflow.io
+              <Typography component="a" color="primary" fontWeight="medium" href="mailto:support@factoryflow.io">
+                support@factoryflow.io
               </Typography>
               .
             </Typography>
@@ -186,7 +186,7 @@ function useLegalSections(): LegalSection[] {
             <Typography variant="body2">
               For questions about this policy, contact
               {' '}
-              <Typography component="span" color="primary" fontWeight="medium">
+              <Typography component="a" color="primary" fontWeight="medium" href="mailto:support@factoryflow.io">
                 support@factoryflow.io
               </Typography>
               .

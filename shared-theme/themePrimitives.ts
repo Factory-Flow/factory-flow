@@ -183,7 +183,7 @@ export const getDesignTokens = (mode: PaletteMode) => {
       },
     },
     typography: {
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Geist Sans, sans-serif',
       h1: {
         fontSize: defaultTheme.typography.pxToRem(48),
         fontWeight: 600,
@@ -328,7 +328,7 @@ export const colorSchemes = {
       },
       text: {
         primary: 'hsl(0, 0%, 100%)',
-        secondary: gray[400],
+        secondary: gray[300],
       },
       action: {
         hover: alpha(gray[600], 0.2),
@@ -341,7 +341,7 @@ export const colorSchemes = {
 };
 
 export const typography = {
-  fontFamily: 'Inter, sans-serif',
+  fontFamily: 'Geist Sans, sans-serif',
   h1: {
     fontSize: defaultTheme.typography.pxToRem(48),
     fontWeight: 600,
