@@ -5,7 +5,6 @@ import Chip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
 import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
@@ -549,14 +548,14 @@ export default function Features() {
                 path: '/api/cnc_1/cycle_time',
                 description: 'Pull live status for every cell on the floor.',
               },
-            ].map(({ method, path, description }) => {
+            ].map(({ method, path }) => {
               const methodColor =
                 method === 'POST'
                   ? 'warning.main'
                   : method === 'GET'
-                  ? 'success.main'
-                  : 'text.secondary';
-              const methodBg ='background.default';
+                    ? 'success.main'
+                    : 'text.secondary';
+              const methodBg = 'background.default';
 
               return (
                 <div key={`${method}-${path}`} className="flex flex-direction-column">
