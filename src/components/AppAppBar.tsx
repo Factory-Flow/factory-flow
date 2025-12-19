@@ -1,60 +1,24 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import MenuItem from '@mui/material/MenuItem';
-import Drawer from '@mui/material/Drawer';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { useLocation, useNavigate } from 'react-router-dom';
-import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
 import Sitemark from './Logo';
 
-const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  flexShrink: 0,
-  borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
-  backdropFilter: 'blur(24px)',
-  border: '1px solid',
-  borderColor: (theme.vars || theme).palette.divider,
-  backgroundColor: theme.vars
-    ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
-    : alpha(theme.palette.background.default, 0.4),
-  boxShadow: (theme.vars || theme).shadows[1],
-  padding: '8px 12px',
-}));
-
 export default function AppAppBar() {
-  const [open, setOpen] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
-
   React.useEffect(() => {
-    if (!location.hash) {
-      return;
-    }
-
-    const targetId = location.hash.slice(1);
-    const section = document.getElementById(targetId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [location.pathname, location.hash]);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const targetHash = `#${id}`;
-    toggleDrawer(false)();
+    setMobileMenuOpen(false);
 
     if (location.pathname !== '/') {
       navigate({ pathname: '/', hash: targetHash });
@@ -72,93 +36,79 @@ export default function AppAppBar() {
   };
 
   return (
-    <AppBar
-      position="fixed"
-      enableColorOnDark
-      sx={{
-        boxShadow: 0,
-        bgcolor: 'transparent',
-        backgroundImage: 'none',
-        mt: 'calc(var(--template-frame-height, 0px) + 28px)',
-      }}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${isScrolled ? 'glass py-3' : 'bg-transparent py-4'
+        }`}
     >
-      <Container maxWidth="lg">
-        <StyledToolbar variant="dense" disableGutters>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            <div onClick={() => scrollToSection("hero")} style={{cursor: 'pointer',display: 'inline-flex', alignItems: 'center'}}><Sitemark /></div>
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small" onClick={() => scrollToSection("features")}>
-                Features
-              </Button>
-              {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("testimonials")}>
-                Testimonials
-              </Button>*/}
-              {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("highlights")}>
-                Highlights
-              </Button>*/}
-              {/*<Button variant="text" color="info" size="small" onClick={() => scrollToSection("pricing")}>
-                Pricing
-              </Button>*/}
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }} onClick={() => scrollToSection("faq")}>
-                FAQ
-              </Button>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              gap: 1,
-              alignItems: 'center',
-            }}
-          >
-            <Button color="primary" variant="contained" size="small" onClick={() => scrollToSection("waitlist")}>
-              Join waitlist
-            </Button>
-            <ColorModeIconDropdown />
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-            <ColorModeIconDropdown size="medium" />
-            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
-              <MenuIcon />
-            </IconButton>
-            <Drawer
-              anchor="top"
-              open={open}
-              onClose={toggleDrawer(false)}
-              PaperProps={{
-                sx: {
-                  top: 'var(--template-frame-height, 0px)',
-                },
-              }}
-            >
-              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                  }}
-                >
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <CloseRoundedIcon />
-                  </IconButton>
-                </Box>
+      <div className="max-w-[1280px] mx-auto px-8 flex items-center justify-between">
+        <div
+          onClick={() => scrollToSection("hero")}
+          className="cursor-pointer flex items-center gap-2 hover:opacity-80 transition-opacity"
+        >
+          <Sitemark />
+        </div>
 
-                <MenuItem onClick={() => scrollToSection("features")}>Features</MenuItem>
-                {/*<MenuItem onClick={() => scrollToSection("testimonials")}>Testimonials</MenuItem>*/}
-                {/*<MenuItem onClick={() => scrollToSection("highlights")}>Highlights</MenuItem>*/}
-                {/*<MenuItem onClick={() => scrollToSection("pricing")}>Pricing</MenuItem>*/}
-                <MenuItem onClick={() => scrollToSection("faq")}>FAQ</MenuItem>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem onClick={() => scrollToSection("waitlist")}>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Join waitlist
-                  </Button>
-                </MenuItem>
-              </Box>
-            </Drawer>
-          </Box>
-        </StyledToolbar>
-      </Container>
-    </AppBar>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-1">
+          <button
+            onClick={() => scrollToSection("features")}
+            className="text-sm text-secondary hover:text-white transition-colors px-3 py-1.5 rounded-md hover:bg-white/5 cursor-pointer"
+          >
+            Features
+          </button>
+          <button
+            onClick={() => scrollToSection("faq")}
+            className="text-sm text-secondary hover:text-white transition-colors px-3 py-1.5 rounded-md hover:bg-white/5 cursor-pointer"
+          >
+            FAQ
+          </button>
+          <div className="w-px h-4 bg-white/10 mx-2" />
+          <button
+            onClick={() => scrollToSection("waitlist")}
+            className="text-sm bg-white text-black px-4 py-1.5 rounded-md font-medium hover:bg-white/90 transition-all ml-1 cursor-pointer"
+          >
+            Join Waitlist
+          </button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white p-2 hover:bg-white/5 rounded-md transition-colors"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-[#0d0e10]/95 backdrop-blur-xl border-b card-border p-5 md:hidden flex flex-col gap-1">
+          <button
+            onClick={() => scrollToSection("features")}
+            className="text-left text-secondary hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-colors cursor-pointer"
+          >
+            Features
+          </button>
+          <button
+            onClick={() => scrollToSection("faq")}
+            className="text-left text-secondary hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-colors cursor-pointer"
+          >
+            FAQ
+          </button>
+          <div className="h-px bg-white/10 my-2" />
+          <button
+            onClick={() => scrollToSection("waitlist")}
+            className="bg-white text-black px-4 py-2 rounded-md font-medium text-center hover:bg-white/90 transition-colors cursor-pointer"
+          >
+            Join Waitlist
+          </button>
+        </div>
+      )}
+    </nav>
   );
 }

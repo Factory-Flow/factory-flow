@@ -1,33 +1,13 @@
 import { useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SitemarkIcon from './Logo';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
-      {'Copyright © '}
-      <Link color="text.secondary" href="/">
-        Factory Flow
-      </Link>
-      &nbsp;
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
 
 export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!location.hash) {
-      return;
-    }
-
+    if (!location.hash) return;
     const targetId = location.hash.slice(1);
     const section = document.getElementById(targetId);
     if (section) {
@@ -37,16 +17,13 @@ export default function Footer() {
 
   const scrollToSection = (id: string) => {
     const targetHash = `#${id}`;
-
     if (location.pathname !== '/') {
       navigate({ pathname: '/', hash: targetHash });
       return;
     }
-
     if (location.hash !== targetHash) {
       navigate({ pathname: '/', hash: targetHash });
     }
-
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -54,207 +31,42 @@ export default function Footer() {
   };
 
   return (
-    <Container
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: { xs: 4, sm: 8 },
-        py: { xs: 8, sm: 10 },
-        textAlign: { sm: 'center', md: 'left' },
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row' },
-          width: '100%',
-          justifyContent: 'space-between',
-          alignItems: { xs: 'center', sm: 'flex-start' },
-          textAlign: { xs: 'center', sm: 'left' },
-          gap: { xs: 4, sm: 0 },
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 4,
-            minWidth: { xs: '100%', sm: '60%' },
-          }}
-        >
-          <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-            <div onClick={() => scrollToSection("hero")} style={{cursor: 'pointer',display: 'inline-flex', alignItems: 'center'}}><SitemarkIcon /></div>
-            <Typography variant="body2" gutterBottom sx={{ color: 'text.secondary', fontWeight: 600, mt: 2 }}>
-              Visibility. Compatibility. Smarter decisions.
-            </Typography>
-            <Copyright />
-            {/*<Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
-              Join the newsletter
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-              Subscribe for weekly updates. No spams ever!
-            </Typography>
-            <InputLabel htmlFor="email-newsletter">Email</InputLabel>
-            <Stack direction="row" spacing={1} useFlexGap>
-              <TextField
-                id="email-newsletter"
-                hiddenLabel
-                size="small"
-                variant="outlined"
-                fullWidth
-                aria-label="Enter your email address"
-                placeholder="Your email address"
-                slotProps={{
-                  htmlInput: {
-                    autoComplete: 'off',
-                    'aria-label': 'Enter your email address',
-                  },
-                }}
-                sx={{ width: '250px' }}
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                sx={{ flexShrink: 0 }}
-              >
-                Subscribe
-              </Button>
-            </Stack>*/}
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 1,
-            alignItems: { xs: 'center', sm: 'flex-start' },
-            mt: { xs: 4, sm: 0 },
-          }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Product
-          </Typography>
-          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("features"); }} style={{cursor: 'pointer', textAlign: 'inherit'}}>
-            Features
-          </Link>
-          {/*<Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("testimonials"); }} style={{cursor: 'pointer'}}>
-            Testimonials
-          </Link>*/}
-          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("highlights"); }} style={{cursor: 'pointer', textAlign: 'inherit'}}>
-            Highlights
-          </Link>
-          {/*<Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("pricing"); }} style={{cursor: 'pointer'}}>
-            Pricing
-          </Link>*/}
-          <Link color="text.secondary" variant="body2" onClick={(event) => { event.preventDefault(); scrollToSection("faq"); }} style={{cursor: 'pointer', textAlign: 'inherit'}}>
-            FAQs
-          </Link>
-        </Box>
-        {/*<Box
-          sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'column',
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Company
-          </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            About us
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Careers
-          </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Press
-          </Link>
-        </Box> */}
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 1,
-            alignItems: { xs: 'center', sm: 'flex-start' },
-            mt: { xs: 4, sm: 0 },
-          }}
-        >
-          <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Legal
-          </Typography>
-          <Link color="text.secondary" variant="body2" href="/terms" sx={{ textAlign: 'inherit' }}>
-            Terms
-          </Link>
-          <Link color="text.secondary" variant="body2" href="/privacy" sx={{ textAlign: 'inherit' }}>
-            Privacy
-          </Link>
-          <Link color="text.secondary" variant="body2" href="/cookies" sx={{ textAlign: 'inherit' }}>
-            Cookie Policy
-          </Link>
-          <Link color="text.secondary" variant="body2" href="mailto:support@factoryflow.io" sx={{ textAlign: 'inherit' }}>
-            Contact
-          </Link>
-        </Box>
-      </Box>
-      {/*<Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          pt: { xs: 4, sm: 8 },
-          width: '100%',
-          borderTop: '1px solid',
-          borderColor: 'divider',
-        }}
-      >
-        <div>
-          <Link color="text.secondary" variant="body2" href="/privacy">
-            Privacy Policy
-          </Link>
-          <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
-          </Typography>
-          <Link color="text.secondary" variant="body2" href="/terms">
-            Terms of Service
-          </Link>
-          <Copyright />
+    <footer className="border-t card-border py-20">
+      <div className="max-w-[1280px] mx-auto px-8 flex flex-col md:flex-row justify-between gap-16">
+        <div className="max-w-xs">
+          <div onClick={() => scrollToSection("hero")} className="cursor-pointer flex items-center gap-2 mb-6 hover:opacity-80 transition-opacity">
+            <SitemarkIcon />
+            <span className="font-medium text-base tracking-tight text-white">Factory Flow</span>
+          </div>
+          <p className="text-secondary text-sm leading-relaxed mb-8">
+            Visibility. Compatibility. Smarter decisions.
+          </p>
+          <p className="text-tertiary text-xs">
+            © {new Date().getFullYear()} Factory Flow. All rights reserved.
+          </p>
         </div>
-        {/*<Stack
-          direction="row"
-          spacing={1}
-          useFlexGap
-          sx={{ justifyContent: 'left', color: 'text.secondary' }}
-        >
-          <IconButton
-            color="inherit"
-            size="small"
-            href="https://github.com/mui"
-            aria-label="GitHub"
-            sx={{ alignSelf: 'center' }}
-          >
-            <GitHubIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            size="small"
-            href="https://x.com/MaterialUI"
-            aria-label="X"
-            sx={{ alignSelf: 'center' }}
-          >
-            <TwitterIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            size="small"
-            href="https://www.linkedin.com/company/mui/"
-            aria-label="LinkedIn"
-            sx={{ alignSelf: 'center' }}
-          >
-            <LinkedInIcon />
-          </IconButton>
-        </Stack>
-      </Box>*/}
-    </Container>
+
+        <div className="flex gap-16 md:gap-24 flex-wrap">
+          <div>
+            <h4 className="font-medium text-white text-sm mb-4">Product</h4>
+            <ul className="space-y-3 text-sm">
+              <li><button onClick={() => scrollToSection("features")} className="text-secondary hover:text-white transition-colors cursor-pointer">Features</button></li>
+              <li><button onClick={() => scrollToSection("highlights")} className="text-secondary hover:text-white transition-colors cursor-pointer">Highlights</button></li>
+              <li><button onClick={() => scrollToSection("faq")} className="text-secondary hover:text-white transition-colors cursor-pointer">FAQ</button></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-medium text-white text-sm mb-4">Legal</h4>
+            <ul className="space-y-3 text-sm">
+              <li><a href="/terms" className="text-secondary hover:text-white transition-colors cursor-pointer">Terms</a></li>
+              <li><a href="/privacy" className="text-secondary hover:text-white transition-colors cursor-pointer">Privacy</a></li>
+              <li><a href="/cookies" className="text-secondary hover:text-white transition-colors cursor-pointer">Cookies</a></li>
+              <li><a href="mailto:support@factoryflow.io" className="text-secondary hover:text-white transition-colors cursor-pointer">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }
