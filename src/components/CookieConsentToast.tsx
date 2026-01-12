@@ -1,18 +1,9 @@
-import { useEffect, useState, type SyntheticEvent } from 'react';
-import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Snackbar from '@mui/material/Snackbar';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import { useEffect, useState } from 'react';
 
 const STORAGE_KEY = 'factory-flow-cookie-consent';
 
 function readConsent() {
-  if (typeof window === 'undefined') {
-    return true;
-  }
-
+  if (typeof window === 'undefined') return true;
   try {
     return window.localStorage.getItem(STORAGE_KEY) === 'accepted';
   } catch {
@@ -21,14 +12,11 @@ function readConsent() {
 }
 
 function storeConsent() {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
+  if (typeof window === 'undefined') return;
   try {
     window.localStorage.setItem(STORAGE_KEY, 'accepted');
   } catch {
-    // Ignore write failures (e.g., storage disabled).
+    // Ignore
   }
 }
 
@@ -46,50 +34,25 @@ export default function CookieConsentToast() {
     setOpen(false);
   };
 
-  const handleClose = (_event?: Event | SyntheticEvent, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
+  if (!open) return null;
 
   return (
-    <Snackbar
-      open={open}
-      onClose={handleClose}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-    >
-      <Paper
-        elevation={6}
-        sx={{
-          p: 2,
-          display: 'flex',
-          flexDirection: { xs: 'column', sm: 'row' },
-          alignItems: { xs: 'stretch', sm: 'center' },
-          gap: 2,
-          maxWidth: 480,
-        }}
-      >
-        <Stack spacing={0.5} sx={{ flexGrow: 1 }}>
-          <Typography variant="subtitle2">We use cookies</Typography>
-          <Typography variant="body2" color="text.secondary">
-            We use cookies to improve your experience. By clicking accept, you
-            agree to our{' '}
-            <Link href="/privacy" color="primary">
-              privacy policy
-            </Link>
-            .
-          </Typography>
-        </Stack>
-        <Button
-          variant="contained"
-          color="primary"
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-6">
+      <div className="bg-[#0d0e10]/95 backdrop-blur-xl border card-border-hover p-5 rounded-xl shadow-2xl flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div className="flex-1 text-sm">
+          <p className="font-medium text-white mb-1.5 text-[15px]">We use cookies</p>
+          <p className="text-secondary text-[13px] leading-relaxed">
+            We use cookies to improve your experience. By clicking accept, you agree to our{' '}
+            <a href="/privacy" className="text-white hover:text-white/80 underline underline-offset-2 transition-colors">privacy policy</a>.
+          </p>
+        </div>
+        <button
           onClick={handleAccept}
-          sx={{ alignSelf: { xs: 'flex-end', sm: 'center' } }}
+          className="px-5 py-2 bg-white text-black font-medium rounded-md hover:bg-white/90 transition-all whitespace-nowrap text-sm cursor-pointer"
         >
           Accept
-        </Button>
-      </Paper>
-    </Snackbar>
+        </button>
+      </div>
+    </div>
   );
 }

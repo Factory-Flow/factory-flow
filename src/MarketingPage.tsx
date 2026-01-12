@@ -1,7 +1,3 @@
-
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import AppTheme from '../shared-theme/AppTheme';
 import AppAppBar from './components/AppAppBar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -10,7 +6,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CookieConsentToast from './components/CookieConsentToast';
 
-export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
+export default function MarketingPage() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -43,25 +39,20 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
   };
 
   return (
-    <AppTheme {...props}>
-      <CssBaseline enableColorScheme />
+    <div className="min-h-screen bg-black text-white selection:bg-white/20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
       <AppAppBar />
-      <Hero />
-      <div>
-        {/*<LogoCollection />*/}
+      <main>
+        <Hero />
         <Features />
-        {/*<Divider />*/}
-        {/*<Highlights />*/}
         <FAQ />
-        <Divider />
-        <Footer />
-      </div>
+      </main>
+      <Footer />
       <CookieConsentToast />
-    </AppTheme>
+    </div>
   );
 }

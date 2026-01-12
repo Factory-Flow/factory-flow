@@ -1,17 +1,12 @@
-import SvgIcon from '@mui/material/SvgIcon';
-import type { SvgIconProps } from '@mui/material/SvgIcon';
-import { useColorScheme } from '@mui/material/styles';
-
-export default function SitemarkIcon(props: SvgIconProps) {
-  const { mode, systemMode } = useColorScheme();
-  const resolvedMode = (mode === 'system' ? systemMode : mode) ?? 'light';
-  const fillColor = resolvedMode === 'dark' ? '#fff' : '#000';
-
+export default function SitemarkIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <SvgIcon
-      {...props}
-      sx={{ height: 21, width: 100, mr: 2, color: fillColor, ...(props.sx || {}) }}
+    <svg
+      height="21"
+      width="100"
       viewBox="0 0 1300 224.32"
+      fill="currentColor"
+      className="text-white mr-2"
+      {...props}
     >
       <text
         x="278.7"
@@ -35,6 +30,6 @@ export default function SitemarkIcon(props: SvgIconProps) {
         transform="translate(-41.5 346.5) rotate(-90)" fill="currentColor" />
       <rect x="166" y="83" width="56" height="139" rx="17.52" ry="17.52" fill="currentColor" />
       <path d="m148.48,166h17.52v-17.52c0,9.64-7.88,17.52-17.52,17.52Z" fill="currentColor" />
-    </SvgIcon>
+    </svg>
   );
 }

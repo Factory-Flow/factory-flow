@@ -1,145 +1,74 @@
 import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function FAQ() {
   const [expanded, setExpanded] = React.useState<string[]>([]);
 
-  const handleChange =
-    (panel: string) => (_: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(
-        isExpanded
-          ? [...expanded, panel]
-          : expanded.filter((item) => item !== panel),
-      );
-    };
+  const togglePanel = (panel: string) => {
+    setExpanded(prev =>
+      prev.includes(panel) ? prev.filter(p => p !== panel) : [...prev, panel]
+    );
+  };
+
+  const faqs = [
+    {
+      id: 'panel1',
+      question: 'How do I contact customer support if I have a question or issue?',
+      answer: 'You can reach our customer support team by emailing support@factoryflow.io. We\'re here to assist you promptly.'
+    },
+    {
+      id: 'panel2',
+      question: 'Do I need a credit card to sign up?',
+      answer: 'No. You can sign up for free without a credit card.'
+    },
+    {
+      id: 'panel3',
+      question: 'Can I cancel anytime?',
+      answer: 'Yes. You can cancel your Factory Flow subscription at any time with no penalty.'
+    },
+    {
+      id: 'panel4',
+      question: 'Where is my data stored?',
+      answer: 'Our data center is in the USA and is operated by Laravel Cloud.'
+    }
+  ];
 
   return (
-    <Container
-      id="faq"
-      sx={{
-        pt: { xs: 4, sm: 12 },
-        pb: { xs: 8, sm: 16 },
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: { xs: 3, sm: 6 },
-      }}
-    >
-      <Typography
-        component="h2"
-        variant="h4"
-        sx={{
-          color: 'text.primary',
-          width: { sm: '100%', md: '60%' },
-          textAlign: { sm: 'left', md: 'center' },
-        }}
-      >
-        Frequently asked questions
-      </Typography>
-      <Box sx={{ width: '100%' }}>
-        <Accordion
-          expanded={expanded.includes('panel1')}
-          onChange={handleChange('panel1')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1d-content"
-            id="panel1d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
+    <section id="faq" className="py-32 relative">
+      <div className="max-w-3xl mx-auto px-8">
+        <h2 className="text-4xl md:text-5xl font-semibold text-center text-white mb-20 tracking-[-0.02em]">
+          Frequently asked questions
+        </h2>
+
+        <div className="space-y-3">
+          {faqs.map((faq) => (
+            <div
+              key={faq.id}
+              className="border card-border rounded-xl bg-white/[0.02] overflow-hidden transition-all duration-200 hover:card-border-hover"
             >
-              You can reach our customer support team by emailing&nbsp;
-              <Link href="mailto:support@factoryflow.io">support@factoryflow.io</Link>. We&apos;re here to assist you
-              promptly.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded.includes('panel2')}
-          onChange={handleChange('panel2')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2d-content"
-            id="panel2d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              Do i need a credit card to sign up?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              No. You can sign up for free without a credit card.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded.includes('panel3')}
-          onChange={handleChange('panel3')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3d-content"
-            id="panel3d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              Can I cancel anytime?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              Yes. You can cancel your Factory Flow subscription at any time with no penalty.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded.includes('panel4')}
-          onChange={handleChange('panel4')}
-        >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel4d-content"
-            id="panel4d-header"
-          >
-            <Typography component="span" variant="subtitle2">
-              Where is my data stored?
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography
-              variant="body2"
-              gutterBottom
-              sx={{ maxWidth: { sm: '100%', md: '70%' } }}
-            >
-              Our data center is in the USA and is operated by Laravel Cloud.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </Box>
-    </Container>
+              <button
+                onClick={() => togglePanel(faq.id)}
+                className="w-full flex items-center justify-between p-5 text-left group cursor-pointer"
+              >
+                <span className="font-medium text-white text-[15px] group-hover:text-opacity-90 transition-opacity">{faq.question}</span>
+                <span className={`transform transition-transform duration-200 flex-shrink-0 ml-4 ${expanded.includes(faq.id) ? 'rotate-180' : ''}`}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-tertiary">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </span>
+              </button>
+
+              <div
+                className={`transition-all duration-200 ease-in-out ${expanded.includes(faq.id) ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+              >
+                <div className="px-5 pb-5 text-secondary text-[15px] leading-relaxed">
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

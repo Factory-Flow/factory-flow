@@ -1,607 +1,160 @@
-//import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Chip from '@mui/material/Chip';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
-import ViewInArRoundedIcon from '@mui/icons-material/ViewInArRounded';
-import GroupsRoundedIcon from '@mui/icons-material/GroupsRounded';
-import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
+import { LineChart, Bell, Box, Users, Code } from 'lucide-react';
 
 export default function Features() {
   return (
-    <Container id="features" sx={{ py: { xs: 8, sm: 12 } }}>
-      <Box
-        sx={{
-          maxWidth: { xs: '100%', md: '60%' },
-          mb: { xs: 6, md: 8 },
-          mx: 'auto',
-          textAlign: 'center',
-        }}
-      >
-        <Divider
-          sx={{
-            width: '70%',
-            height: 3,
-            borderRadius: 999,
-            mx: 'auto',
-            my: { xs: 2.5, md: 3 },
-          }}
-        />
-        <Typography
-          component="h2"
-          variant="h3"
-          sx={{ fontWeight: 600, color: 'text.primary' }}
-        >
-          The digital layer for your production floor
-        </Typography>
-        <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1.5 }}>
-          Reveal performance, inefficiencies, and opportunities hidden in your production processes
-        </Typography>
-      </Box>
+    <section id="features" className="py-32 relative">
+      <div className="max-w-[1280px] mx-auto px-8">
+        <div className="text-center max-w-[800px] mx-auto mb-24">
+          <h2 className="text-5xl md:text-6xl font-semibold tracking-[-0.02em] leading-[1.1] mb-6 text-white">
+            The digital layer for your production floor
+          </h2>
+          <p className="text-xl md:text-2xl text-secondary leading-relaxed">
+            Reveal performance, inefficiencies, and opportunities hidden in your production processes
+          </p>
+        </div>
 
-      <Box
-        sx={{
-          display: 'grid',
-          gap: { xs: 3, md: 4 },
-          gridTemplateColumns: { xs: '1fr', md: 'repeat(12, minmax(0, 1fr))' },
-        }}
-      >
-        <Card
-          variant="outlined"
-          sx={{
-            gridColumn: { xs: '1 / -1', md: '1 / -1' },
-            borderColor: 'divider',
-            borderRadius: 3,
-            boxShadow: 'none',
-            p: { xs: 3, md: 5 },
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            gap: { xs: 3, md: 5 },
-            alignItems: { md: 'center' },
-            backgroundColor: 'background.paper',
-          }}
-        >
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: { xs: 2, md: 2.5 },
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Box
-                sx={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'primary.main',
-                }}
-              >
-                <AutoGraphIcon sx={{ fontSize: 22 }} />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-              >
-                Analytics
-              </Typography>
-            </Box>
-            <Typography
-              variant="h3"
-              sx={{ fontWeight: 600, fontSize: { xs: 32, md: 38 }, color: 'text.primary' }}
-            >
-              Turn data into decisions.
-            </Typography>
-            <Typography variant="body1" sx={{ maxWidth: 480, color: 'text.secondary' }}>
-              Gain full visibility into production performance. Track part counts, cycle times, and OEE across every workstation in real time. Identify bottlenecks, monitor downtime trends, and make data-driven decisions that improve throughput and efficiency.
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              flex: 1,
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Box
-              sx={{
-                width: '100%',
-                maxWidth: 340,
-                borderRadius: 3,
-                border: '1px solid',
-                borderColor: 'divider',
-                backgroundColor: 'background.default',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2.5,
-                p: { xs: 2.5, md: 3 },
-              }}
-            >
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <div></div>
-                <Box sx={{ textAlign: 'right' }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.secondary' }}>
-                    Shift OEE
-                  </Typography>
-                  <Typography variant="h5" sx={{ fontWeight: 600, color: 'text.primary' }}>
-                    92%
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-                  gap: 1,
-                  color: 'text.primary',
-                }}
-              >
-                {[
-                  { label: 'Throughput', value: '+14%' },
-                  { label: 'Downtime', value: '-9%' },
-                  { label: 'Scrap', value: '1.2%' },
-                ].map(({ label, value }) => (
-                  <Box
-                    key={label}
-                    sx={{
-                      borderRadius: 2,
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      px: 1.25,
-                      py: 1,
-                    }}
-                  >
-                    <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                      {label}
-                    </Typography>
-                    <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                      {value}
-                    </Typography>
-                  </Box>
-                ))}
-              </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  gap: 0.75,
-                  px: 1,
-                  pb: 0.5,
-                  minHeight: 120,
-                }}
-              >
-                {[
-                  { id: 'shift-a', height: 42 },
-                  { id: 'shift-b', height: 68 },
-                  { id: 'shift-c', height: 60 },
-                  { id: 'shift-d', height: 92 },
-                  { id: 'shift-e', height: 76 },
-                  { id: 'shift-f', height: 104 },
-                ].map(({ id, height }) => (
-                  <Box
-                    key={id}
-                    sx={{
-                      flex: 1,
-                      minWidth: 8,
-                      height,
-                      borderRadius: 1,
-                      backgroundColor: 'primary.main',
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-          </Box>
-        </Card>
-
-        <Card
-          variant="outlined"
-          sx={{
-            gridColumn: { xs: '1 / -1', md: 'span 6' },
-            borderColor: 'divider',
-            borderRadius: 3,
-            boxShadow: 'none',
-            p: { xs: 3, md: 4 },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: { xs: 2, md: 2.5 },
-            justifyContent: 'space-between',
-            backgroundColor: 'background.paper',
-            minHeight: { xs: 260, md: 300 },
-          }}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 2.5 } }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Box
-                sx={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'warning.light',
-                }}
-              >
-                <NotificationsActiveRoundedIcon sx={{ fontSize: 22 }} />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-              >
-                Smart alerts
-              </Typography>
-              <Chip
-                label="Coming soon"
-                size="small"
-                sx={{
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                  letterSpacing: 0.75,
-                  backgroundColor: 'background.default',
-                }}
-              />
-            </Box>
-            <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 26, md: 30 } }}>
-              Never miss an event.
-            </Typography>
-            <Typography variant="body1" sx={{ maxWidth: 420, color: 'text.secondary' }}>
-              Stay proactive, not reactive. Configure thresholds for cycle time, downtime, or reject rates, and receive instant alerts when performance deviates from the plan.
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: 1,
-              mt: { xs: 2, md: 0 },
-            }}
-          >
-            {[
-              { label: 'CNC 04', status: 'Cycle time trending up', color: 'warning.main' },
-              { label: 'Robot 46', status: 'Idle for 10 mins', color: 'error.main' },
-              { label: 'Press 10', status: 'Cycle time hold', color: 'error.main' },
-            ].map(({ label, status, color }) => (
-              <Box
-                key={label}
-                sx={{
-                  px: 1.25,
-                  py: 0.75,
-                  borderRadius: 999,
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  fontSize: 12,
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.75,
-                  backgroundColor: 'background.default',
-                }}
-              >
-                <Box
-                  sx={{
-                    width: 8,
-                    height: 8,
-                    borderRadius: '50%',
-                    backgroundColor: color,
-                  }}
-                />
-                <Box component="span">{label}</Box>
-                <Box
-                  component="span"
-                  sx={{ fontSize: 10, letterSpacing: 0.5, textTransform: 'uppercase', color: 'text.secondary' }}
-                >
-                  {status}
-                </Box>
-              </Box>
-            ))}
-          </Box>
-        </Card>
-
-        <Card
-          variant="outlined"
-          sx={{
-            gridColumn: { xs: '1 / -1', md: 'span 6' },
-            borderColor: 'divider',
-            borderRadius: 3,
-            boxShadow: 'none',
-            p: { xs: 3, md: 4 },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: { xs: 2, md: 2.5 },
-            justifyContent: 'space-between',
-            backgroundColor: 'background.paper',
-            minHeight: { xs: 260, md: 300 },
-          }}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 2.5 } }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Box
-                sx={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'primary.light',
-                }}
-              >
-                <ViewInArRoundedIcon sx={{ fontSize: 22 }} />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-              >
-                3D layout studio
-              </Typography>
-              <Chip
-                label="Coming soon"
-                size="small"
-                sx={{
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                  letterSpacing: 0.75,
-                  backgroundColor: 'background.default',
-                }}
-              />
-            </Box>
-            <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 26, md: 30 } }}>
-              Experience your factory in 3D.
-            </Typography>
-            <Typography variant="body1" sx={{ maxWidth: 420, color: 'text.secondary' }}>
-              Create an interactive 3D layout of your facility and overlay live analytics directly on each machine or cell. Visualize performance in real time within a digital representation of your plant.
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              mt: { xs: 2, md: 0 },
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-              gap: 1,
-              p: 1,
-              borderRadius: 2,
-              border: '1px solid',
-              borderColor: 'divider',
-              backgroundColor: 'background.default',
-            }}
-          >
-            {[
-              { name: 'Assembly', span: 2 },
-              { name: 'Inspection', span: 1 },
-              { name: 'Packout', span: 1 },
-              { name: 'Storage', span: 2 },
-              { name: 'Shipping', span: 2 },
-            ].map(({ name, span }) => (
-              <Box
-                key={name}
-                sx={{
-                  gridColumn: `span ${span}`,
-                  borderRadius: 1,
-                  border: '1px dashed',
-                  borderColor: 'divider',
-                  color: 'text.secondary',
-                  fontWeight: 600,
-                  fontSize: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  py: 0.75,
-                }}
-              >
-                {name}
-              </Box>
-            ))}
-          </Box>
-        </Card>
-
-        <Card
-          variant="outlined"
-          sx={{
-            gridColumn: { xs: '1 / -1', md: 'span 5' },
-            borderColor: 'divider',
-            borderRadius: 3,
-            boxShadow: 'none',
-            p: { xs: 3, md: 4 },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: { xs: 2, md: 2.5 },
-            justifyContent: 'space-between',
-            backgroundColor: 'background.paper',
-            minHeight: { xs: 240, md: 280 },
-          }}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 2.5 } }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Box
-                sx={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'secondary.main',
-                }}
-              >
-                <GroupsRoundedIcon sx={{ fontSize: 22 }} />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-              >
-                Team collaboration
-              </Typography>
-            </Box>
-            <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 26, md: 30 } }}>
-              Single source of truth.
-            </Typography>
-            <Typography variant="body1" sx={{ maxWidth: 380, color: 'text.secondary' }}>
-              Share dashboards and maintain full visibility into performance discussions and approvals — ensuring alignment from engineering to leadership.
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              mt: { xs: 2, md: 0 },
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: 1,
-            }}
-          >
-            {['IT', 'OT'].map((team) => (
-              <Box
-                key={team}
-                sx={{
-                  borderRadius: 2,
-                  border: '1px solid',
-                  borderColor: 'divider',
-                  textAlign: 'center',
-                  py: 1.25,
-                  fontWeight: 600,
-                  fontSize: 14,
-                  color: 'text.secondary',
-                  backgroundColor: 'background.default',
-                }}
-              >
-                {team}
-              </Box>
-            ))}
-          </Box>
-        </Card>
-
-        <Card
-          variant="outlined"
-          sx={{
-            gridColumn: { xs: '1 / -1', md: 'span 7' },
-            borderColor: 'divider',
-            borderRadius: 3,
-            boxShadow: 'none',
-            p: { xs: 3, md: 4 },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: { xs: 2, md: 2.5 },
-            justifyContent: 'space-between',
-            backgroundColor: 'background.paper',
-            minHeight: { xs: 260, md: 300 },
-          }}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 2.5 } }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <Box
-                sx={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'success.main',
-                }}
-              >
-                <CodeRoundedIcon sx={{ fontSize: 22 }} />
-              </Box>
-              <Typography
-                variant="body2"
-                sx={{ textTransform: 'uppercase', letterSpacing: 1, color: 'text.secondary' }}
-              >
-                Easy setup
-              </Typography>
-            </Box>
-            <Typography variant="h4" sx={{ fontWeight: 600, fontSize: { xs: 26, md: 30 } }}>
-              Developer friendly API.
-            </Typography>
-            <Typography variant="body1" sx={{ maxWidth: 460, color: 'text.secondary' }}>
-              Connect any machine or station in minutes. Factory Flow has a simple, well-documented API that lets developers send production data or build custom integrations without complexity.
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              mt: { xs: 2, md: 0 },
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))' },
-              gap: 1.5,
-            }}
-          >
-            {[
-              {
-                method: 'POST',
-                path: '/api/cnc_1/parts',
-                description: 'Log a downtime event with root cause notes.',
-              },
-              {
-                method: 'GET',
-                path: '/api/cnc_1/cycle_time',
-                description: 'Pull live status for every cell on the floor.',
-              },
-            ].map(({ method, path }) => {
-              const methodColor =
-                method === 'POST'
-                  ? 'warning.main'
-                  : method === 'GET'
-                    ? 'success.main'
-                    : 'text.secondary';
-              const methodBg = 'background.default';
-
-              return (
-                <div key={`${method}-${path}`} className="flex flex-direction-column">
-                  <Box
-                    sx={{
-                      display: 'inline-block',
-                      alignItems: 'center',
-                      border: '1px solid',
-                      borderColor: methodColor,
-                      borderRadius: 1,
-                      gap: 0.75,
-                      fontSize: 16,
-                      fontWeight: 600,
-                      textTransform: 'uppercase',
-                      letterSpacing: 0.75,
-                      color: methodColor,
-                      backgroundColor: methodBg,
-                      px: 1,
-                      py: 0.5,
-                      mr: 1.5,
-                    }}
-                  >
-                    {method}
-                  </Box>
-                  <Box
-                    component="code"
-                    sx={{
-                      fontSize: 16,
-                      fontWeight: 600,
-                      backgroundColor: 'background.paper',
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      borderRadius: 1,
-                      px: 1,
-                      py: 0.5,
-                      display: 'inline-block',
-                    }}
-                  >
-                    {path}
-                  </Box>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Main Feature - Analytics */}
+          <div className="md:col-span-3 bg-white/[0.02] border card-border hover:card-border-hover rounded-2xl p-10 md:p-14 transition-all group">
+            <div className="flex flex-col lg:flex-row gap-16 items-center">
+              <div className="flex-1 space-y-8">
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-500/10 text-blue-400">
+                  <LineChart className="w-5 h-5" strokeWidth={2} />
                 </div>
-              );
-            })}
-          </Box>
-        </Card>
-      </Box>
-    </Container>
+                <div className="space-y-4">
+                  <div className="text-xs font-medium text-blue-400 uppercase tracking-wider">Analytics</div>
+                  <h3 className="text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-white leading-tight">
+                    Turn data into decisions
+                  </h3>
+                </div>
+                <p className="text-secondary text-lg leading-relaxed max-w-xl">
+                  Gain full visibility into production performance. Track part counts, cycle times, and OEE across every workstation in real time. Identify bottlenecks, monitor downtime trends, and make data-driven decisions.
+                </p>
+              </div>
+
+              <div className="flex-1 w-full bg-[#0d0e10]/60 rounded-xl border card-border p-6 backdrop-blur-sm">
+                <div className="flex justify-between items-end mb-6">
+                  <div>
+                    <div className="text-xs font-medium text-tertiary uppercase tracking-wider mb-2">Shift OEE</div>
+                    <div className="text-4xl font-semibold text-white">92%</div>
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="px-2.5 py-1 rounded-md bg-green-500/10 text-green-400 text-sm font-medium border border-green-500/20">+14%</div>
+                  </div>
+                </div>
+                <div className="flex items-end gap-1.5 h-32">
+                  {[40, 65, 50, 85, 70, 95].map((h, i) => (
+                    <div
+                      key={i}
+                      className="flex-1 bg-gradient-to-t from-blue-500 to-blue-400 rounded-t opacity-80 hover:opacity-100 transition-opacity"
+                      style={{ height: `${h}%` }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Smart Alerts */}
+          <div className="md:col-span-2 bg-white/[0.02] border card-border hover:card-border-hover rounded-2xl p-8 transition-all flex flex-col justify-between min-h-[340px]">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-orange-500/10 text-orange-400">
+                  <Bell className="w-5 h-5" strokeWidth={2} />
+                </div>
+                <span className="px-2.5 py-1 rounded-md bg-white/[0.03] border card-border text-[10px] font-medium text-tertiary uppercase tracking-wider">Coming Soon</span>
+              </div>
+              <div>
+                <h3 className="text-3xl font-semibold text-white mb-3 tracking-[-0.01em]">Never miss an event</h3>
+                <p className="text-secondary leading-relaxed">
+                  Stay proactive, not reactive. Configure thresholds for cycle time, downtime, or reject rates, and receive instant alerts.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 mt-8">
+              {[
+                { label: 'CNC 04', status: 'Cycle time trending up', color: 'bg-orange-500' },
+                { label: 'Robot 46', status: 'Idle for 10 mins', color: 'bg-red-500' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-[#0d0e10]/60 border card-border text-sm">
+                  <span className={`w-1.5 h-1.5 rounded-full ${item.color}`} />
+                  <span className="font-medium text-white">{item.label}</span>
+                  <span className="text-xs text-tertiary ml-auto">{item.status}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 3D Layout */}
+          <div className="bg-white/[0.02] border card-border hover:card-border-hover rounded-2xl p-8 transition-all flex flex-col justify-between min-h-[340px]">
+            <div className="space-y-6">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400">
+                <Box className="w-5 h-5" strokeWidth={2} />
+              </div>
+              <div>
+                <h3 className="text-3xl font-semibold text-white mb-3 tracking-[-0.01em]">3D Layout</h3>
+                <p className="text-secondary leading-relaxed">
+                  Create an interactive 3D layout of your facility and overlay live analytics.
+                </p>
+              </div>
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-2 opacity-30">
+              <div className="col-span-2 h-14 bg-white/[0.04] rounded-lg border card-border" />
+              <div className="h-14 bg-white/[0.04] rounded-lg border card-border" />
+              <div className="h-14 bg-white/[0.04] rounded-lg border card-border" />
+            </div>
+          </div>
+
+          {/* Team Collaboration */}
+          <div className="bg-white/[0.02] border card-border hover:card-border-hover rounded-2xl p-8 transition-all flex flex-col justify-between min-h-[340px]">
+            <div className="space-y-6">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400">
+                <Users className="w-5 h-5" strokeWidth={2} />
+              </div>
+              <div>
+                <h3 className="text-3xl font-semibold text-white mb-3 tracking-[-0.01em]">Collaboration</h3>
+                <p className="text-secondary leading-relaxed">
+                  Share dashboards and maintain full visibility into performance discussions.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2 mt-6">
+              {['IT', 'OT', 'Mgmt'].map((team) => (
+                <div key={team} className="flex-1 py-2.5 text-center rounded-lg bg-white/[0.03] border card-border text-sm text-secondary font-medium">
+                  {team}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* API */}
+          <div className="md:col-span-2 bg-white/[0.02] border card-border hover:card-border-hover rounded-2xl p-8 transition-all flex flex-col justify-between min-h-[340px]">
+            <div className="space-y-6">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-green-500/10 text-green-400">
+                <Code className="w-5 h-5" strokeWidth={2} />
+              </div>
+              <div>
+                <h3 className="text-3xl font-semibold text-white mb-3 tracking-[-0.01em]">Developer friendly API</h3>
+                <p className="text-secondary leading-relaxed max-w-lg">
+                  Connect any machine or station in minutes. Factory Flow has a simple, well-documented API that lets developers send production data easily.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-2">
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[#0d0e10]/60 border card-border font-mono text-sm">
+                <span className="text-orange-400 font-semibold text-xs">POST</span>
+                <span className="text-secondary">/api/cnc_1/parts</span>
+              </div>
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[#0d0e10]/60 border card-border font-mono text-sm">
+                <span className="text-green-400 font-semibold text-xs">GET</span>
+                <span className="text-secondary">/api/cnc_1/cycle_time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

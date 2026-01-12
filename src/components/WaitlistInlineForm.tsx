@@ -1,11 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import Alert from "@mui/material/Alert";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Collapse from "@mui/material/Collapse";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+
 
 type FormState = "init" | "submitting" | "success" | "error";
 
@@ -31,9 +26,9 @@ export default function WaitlistInlineForm() {
 
   if (!loopsEndpoint) {
     return (
-      <Alert severity="warning">
+      <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400">
         Waitlist submissions are not configured. Add `VITE_LOOPS_FORM_ID` to enable this form.
-      </Alert>
+      </div>
     );
   }
 
@@ -128,86 +123,56 @@ export default function WaitlistInlineForm() {
   };
 
   return (
-    <Box>
+    <div className="w-full">
       {formState === "success" ? (
-        <Alert severity="success" sx={{ justifyContent: "center" }}>
+        <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-center text-sm font-medium">
           Thanks! We&apos;ll be in touch!
-        </Alert>
+        </div>
       ) : (
-        <Box component="form" ref={formRef} onSubmit={handleSubmit} noValidate>
-          <Stack
-            spacing={1}
-            sx={{
-              alignItems: "stretch",
-              width: "100%",
-            }}
-          >
-            <Collapse in={showNameField} unmountOnExit timeout={250} sx={{ width: "100%" }}>
-              <TextField
-                type="text"
-                label="Name"
-                placeholder="Your name"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                onBlur={(event) => collapseNameFieldIfEmpty(event.relatedTarget)}
-                required
-                fullWidth
-                size="small"
-                disabled={isSubmitting}
-                autoComplete="given-name"
-              />
-            </Collapse>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              spacing={1}
-              sx={{
-                alignItems: { xs: "stretch", sm: "center" },
-                justifyContent: "center",
-                width: "100%",
-              }}
+        <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col gap-2.5">
+          <div className={`transition-all duration-300 overflow-hidden ${showNameField ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <input
+              type="text"
+              placeholder="Your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              onBlur={(e) => collapseNameFieldIfEmpty(e.relatedTarget)}
+              required
+              disabled={isSubmitting}
+              className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border card-border text-white placeholder-tertiary focus:outline-none focus:card-border-hover focus:bg-white/[0.04] transition-all"
+            />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-2.5">
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onFocus={() => setShowNameField(true)}
+              onBlur={(e) => collapseNameFieldIfEmpty(e.relatedTarget)}
+              required
+              disabled={isSubmitting}
+              className="flex-1 px-4 py-3 rounded-lg bg-white/[0.03] border card-border text-white placeholder-tertiary focus:outline-none focus:card-border-hover focus:bg-white/[0.04] transition-all"
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all whitespace-nowrap text-[15px]"
             >
-              <TextField
-                type="email"
-                label="Email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                onFocus={() => setShowNameField(true)}
-                onBlur={(event) => collapseNameFieldIfEmpty(event.relatedTarget)}
-                required
-                fullWidth
-                size="small"
-                disabled={isSubmitting}
-                autoComplete="email"
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                size="small"
-                sx={{ minWidth: { xs: "100%", sm: "fit-content" } }}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Please wait..." : "Join waitlist"}
-              </Button>
-            </Stack>
-          </Stack>
-        </Box>
+              {isSubmitting ? "Please wait..." : "Join waitlist"}
+            </button>
+          </div>
+
+          {formState === "error" && errorMessage && (
+            <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex justify-between items-center">
+              <span>{errorMessage}</span>
+              <button type="button" onClick={handleReset} className="text-white text-xs hover:opacity-80 transition-opacity ml-3 cursor-pointer">Try again</button>
+            </div>
+          )}
+        </form>
       )}
-      {formState === "error" && errorMessage ? (
-        <Alert
-          severity="error"
-          action={
-            <Button color="inherit" size="small" onClick={handleReset}>
-              Try again
-            </Button>
-          }
-          sx={{ mt: 2, justifyContent: "space-between" }}
-        >
-          {errorMessage}
-        </Alert>
-      ) : null}
-    </Box>
+    </div>
   );
 }
 

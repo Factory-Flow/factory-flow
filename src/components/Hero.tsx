@@ -1,151 +1,77 @@
 
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import Chip from '@mui/material/Chip';
-
 import WaitlistInlineForm from './WaitlistInlineForm';
-
-const StyledBox = styled('div')(({ theme }) => ({
-  alignSelf: 'center',
-  width: '100%',
-  height: 400,
-  marginTop: theme.spacing(8),
-  borderRadius: (theme.vars || theme).shape.borderRadius,
-  outline: '6px solid',
-  outlineColor: 'hsla(220, 25%, 80%, 0.2)',
-  border: '1px solid',
-  borderColor: (theme.vars || theme).palette.grey[200],
-  boxShadow: '0 0 12px 8px hsla(220, 25%, 80%, 0.2)',
-  backgroundImage: `url('https://mui.com/static/screenshots/material-ui/getting-started/templates/dashboard.jpg')`,
-  backgroundSize: 'cover',
-  [theme.breakpoints.up('sm')]: {
-    marginTop: theme.spacing(10),
-    height: 700,
-  },
-  ...theme.applyStyles('dark', {
-    boxShadow: '0 0 24px 12px hsla(210, 100%, 25%, 0.2)',
-    backgroundImage: `url('https://mui.com/static/screenshots/material-ui/getting-started/templates/dashboard-dark.jpg')`,
-    outlineColor: 'hsla(220, 20%, 42%, 0.1)',
-    borderColor: (theme.vars || theme).palette.grey[700],
-  }),
-}));
 
 export default function Hero() {
   return (
-    <Box
-      id="hero"
-      sx={(theme) => ({
-        width: '100%',
-        backgroundRepeat: 'no-repeat',
+    <section id="hero" className="relative pt-40 pb-24 overflow-hidden">
+      {/* Background Glow - more subtle like Linear */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-purple-500/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-20 left-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
 
-        backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(136, 136, 136, 0.27), transparent)',
-        ...theme.applyStyles('dark', {
-          backgroundImage:
-            'radial-gradient(ellipse 80% 50% at 50% 0, rgba(168, 197, 255, 0.21), transparent)',
-        }),
-      })}
-    >
-      <Container
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          pt: { xs: 14, sm: 20 },
-          pb: { xs: 8, sm: 12 },
-          textAlign: 'center',
-        }}
-      >
-        <Stack
-          spacing={2}
-          useFlexGap
-          sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
-        >
-          <Chip
-            label="Early access"
-            color="secondary"
-            variant="outlined"
-            sx={{marginTop: 8}}
-          />
-          <Typography
-            component="h1"
-            variant="h1"
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              
-              fontSize: { xs: '2rem', sm: '2rem', md: '3rem' },
-            }}
-          >
-            <Box component="span">
-              Production monitoring for{' '}
-              <Box
-                component="span"
-                sx={{
-                  textDecoration: 'underline',
-                  textUnderlineOffset: '0.25em',
-                }}
-              >
-                any
-              </Box>{' '}
-              machine{' '}
-              <Box
-                component="span"
-                sx={{
-                  textDecoration: 'underline',
-                  textUnderlineOffset: '0.25em',
-                }}
-              >
-                in minutes
-              </Box>
-              .
-            </Box>
-          </Typography>
-          <Typography
-            sx={{
-              textAlign: 'center',
-              color: 'text.secondary',
-              width: { sm: '100%', md: '100%' },
-            }}
-          >
-            Send data to our API and start tracking performance across your entire plant instantly.
-          </Typography>
-          <Box
-            id="waitlist"
-            sx={{
-              width: { xs: '100%', sm: '80%' },
-              maxWidth: 420,
-              scrollMarginTop: { xs: '112px', sm: '136px' },
-            }}
-          >
-            <WaitlistInlineForm />
-          </Box>
-          <Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ textAlign: 'center' }}
-          >
-            Get notified when Factory Flow is available
-          </Typography>
-          {/*<Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ textAlign: 'center' }}
-          >
-            By clicking &quot;Join waitlist&quot; you agree to our&nbsp;
-            <Link href="/terms" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography>*/}
-        </Stack>
-        <StyledBox id="image" />
+      <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+        {/* Announcement Badge */}
+        <div className="flex justify-center mb-8">
+          <button className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border card-border hover:card-border-hover text-sm text-secondary hover:text-white transition-all group cursor-pointer">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            <span>Early Access</span>
+            <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
 
-      </Container>
-    </Box>
+        {/* Hero Headline - Large, balanced typography */}
+        <div className="text-center max-w-[980px] mx-auto">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-[1.1] mb-6 text-white">
+            Production monitoring for{' '}
+            <span className="text-gradient">any machine</span>{' '}
+            in minutes
+          </h1>
+
+          <p className="text-lg md:text-xl text-secondary leading-relaxed max-w-[680px] mx-auto mb-12">
+            Send data to our API and start tracking performance across your entire plant instantly. No complex hardware required.
+          </p>
+
+          {/* CTA */}
+          <div className="flex justify-center mb-20">
+            <div className="w-full max-w-md">
+              <WaitlistInlineForm />
+            </div>
+          </div>
+        </div>
+
+        {/* Product Screenshot/Visual */}
+        <div className="relative w-full max-w-[1120px] mx-auto">
+          <div className="relative aspect-[16/10] rounded-xl border card-border bg-[#0d0e10]/40 backdrop-blur-sm shadow-2xl overflow-hidden">
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent" />
+
+            {/* Abstract UI Placeholder - cleaner, more minimal */}
+            <div className="absolute inset-0 p-8 flex items-center justify-center">
+              <div className="grid grid-cols-12 gap-3 w-full h-full opacity-40">
+                {/* Dashboard mockup */}
+                <div className="col-span-8 row-span-6 bg-white/[0.03] rounded-lg border card-border p-4">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-20 h-3 bg-white/10 rounded"></div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 h-[calc(100%-2rem)]">
+                    <div className="bg-white/[0.02] rounded border border-white/[0.04]"></div>
+                    <div className="bg-white/[0.02] rounded border border-white/[0.04]"></div>
+                  </div>
+                </div>
+
+                <div className="col-span-4 row-span-3 bg-white/[0.03] rounded-lg border card-border"></div>
+                <div className="col-span-4 row-span-3 bg-white/[0.03] rounded-lg border card-border"></div>
+
+                <div className="col-span-12 row-span-2 bg-white/[0.03] rounded-lg border card-border"></div>
+              </div>
+            </div>
+
+            {/* Subtle glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#08090a] via-transparent to-transparent opacity-60" />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
