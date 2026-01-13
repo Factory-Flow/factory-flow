@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://factoryflow.io/</loc>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://factoryflow.io/social/og-image.png</image:loc>
+      <image:title>Factory Flow Dashboard</image:title>
+      <image:caption>Real-time production monitoring dashboard showing live metrics</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://factoryflow.io/terms</loc>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://factoryflow.io/privacy</loc>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://factoryflow.io/cookies</loc>
+    <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

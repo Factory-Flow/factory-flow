@@ -14,7 +14,9 @@ import ReactGA from "react-ga4";
 import { Provider } from "./provider.tsx";
 import "./index.css";
 import MarketingPage from "./MarketingPage.tsx";
-import LegalPage from "./LegalPage.tsx";
+import TermsPage from "./TermsPage.tsx";
+import PrivacyPage from "./PrivacyPage.tsx";
+import CookiesPage from "./CookiesPage.tsx";
 
 const gaMeasurementId = "G-MBRSNLKTMD";
 const isAnalyticsEnabled = import.meta.env.PROD && Boolean(gaMeasurementId);
@@ -75,9 +77,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<MarketingPage />} />
           <Route path="/legal" element={<LegacyLegalRedirect />} />
           <Route path="/legal/:sectionId" element={<LegacyLegalRedirect />} />
-          <Route path="/terms" element={<LegalPage activeSectionId="terms" />} />
-          <Route path="/privacy" element={<LegalPage activeSectionId="privacy" />} />
-          <Route path="/cookies" element={<LegalPage activeSectionId="cookies" />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
         </Routes>
       </Provider>
     </BrowserRouter>

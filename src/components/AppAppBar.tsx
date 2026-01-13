@@ -57,6 +57,12 @@ export default function AppAppBar() {
             Features
           </button>
           <button
+            onClick={() => scrollToSection("pricing")}
+            className="text-sm text-secondary hover:text-white transition-colors px-3 py-1.5 rounded-md hover:bg-white/5 cursor-pointer"
+          >
+            Pricing
+          </button>
+          <button
             onClick={() => scrollToSection("faq")}
             className="text-sm text-secondary hover:text-white transition-colors px-3 py-1.5 rounded-md hover:bg-white/5 cursor-pointer"
           >
@@ -64,7 +70,7 @@ export default function AppAppBar() {
           </button>
           <div className="w-px h-4 bg-white/10 mx-2" />
           <button
-            onClick={() => scrollToSection("waitlist")}
+            onClick={() => scrollToSection("hero")}
             className="text-sm bg-white text-black px-4 py-1.5 rounded-md font-medium hover:bg-white/90 transition-all ml-1 cursor-pointer"
           >
             Join Waitlist
@@ -95,6 +101,12 @@ export default function AppAppBar() {
             Features
           </button>
           <button
+            onClick={() => scrollToSection("pricing")}
+            className="text-left text-secondary hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-colors cursor-pointer"
+          >
+            Pricing
+          </button>
+          <button
             onClick={() => scrollToSection("faq")}
             className="text-left text-secondary hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-colors cursor-pointer"
           >
@@ -102,7 +114,7 @@ export default function AppAppBar() {
           </button>
           <div className="h-px bg-white/10 my-2" />
           <button
-            onClick={() => scrollToSection("waitlist")}
+            onClick={() => scrollToSection("hero")}
             className="bg-white text-black px-4 py-2 rounded-md font-medium text-center hover:bg-white/90 transition-colors cursor-pointer"
           >
             Join Waitlist

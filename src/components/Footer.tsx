@@ -36,10 +36,9 @@ export default function Footer() {
         <div className="max-w-xs">
           <div onClick={() => scrollToSection("hero")} className="cursor-pointer flex items-center gap-2 mb-6 hover:opacity-80 transition-opacity">
             <SitemarkIcon />
-            <span className="font-medium text-base tracking-tight text-white">Factory Flow</span>
           </div>
           <p className="text-secondary text-sm leading-relaxed mb-8">
-            Visibility. Compatibility. Smarter decisions.
+            Production monitoring for any machine.
           </p>
           <p className="text-tertiary text-xs">
             © {new Date().getFullYear()} Factory Flow. All rights reserved.
@@ -51,8 +50,17 @@ export default function Footer() {
             <h4 className="font-medium text-white text-sm mb-4">Product</h4>
             <ul className="space-y-3 text-sm">
               <li><button onClick={() => scrollToSection("features")} className="text-secondary hover:text-white transition-colors cursor-pointer">Features</button></li>
-              <li><button onClick={() => scrollToSection("highlights")} className="text-secondary hover:text-white transition-colors cursor-pointer">Highlights</button></li>
+              <li><button onClick={() => scrollToSection("pricing")} className="text-secondary hover:text-white transition-colors cursor-pointer">Pricing</button></li>
               <li><button onClick={() => scrollToSection("faq")} className="text-secondary hover:text-white transition-colors cursor-pointer">FAQ</button></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-medium text-white text-sm mb-4">Platform</h4>
+            <ul className="space-y-3 text-sm">
+              <li><a href="https://app.factoryflow.io" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors cursor-pointer">Application</a></li>
+              <li><a href="https://docs.factoryflow.io" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors cursor-pointer">Documentation</a></li>
+              <li><a href="https://factoryflow.betteruptime.com" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors cursor-pointer">Status</a></li>
             </ul>
           </div>
 

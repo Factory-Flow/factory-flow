@@ -36,7 +36,7 @@ export default function FAQ() {
     <section id="faq" className="py-32 relative">
       <div className="max-w-3xl mx-auto px-8">
         <h2 className="text-4xl md:text-5xl font-semibold text-center text-white mb-20 tracking-[-0.02em]">
-          Frequently asked questions
+          FAQ
         </h2>
 
         <div className="space-y-3">
