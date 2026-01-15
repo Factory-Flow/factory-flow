@@ -39,7 +39,7 @@ body {
 }
 
 @utility glass {
-  @apply bg-black/50 backdrop-blur-xl border-b border-white/6;
+  @apply bg-black/50 backdrop-blur-xl border-white/6;
 }
 
 @utility card-border {

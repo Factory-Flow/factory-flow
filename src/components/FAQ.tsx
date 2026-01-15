@@ -13,12 +13,12 @@ export default function FAQ() {
     {
       id: 'panel1',
       question: 'How do I contact customer support if I have a question or issue?',
-      answer: 'You can reach our customer support team by emailing support@factoryflow.io. We\'re here to assist you promptly.'
+      answer: 'You can reach our customer support team by emailing support@factoryflow.io.'
     },
     {
       id: 'panel2',
-      question: 'Do I need a credit card to sign up?',
-      answer: 'No. You can sign up for free without a credit card.'
+      question: 'Is there a free trial?',
+      answer: 'Yes. We offer a 30 day free trial for all of our plans so your team can try Factory Flow risk free!'
     },
     {
       id: 'panel3',

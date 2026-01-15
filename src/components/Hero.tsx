@@ -43,7 +43,7 @@ export default function Hero() {
 
         {/* Product Screenshot/Visual */}
         <div className="relative w-full max-w-[1120px] mx-auto">
-          <div className="relative aspect-[16/10] rounded-xl border card-border bg-[#0d0e10]/60 backdrop-blur-sm shadow-2xl overflow-hidden">
+          <div className="relative aspect-[4/5] md:aspect-[16/10] rounded-xl border card-border bg-[#0d0e10]/60 backdrop-blur-sm shadow-2xl overflow-hidden">
             {/* Dashboard Mockup with Graph Representations */}
             <div className="absolute inset-0 p-6 flex items-center justify-center">
               <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full h-full opacity-70">
@@ -144,7 +144,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#08090a]/50 to-[#08090a] opacity-90" />
 
             {/* Text Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 pt-32 pb-12 px-8 bg-gradient-to-t from-[#08090a] via-[#08090a] to-transparent">
+            <div className="absolute bottom-0 left-0 right-0 pt-64 md:pt-32 pb-12 px-8 bg-gradient-to-t from-[#08090a] via-[#08090a] to-transparent">
               <div className="text-center max-w-[680px] mx-auto">
                 <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2 text-white">
                   Know what's happening on your{' '}

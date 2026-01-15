@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import AppAppBar from './components/AppAppBar';
+import Footer from './components/Footer';
 
 export default function PrivacyPage() {
   return (
@@ -81,6 +82,7 @@ export default function PrivacyPage() {
           Last updated January 13, 2026 at 3:16 PM.
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

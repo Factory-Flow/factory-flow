@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import AppAppBar from './components/AppAppBar';
+import Footer from './components/Footer';
 
 export default function TermsPage() {
   return (
@@ -82,6 +83,7 @@ export default function TermsPage() {
           Last updated January 13, 2026 at 3:16 PM.
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

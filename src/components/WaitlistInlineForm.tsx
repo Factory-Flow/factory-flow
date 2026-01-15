@@ -12,6 +12,7 @@ const loopsEndpoint = loopsFormId
 export default function WaitlistInlineForm() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
   const [showNameField, setShowNameField] = useState(false);
   const [formState, setFormState] = useState<FormState>("init");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -20,6 +21,7 @@ export default function WaitlistInlineForm() {
     if (formState === "success") {
       setEmail("");
       setName("");
+      setCompany("");
       setShowNameField(false);
     }
   }, [formState]);
@@ -36,7 +38,7 @@ export default function WaitlistInlineForm() {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const collapseNameFieldIfEmpty = (nextTarget: EventTarget | null) => {
-    if (email.trim() !== "" || name.trim() !== "") {
+    if (email.trim() !== "" || name.trim() !== "" || company.trim() !== "") {
       return;
     }
 
@@ -60,9 +62,17 @@ export default function WaitlistInlineForm() {
       return;
     }
 
-    if (showNameField && name.trim().length === 0) {
+    if (name.trim().length === 0) {
       setFormState("error");
       setErrorMessage("Please enter your name.");
+      setShowNameField(true);
+      return;
+    }
+
+    if (company.trim().length === 0) {
+      setFormState("error");
+      setErrorMessage("Please enter your company name.");
+      setShowNameField(true);
       return;
     }
 
@@ -77,6 +87,7 @@ export default function WaitlistInlineForm() {
 
     try {
       const trimmedName = name.trim();
+      const trimmedCompany = company.trim();
       const body = new URLSearchParams({
         userGroup: "waitlist",
         mailingLists: "",
@@ -86,6 +97,10 @@ export default function WaitlistInlineForm() {
       if (trimmedName) {
         body.append("firstName", trimmedName);
         body.append("name", trimmedName);
+      }
+
+      if (trimmedCompany) {
+        body.append("company", trimmedCompany);
       }
 
       const response = await fetch(loopsEndpoint, {
@@ -118,8 +133,6 @@ export default function WaitlistInlineForm() {
   const handleReset = () => {
     setFormState("init");
     setErrorMessage(null);
-    setName("");
-    setShowNameField(false);
   };
 
   return (
@@ -130,17 +143,29 @@ export default function WaitlistInlineForm() {
         </div>
       ) : (
         <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col gap-2.5">
-          <div className={`transition-all duration-300 overflow-hidden ${showNameField ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <input
-              type="text"
-              placeholder="Your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onBlur={(e) => collapseNameFieldIfEmpty(e.relatedTarget)}
-              required
-              disabled={isSubmitting}
-              className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border card-border text-white placeholder-tertiary focus:outline-none focus:card-border-hover focus:bg-white/[0.04] transition-all"
-            />
+          <div className={`transition-all duration-300 overflow-hidden ${showNameField ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="flex flex-col gap-2.5">
+              <input
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onBlur={(e) => collapseNameFieldIfEmpty(e.relatedTarget)}
+                required
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border card-border text-white placeholder-tertiary focus:outline-none focus:card-border-hover focus:bg-white/[0.04] transition-all"
+              />
+              <input
+                type="text"
+                placeholder="Company name"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                onBlur={(e) => collapseNameFieldIfEmpty(e.relatedTarget)}
+                required
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 rounded-lg bg-white/[0.03] border card-border text-white placeholder-tertiary focus:outline-none focus:card-border-hover focus:bg-white/[0.04] transition-all"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-2.5">
