@@ -1,4 +1,4 @@
-import { Activity, Zap, BarChart3, Lock, Globe, Sparkles } from 'lucide-react';
+import { Activity, Bell, BarChart3, Lock, Globe, Sparkles } from 'lucide-react';
 
 const features = [
   {
@@ -16,7 +16,7 @@ const features = [
     iconColor: 'text-purple-400'
   },
   {
-    icon: Zap,
+    icon: Bell,
     title: 'Instant Alerts',
     description: 'Get notified immediately when metrics exceed thresholds. Stay ahead of issues before they impact production.',
     gradient: 'from-orange-500/20 to-red-500/20',
