@@ -7,8 +7,12 @@ export default function Pricing() {
       price: '$29',
       cadence: 'CAD / month',
       features: [
-        'Create up to 3 machines and 1 layout',
-        'Includes 3 connected machines',
+        'Create up to 5 machines',
+        'Create 1 layout',
+        'Create 1 line',
+        'Create up to 3 shifts',
+        'Create 1 facility',
+        'Connect 5 machines to Factory Flow Analytics',
       ],
       cta: {
         label: 'Start trial',
@@ -20,10 +24,14 @@ export default function Pricing() {
       price: '$249',
       cadence: 'CAD / month',
       features: [
-        'Create up to 100 machines and 2 layouts',
-        'Includes 10 connected machines',
-        '$10-$30 CAD / connected machine / month after that',
-        'Collaborate with up to 3 users',
+        'Create up to 20 machines',
+        'Create up to 2 layouts',
+        'Create up to 3 lines',
+        'Create up to 5 shifts',
+        'Create up to 3 facilities',
+        'Connect 10 machines to Factory Flow Analytics',
+        'Connect to 1 Factory Flow Gateway',
+        'Collaborate with up to 5 team members',
       ],
       cta: {
         label: 'Start trial',
