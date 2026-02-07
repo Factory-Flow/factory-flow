@@ -109,7 +109,8 @@ export default defineConfig(({ mode }) => {
       outDir: isGhPages ? 'docs' : 'dist',
       assetsDir: 'assets',
       sourcemap: false,
-      target: 'es2018',
+      // Safari on iOS can choke on newer ES2018 syntax (e.g. RegExp lookbehind).
+      target: 'safari13',
       cssMinify: true,
       rollupOptions: {
         output: {
