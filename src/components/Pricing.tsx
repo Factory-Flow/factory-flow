@@ -1,18 +1,15 @@
-import { Check } from 'lucide-react';
+import { Check, Server } from 'lucide-react';
 
 export default function Pricing() {
   const tiers = [
     {
       name: 'Basic',
-      price: '$29',
+      price: '$199',
       cadence: 'CAD / month',
       features: [
-        'Create up to 5 machines',
-        'Create 1 layout',
-        'Create 1 line',
-        'Create up to 3 shifts',
-        'Create 1 facility',
-        'Connect 5 machines to Factory Flow Analytics',
+        'Track machine uptime and performance in real time',
+        'Visualize your factory layout and production lines',
+        'Analyze shift performance with built-in analytics',
       ],
       cta: {
         label: 'Start trial',
@@ -21,17 +18,14 @@ export default function Pricing() {
     },
     {
       name: 'Pro',
-      price: '$249',
+      price: '$499',
       cadence: 'CAD / month',
       features: [
-        'Create up to 20 machines',
-        'Create up to 2 layouts',
-        'Create up to 3 lines',
-        'Create up to 5 shifts',
-        'Create up to 3 facilities',
-        'Connect 10 machines to Factory Flow Analytics',
-        'Connect to 1 Factory Flow Gateway',
-        'Collaborate with up to 5 team members',
+        'Everything in Basic',
+        'Automate alerts and notify the right people instantly',
+        'Collaborate with your team across facilities',
+        'Connect physical machines via Factory Flow Gateway',
+        'Maintain a full audit log for accountability',
       ],
       cta: {
         label: 'Start trial',
@@ -41,19 +35,41 @@ export default function Pricing() {
     },
     {
       name: 'Enterprise',
-      price: '$999',
+      price: '$1499',
       cadence: 'CAD / month',
       features: [
-        'Unlimited machines and layouts',
-        'Unlimited organization users',
-        'Includes 50 connected machines',
-        'Volume pricing for additional connected machines',
+        'Everything in Pro',
+        'Scale across your entire organization without constraints',
+        'Manage multiple sites under one account',
+        'Volume pricing as your connected fleet grows',
       ],
       cta: {
         label: 'Start trial',
         href: 'https://app.factoryflow.io',
       },
     },
+  ];
+
+  const selfHostedFeatures = [
+    'Deploy Factory Flow entirely within your own infrastructure',
+    'Full data sovereignty — no data leaves your environment',
+    'Unlimited machines, facilities, users, and layouts',
+    'Custom integrations and white-label options',
+    'Dedicated onboarding and implementation support',
+    'SLA-backed uptime guarantees',
+  ];
+
+  const usageTable = [
+    { label: 'Facilities',           basic: '1',               pro: '2',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Machines',             basic: '5',               pro: '25',              enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Layouts',              basic: '1',               pro: '2',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Production lines',     basic: '1',               pro: '3',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Shifts',               basic: '3',               pro: '5',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Team members',         basic: '1',               pro: '5',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Connected machines',   basic: '5',               pro: '25',              enterprise: '50 included',  selfHosted: 'Unlimited' },
+    { label: 'Gateway licenses',     basic: '—',               pro: '1',               enterprise: 'Custom',       selfHosted: 'Custom' },
+    { label: 'Alert rules',          basic: '—',               pro: '20',              enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Alert groups',         basic: '—',               pro: '5',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
   ];
 
   return (
@@ -69,7 +85,7 @@ export default function Pricing() {
           </p>
         </div>
 
-        {/* Custom Pricing Table */}
+        {/* Pricing cards */}
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           {tiers.map((tier) => (
             <div
@@ -105,11 +121,11 @@ export default function Pricing() {
               </a>
 
               <div className="mt-8 border-t border-white/10 pt-6">
-                <p className="text-xs uppercase tracking-[0.12em] text-tertiary mb-4">This includes</p>
+                <p className="text-xs uppercase tracking-[0.12em] text-tertiary mb-4">What you can do</p>
                 <ul className="space-y-3 text-sm text-secondary">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <Check className={`mt-0.5 h-4 w-4 text-green-400`} />
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -117,6 +133,71 @@ export default function Pricing() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Self-Hosted Tier */}
+        <div className="max-w-[1200px] mx-auto mt-6">
+          <div className="relative flex flex-col md:flex-row md:items-center gap-8 rounded-2xl p-8 border bg-white/[0.02] card-border hover:card-border-hover transition-all duration-300">
+            <div className="flex-shrink-0 flex items-center gap-4">
+              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10">
+                <Server className="h-5 w-5 text-white/70" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-white">Self-Hosted</h3>
+                <p className="text-sm text-tertiary mt-0.5">On-premise deployment</p>
+              </div>
+            </div>
+
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+              {selfHostedFeatures.map((feature) => (
+                <div key={feature} className="flex items-start gap-3 text-sm text-secondary">
+                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex-shrink-0">
+              <a
+                href="mailto:sales@factoryflow.io"
+                className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-white/5 text-white border card-border hover:card-border-hover hover:bg-white/[0.08] transition-all whitespace-nowrap"
+              >
+                Contact sales
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Usage limits table */}
+        <div className="max-w-[1200px] mx-auto mt-16">
+          <h3 className="text-lg font-semibold text-white mb-6">Plan limits</h3>
+          <div className="rounded-2xl border card-border overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-white/[0.06]">
+                  <th className="text-left px-6 py-4 text-xs uppercase tracking-[0.12em] text-tertiary font-medium w-1/3">Feature</th>
+                  <th className="px-6 py-4 text-center text-white/60 font-medium">Basic</th>
+                  <th className="px-6 py-4 text-center text-white font-semibold">Pro</th>
+                  <th className="px-6 py-4 text-center text-white/60 font-medium">Enterprise</th>
+                  <th className="px-6 py-4 text-center text-white/60 font-medium">Self-Hosted</th>
+                </tr>
+              </thead>
+              <tbody>
+                {usageTable.map((row, i) => (
+                  <tr
+                    key={row.label}
+                    className={`border-b border-white/[0.04] last:border-0 ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
+                  >
+                    <td className="px-6 py-3.5 text-white/50">{row.label}</td>
+                    <td className="px-6 py-3.5 text-center text-white/55 tabular-nums">{row.basic}</td>
+                    <td className="px-6 py-3.5 text-center text-white/80 font-medium tabular-nums">{row.pro}</td>
+                    <td className="px-6 py-3.5 text-center text-white/55 tabular-nums">{row.enterprise}</td>
+                    <td className="px-6 py-3.5 text-center text-white/55 tabular-nums">{row.selfHosted}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <p className="text-center text-tertiary text-sm mt-10">
