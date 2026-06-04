@@ -25,12 +25,11 @@ export default function Hero() {
         <div className="text-center max-w-[980px] mx-auto">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-[1.1] mb-6 text-white">
             Production monitoring for{' '}
-            <span className="text-gradient">any machine</span>{' '}
-            in minutes
+            <span className="text-gradient">modern factories</span>
           </h1>
 
           <p className="text-lg md:text-xl text-secondary leading-relaxed max-w-[680px] mx-auto mb-12">
-            Send data to our API and start tracking performance across your entire plant instantly. No complex hardware required.
+            Skip the expensive integrations and get real-time visibility across every machine in minutes.
           </p>
 
           {/* CTA */}

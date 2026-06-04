@@ -60,16 +60,22 @@ export default function Pricing() {
   ];
 
   const usageTable = [
-    { label: 'Facilities',           basic: '1',               pro: '2',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Machines',             basic: '5',               pro: '25',              enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Layouts',              basic: '1',               pro: '2',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Production lines',     basic: '1',               pro: '3',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Shifts',               basic: '3',               pro: '5',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Team members',         basic: '1',               pro: '5',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Connected machines',   basic: '5',               pro: '25',              enterprise: '50 included',  selfHosted: 'Unlimited' },
-    { label: 'Gateway licenses',     basic: '—',               pro: '1',               enterprise: 'Custom',       selfHosted: 'Custom' },
-    { label: 'Alert rules',          basic: '—',               pro: '20',              enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
-    { label: 'Alert groups',         basic: '—',               pro: '5',               enterprise: 'Unlimited',    selfHosted: 'Unlimited' },
+    { label: 'Facilities',           basic: '1',          pro: '1',          enterprise: '3',        selfHosted: 'Unlimited' },
+    { label: 'Machines',             basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited' },
+    { label: 'Layouts',              basic: '1',          pro: '2',          enterprise: '5',        selfHosted: 'Unlimited' },
+    { label: 'Production lines',     basic: '1',          pro: '3',          enterprise: '15',       selfHosted: 'Unlimited' },
+    { label: 'Shifts',               basic: '3',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited' },
+    { label: 'Team members',         basic: '1',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited' },
+    { label: 'Connected machines',   basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited' },
+    { label: 'Gateway licenses',     basic: '—',          pro: '1',          enterprise: '5',        selfHosted: 'Custom' },
+    { label: 'Alert rules',          basic: '—',          pro: '20',         enterprise: '50',       selfHosted: 'Unlimited' },
+    { label: 'Alert groups',         basic: '—',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited' },
+    { label: 'Alert group members',  basic: '—',          pro: '10',         enterprise: '20',       selfHosted: 'Unlimited' },
+    { label: 'Alert history',        basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited' },
+    { label: 'Audit logs',           basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited' },
+    { label: 'API tokens',           basic: '1',          pro: '5',          enterprise: '5',        selfHosted: 'Unlimited' },
+    { label: 'Email alerts / month', basic: '50',         pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited' },
+    { label: 'Data retention',       basic: '2 months',   pro: '6 months',   enterprise: '1 year',   selfHosted: 'Unlimited' },
   ];
 
   return (
@@ -90,9 +96,9 @@ export default function Pricing() {
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`relative flex flex-col rounded-2xl p-8 border transition-all duration-300 ${tier.highlight
-                ? 'bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] border-white/20 shadow-[0_0_0_1px_rgba(255,255,255,0.06)]'
-                : 'bg-white/[0.02] card-border hover:card-border-hover'
+              className={`relative flex flex-col rounded-2xl p-8 border transition-all duration-300 bg-white/[0.02] ${tier.highlight
+                ? 'border-white/20 hover:border-white/30'
+                : 'card-border hover:card-border-hover'
                 }`}
             >
               {tier.highlight && (
@@ -122,14 +128,17 @@ export default function Pricing() {
 
               <div className="mt-8 border-t border-white/10 pt-6">
                 <p className="text-xs uppercase tracking-[0.12em] text-tertiary mb-4">What you can do</p>
-                <ul className="space-y-3 text-sm text-secondary">
+                <ul className="space-y-3 text-secondary">
                   {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                    <li key={feature} className="flex items-start gap-3 text-[15px] leading-relaxed">
+                      <Check className="mt-1 h-4 w-4 flex-shrink-0 text-green-400" />
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
+                <a href="#plan-limits" className="mt-4 inline-block text-xs text-tertiary hover:text-white/60 transition-colors">
+                  Compare all features →
+                </a>
               </div>
             </div>
           ))}
@@ -148,13 +157,18 @@ export default function Pricing() {
               </div>
             </div>
 
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
-              {selfHostedFeatures.map((feature) => (
-                <div key={feature} className="flex items-start gap-3 text-sm text-secondary">
-                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
-                  <span>{feature}</span>
-                </div>
-              ))}
+            <div className="flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+                {selfHostedFeatures.map((feature) => (
+                  <div key={feature} className="flex items-start gap-3 text-[15px] leading-relaxed text-secondary">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-400" />
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <a href="#plan-limits" className="mt-4 inline-block text-xs text-tertiary hover:text-white/60 transition-colors">
+                Compare all features →
+              </a>
             </div>
 
             <div className="flex-shrink-0">
@@ -170,16 +184,28 @@ export default function Pricing() {
 
         {/* Usage limits table */}
         <div className="max-w-[1200px] mx-auto mt-16">
-          <h3 className="text-lg font-semibold text-white mb-6">Plan limits</h3>
+          <h3 id="plan-limits" className="text-lg font-semibold text-white mb-6">Plan limits</h3>
           <div className="rounded-2xl border card-border overflow-hidden">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-white/[0.06]">
                   <th className="text-left px-6 py-4 text-xs uppercase tracking-[0.12em] text-tertiary font-medium w-1/3">Feature</th>
-                  <th className="px-6 py-4 text-center text-white/60 font-medium">Basic</th>
-                  <th className="px-6 py-4 text-center text-white font-semibold">Pro</th>
-                  <th className="px-6 py-4 text-center text-white/60 font-medium">Enterprise</th>
-                  <th className="px-6 py-4 text-center text-white/60 font-medium">Self-Hosted</th>
+                  <th className="px-6 py-4 text-center text-secondary font-medium">
+                    <div>Basic</div>
+                    <div className="text-xs text-tertiary font-normal mt-0.5">$199 CAD/mo</div>
+                  </th>
+                  <th className="px-6 py-4 text-center text-secondary font-medium">
+                    <div>Pro</div>
+                    <div className="text-xs text-tertiary font-normal mt-0.5">$499 CAD/mo</div>
+                  </th>
+                  <th className="px-6 py-4 text-center text-secondary font-medium">
+                    <div>Enterprise</div>
+                    <div className="text-xs text-tertiary font-normal mt-0.5">$1,499 CAD/mo</div>
+                  </th>
+                  <th className="px-6 py-4 text-center text-secondary font-medium">
+                    <div>Self-Hosted</div>
+                    <div className="text-xs text-tertiary font-normal mt-0.5">Contact sales</div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -188,11 +214,11 @@ export default function Pricing() {
                     key={row.label}
                     className={`border-b border-white/[0.04] last:border-0 ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
                   >
-                    <td className="px-6 py-3.5 text-white/50">{row.label}</td>
-                    <td className="px-6 py-3.5 text-center text-white/55 tabular-nums">{row.basic}</td>
-                    <td className="px-6 py-3.5 text-center text-white/80 font-medium tabular-nums">{row.pro}</td>
-                    <td className="px-6 py-3.5 text-center text-white/55 tabular-nums">{row.enterprise}</td>
-                    <td className="px-6 py-3.5 text-center text-white/55 tabular-nums">{row.selfHosted}</td>
+                    <td className="px-6 py-3.5 text-secondary">{row.label}</td>
+                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.basic}</td>
+                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.pro}</td>
+                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.enterprise}</td>
+                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.selfHosted}</td>
                   </tr>
                 ))}
               </tbody>
