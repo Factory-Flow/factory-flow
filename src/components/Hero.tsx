@@ -4,9 +4,9 @@ import WaitlistInlineForm from './WaitlistInlineForm';
 export default function Hero() {
   return (
     <section id="hero" className="relative pt-40 pb-24 overflow-hidden">
-      {/* Background Glow - more subtle like Linear */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-purple-500/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute top-20 left-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none" />
+      {/* Background Glow — hidden on mobile (blur-[150px] is GPU-intensive on iOS) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-purple-500/10 blur-[150px] rounded-full pointer-events-none hidden md:block" />
+      <div className="absolute top-20 left-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none hidden md:block" />
 
       <div className="max-w-[1280px] mx-auto px-8 relative z-10">
         {/* Announcement Badge */}
@@ -36,126 +36,36 @@ export default function Hero() {
           <div className="flex justify-center mb-20">
             <div className="w-full max-w-md">
               <WaitlistInlineForm />
+              <div className="mt-4 text-center">
+                <a
+                  href="https://demo.factoryflow.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-secondary hover:text-white transition-colors group"
+                >
+                  Or try the live demo
+                  <svg className="w-3.5 h-3.5 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Product Screenshot/Visual */}
         <div className="relative w-full max-w-[1120px] mx-auto">
-          <div className="relative aspect-[4/5] md:aspect-[16/10] rounded-xl border card-border bg-[#0d0e10]/60 backdrop-blur-sm shadow-2xl overflow-hidden">
-            {/* Dashboard Mockup with Graph Representations */}
-            <div className="absolute inset-0 p-6 flex items-center justify-center">
-              <div className="grid grid-cols-3 grid-rows-2 gap-3 w-full h-full opacity-70">
-
-                {/* Row 1: Cycle Time Chart */}
-                <div className="bg-white/[0.06] rounded-lg border border-white/[0.08] p-4 flex flex-col">
-                  <div className="text-[11px] text-white/80 font-medium mb-3">Cycle Time</div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <svg className="w-full h-full" viewBox="0 0 100 60" preserveAspectRatio="none">
-                      <polyline points="0,45 20,42 40,38 60,35 80,32 100,28"
-                        fill="none" stroke="rgba(255, 255, 255, 0.4)" strokeWidth="2"/>
-                      <line x1="0" y1="55" x2="100" y2="55" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
-                    </svg>
-                  </div>
-                  <div className="text-[8px] text-white/30 text-center mt-2">No data for the selected range</div>
-                </div>
-
-                {/* Row 1: Production Chart */}
-                <div className="bg-white/[0.06] rounded-lg border border-white/[0.08] p-4 flex flex-col">
-                  <div className="text-[11px] text-white/80 font-medium mb-3">Production</div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <svg className="w-full h-full" viewBox="0 0 100 60" preserveAspectRatio="none">
-                      <rect x="8" y="35" width="10" height="20" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="23" y="30" width="10" height="25" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="38" y="25" width="10" height="30" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="53" y="28" width="10" height="27" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="68" y="26" width="10" height="29" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="83" y="30" width="10" height="25" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <line x1="0" y1="55" x2="100" y2="55" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
-                    </svg>
-                  </div>
-                  <div className="text-[8px] text-white/30 text-center mt-2">No data for the selected range</div>
-                </div>
-
-                {/* Row 1: OEE Gauge */}
-                <div className="bg-white/[0.06] rounded-lg border border-white/[0.08] p-4 flex flex-col">
-                  <div className="text-[11px] text-white/80 font-medium mb-3">OEE</div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <svg className="w-16 h-16" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="8"/>
-                      <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(255, 255, 255, 0.4)"
-                        strokeWidth="8" strokeDasharray="164.93 219.91" strokeDashoffset="0"
-                        transform="rotate(-90 50 50)"/>
-                      <text x="50" y="55" textAnchor="middle" className="text-[12px]" fill="rgba(255,255,255,0.6)" fontWeight="600">--</text>
-                    </svg>
-                  </div>
-                  <div className="text-[8px] text-white/30 text-center mt-2">No data for the selected range</div>
-                </div>
-
-                {/* Row 2: Downtime Chart */}
-                <div className="bg-white/[0.06] rounded-lg border border-white/[0.08] p-4 flex flex-col">
-                  <div className="text-[11px] text-white/80 font-medium mb-3">Downtime</div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <svg className="w-full h-full" viewBox="0 0 100 60">
-                      <rect x="12" y="15" width="14" height="40" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="32" y="25" width="14" height="30" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="52" y="35" width="14" height="20" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="72" y="45" width="14" height="10" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <line x1="0" y1="55" x2="100" y2="55" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
-                    </svg>
-                  </div>
-                  <div className="text-[8px] text-white/30 text-center mt-2">No data for the selected range</div>
-                </div>
-
-                {/* Row 2: Uptime Chart */}
-                <div className="bg-white/[0.06] rounded-lg border border-white/[0.08] p-4 flex flex-col">
-                  <div className="text-[11px] text-white/80 font-medium mb-3">Uptime</div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <svg className="w-full h-full" viewBox="0 0 100 60">
-                      <rect x="12" y="25" width="14" height="30" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="32" y="20" width="14" height="35" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="52" y="15" width="14" height="40" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <rect x="72" y="18" width="14" height="37" fill="rgba(255, 255, 255, 0.35)" rx="1"/>
-                      <line x1="0" y1="55" x2="100" y2="55" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5"/>
-                    </svg>
-                  </div>
-                  <div className="text-[8px] text-white/30 text-center mt-2">No data for the selected range</div>
-                </div>
-
-                {/* Row 2: Timeline */}
-                <div className="bg-white/[0.06] rounded-lg border border-white/[0.08] p-4 flex flex-col">
-                  <div className="text-[11px] text-white/80 font-medium mb-3">Timeline</div>
-                  <div className="flex-1 flex items-center justify-center gap-1">
-                    <div className="flex-1 bg-white/30 h-6 rounded-sm"></div>
-                    <div className="flex-1 bg-white/30 h-6 rounded-sm"></div>
-                    <div className="w-6 bg-white/20 h-6 rounded-sm"></div>
-                    <div className="flex-1 bg-white/30 h-6 rounded-sm"></div>
-                    <div className="w-8 bg-white/15 h-6 rounded-sm"></div>
-                    <div className="flex-1 bg-white/30 h-6 rounded-sm"></div>
-                  </div>
-                  <div className="text-[8px] text-white/30 text-center mt-2">No data for the selected range</div>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Subtle glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#08090a]/50 to-[#08090a] opacity-90" />
-
-            {/* Text Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 pt-64 md:pt-32 pb-12 px-8 bg-gradient-to-t from-[#08090a] via-[#08090a] to-transparent">
-              <div className="text-center max-w-[680px] mx-auto">
-                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2 text-white">
-                  Know what's happening on your{' '}
-                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                    factory floor
-                  </span>
-                </h2>
-                <p className="text-sm md:text-base text-white/60">
-                  Track performance, identify issues, and improve efficiency across all workstations
-                </p>
-              </div>
-            </div>
+          <div className="relative rounded-xl border card-border shadow-2xl overflow-hidden">
+            <img
+              src="/line-view-example.png"
+              alt="Factory Flow line view"
+              className="w-full h-auto block"
+              width={1120}
+              height={630}
+              fetchPriority="high"
+            />
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08090a] to-transparent" />
           </div>
         </div>
       </div>

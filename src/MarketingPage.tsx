@@ -76,10 +76,13 @@ export default function MarketingPage() {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white/20">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      {structuredData.map((item, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
+        />
+      ))}
 
       <AppAppBar />
       <main>

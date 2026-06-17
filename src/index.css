@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -13,7 +12,7 @@
   --color-border-subtle: rgba(255, 255, 255, 0.06);
   --color-border: rgba(255, 255, 255, 0.1);
   --color-text-primary: #ffffff;
-  --color-text-secondary: #b4bcd0;
+  --color-text-secondary: #cdd5e0;
   --color-text-tertiary: #6c7585;
 }
 

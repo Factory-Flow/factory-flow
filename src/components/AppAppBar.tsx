@@ -50,6 +50,13 @@ export default function AppAppBar() {
   };
 
   return (
+    <>
+    {mobileMenuOpen && (
+      <div
+        className="fixed inset-0 z-40 md:hidden"
+        onClick={() => setMobileMenuOpen(false)}
+      />
+    )}
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 border-b ${isScrolled ? 'glass py-3' : 'bg-transparent border-transparent py-4'
         }`}
@@ -125,6 +132,14 @@ export default function AppAppBar() {
             )}
           </div>
           <div className="w-px h-4 bg-white/10 mx-2" />
+          <a
+            href="https://demo.factoryflow.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-secondary border card-border px-4 py-1.5 rounded-md font-medium hover:text-white hover:border-white/20 transition-all ml-1"
+          >
+            Try Demo
+          </a>
           <button
             onClick={() => scrollToSection("hero")}
             className="text-sm bg-white text-black px-4 py-1.5 rounded-md font-medium hover:bg-white/90 transition-all ml-1 cursor-pointer"
@@ -198,6 +213,14 @@ export default function AppAppBar() {
             )}
           </div>
           <div className="h-px bg-white/10 my-2" />
+          <a
+            href="https://demo.factoryflow.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-secondary border card-border px-4 py-2 rounded-md font-medium text-center hover:text-white hover:border-white/20 transition-colors"
+          >
+            Try Demo
+          </a>
           <button
             onClick={() => scrollToSection("hero")}
             className="bg-white text-black px-4 py-2 rounded-md font-medium text-center hover:bg-white/90 transition-colors cursor-pointer"
@@ -207,5 +230,6 @@ export default function AppAppBar() {
         </div>
       )}
     </nav>
+    </>
   );
 }

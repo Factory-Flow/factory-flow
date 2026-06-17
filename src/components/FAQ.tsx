@@ -16,11 +16,6 @@ export default function FAQ() {
       answer: 'You can reach our customer support team by emailing support@factoryflow.io.'
     },
     {
-      id: 'panel2',
-      question: 'Is there a free trial?',
-      answer: 'Yes. We offer a 30 day free trial for all of our plans so your team can try Factory Flow risk free!'
-    },
-    {
       id: 'panel3',
       question: 'Can I cancel anytime?',
       answer: 'Yes. You can cancel your Factory Flow subscription at any time with no penalty.'

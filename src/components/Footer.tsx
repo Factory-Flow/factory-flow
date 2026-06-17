@@ -62,6 +62,9 @@ export default function Footer() {
                     <span className="text-[10px] px-1.5 py-0.5 bg-white/10 text-white/60 rounded font-medium uppercase tracking-wider">Coming Soon</span>
                   </span>
                 </li>
+                <li>
+                  <a href="https://demo.factoryflow.io" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors">Demo</a>
+                </li>
               </ul>
             </div>
 

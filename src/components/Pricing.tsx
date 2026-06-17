@@ -1,6 +1,11 @@
 import { Check, Server } from 'lucide-react';
 
 export default function Pricing() {
+  const scrollToLimits = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    document.getElementById('plan-limits')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const tiers = [
     {
       name: 'Basic',
@@ -12,7 +17,7 @@ export default function Pricing() {
         'Analyze shift performance with built-in analytics',
       ],
       cta: {
-        label: 'Start trial',
+        label: 'Get started',
         href: 'https://app.factoryflow.io',
       },
     },
@@ -28,7 +33,7 @@ export default function Pricing() {
         'Maintain a full audit log for accountability',
       ],
       cta: {
-        label: 'Start trial',
+        label: 'Get started',
         href: 'https://app.factoryflow.io',
       },
       highlight: true,
@@ -44,7 +49,7 @@ export default function Pricing() {
         'Volume pricing as your connected fleet grows',
       ],
       cta: {
-        label: 'Start trial',
+        label: 'Get started',
         href: 'https://app.factoryflow.io',
       },
     },
@@ -60,22 +65,23 @@ export default function Pricing() {
   ];
 
   const usageTable = [
-    { label: 'Facilities',           basic: '1',          pro: '1',          enterprise: '3',        selfHosted: 'Unlimited' },
-    { label: 'Machines',             basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited' },
-    { label: 'Layouts',              basic: '1',          pro: '2',          enterprise: '5',        selfHosted: 'Unlimited' },
-    { label: 'Production lines',     basic: '1',          pro: '3',          enterprise: '15',       selfHosted: 'Unlimited' },
-    { label: 'Shifts',               basic: '3',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited' },
-    { label: 'Team members',         basic: '1',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited' },
-    { label: 'Connected machines',   basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited' },
+    { label: 'Facilities',           basic: '1',          pro: '1',          enterprise: '3',        selfHosted: 'Unlimited*' },
+    { label: 'Machines',             basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited*' },
+    { label: 'Price per machine',    basic: '~$40 CAD/mo',   pro: '~$20 CAD/mo',   enterprise: '~$8 CAD/mo',  selfHosted: '—' },
+    { label: 'Layouts',              basic: '1',          pro: '2',          enterprise: '5',        selfHosted: 'Unlimited*' },
+    { label: 'Production lines',     basic: '1',          pro: '3',          enterprise: '15',       selfHosted: 'Unlimited*' },
+    { label: 'Shifts',               basic: '3',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited*' },
+    { label: 'Team members',         basic: '1',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited*' },
+    { label: 'Connected machines',   basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited*' },
     { label: 'Gateway licenses',     basic: '—',          pro: '1',          enterprise: '5',        selfHosted: 'Custom' },
-    { label: 'Alert rules',          basic: '—',          pro: '20',         enterprise: '50',       selfHosted: 'Unlimited' },
-    { label: 'Alert groups',         basic: '—',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited' },
-    { label: 'Alert group members',  basic: '—',          pro: '10',         enterprise: '20',       selfHosted: 'Unlimited' },
-    { label: 'Alert history',        basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited' },
-    { label: 'Audit logs',           basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited' },
-    { label: 'API tokens',           basic: '1',          pro: '5',          enterprise: '5',        selfHosted: 'Unlimited' },
-    { label: 'Email alerts / month', basic: '50',         pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited' },
-    { label: 'Data retention',       basic: '2 months',   pro: '6 months',   enterprise: '1 year',   selfHosted: 'Unlimited' },
+    { label: 'Alert rules',          basic: '—',          pro: '10',         enterprise: '50',       selfHosted: 'Unlimited*' },
+    { label: 'Alert groups',         basic: '—',          pro: '3',          enterprise: '10',       selfHosted: 'Unlimited*' },
+    { label: 'Alert group members',  basic: '—',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited*' },
+    { label: 'Alert history',        basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
+    { label: 'Audit logs',           basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
+    { label: 'API tokens',           basic: '1',          pro: '5',          enterprise: '5',        selfHosted: 'Unlimited*' },
+    { label: 'Email alerts / month', basic: '50',         pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
+    { label: 'Data retention',       basic: '3 months',   pro: '6 months',   enterprise: '1 year',   selfHosted: 'Unlimited*' },
   ];
 
   return (
@@ -136,7 +142,7 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <a href="#plan-limits" className="mt-4 inline-block text-xs text-tertiary hover:text-white/60 transition-colors">
+                <a href="#plan-limits" onClick={scrollToLimits} className="mt-4 inline-block text-xs text-tertiary hover:text-white/60 transition-colors">
                   Compare all features →
                 </a>
               </div>
@@ -166,7 +172,7 @@ export default function Pricing() {
                   </div>
                 ))}
               </div>
-              <a href="#plan-limits" className="mt-4 inline-block text-xs text-tertiary hover:text-white/60 transition-colors">
+              <a href="#plan-limits" onClick={scrollToLimits} className="mt-4 inline-block text-xs text-tertiary hover:text-white/60 transition-colors">
                 Compare all features →
               </a>
             </div>
@@ -188,7 +194,7 @@ export default function Pricing() {
           <div className="rounded-2xl border card-border overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/[0.06]">
+                <tr className="border-b border-white/20">
                   <th className="text-left px-6 py-4 text-xs uppercase tracking-[0.12em] text-tertiary font-medium w-1/3">Feature</th>
                   <th className="px-6 py-4 text-center text-secondary font-medium">
                     <div>Basic</div>
@@ -209,26 +215,30 @@ export default function Pricing() {
                 </tr>
               </thead>
               <tbody>
-                {usageTable.map((row, i) => (
+                {usageTable.map((row, i) => {
+                  const isDerived = row.label === 'Price per machine';
+                  return (
                   <tr
                     key={row.label}
-                    className={`border-b border-white/[0.04] last:border-0 ${i % 2 === 0 ? 'bg-white/[0.01]' : ''}`}
+                    className={`border-b border-white/[0.1] last:border-0 ${isDerived ? 'bg-white/[0.04]' : i % 2 === 0 ? 'bg-white/[0.04]' : 'bg-white/[0.01]'}`}
                   >
-                    <td className="px-6 py-3.5 text-secondary">{row.label}</td>
-                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.basic}</td>
-                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.pro}</td>
-                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.enterprise}</td>
-                    <td className="px-6 py-3.5 text-center text-secondary tabular-nums">{row.selfHosted}</td>
+                    <td className={`px-6 py-3.5 ${isDerived ? 'text-tertiary text-xs pl-8' : 'text-secondary'}`}>{row.label}</td>
+                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.basic}</td>
+                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.pro}</td>
+                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.enterprise}</td>
+                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.selfHosted}</td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
         </div>
 
-        <p className="text-center text-tertiary text-sm mt-10">
-          All plans include a 30-day free trial. Cancel anytime.
-        </p>
+        <div className="mt-10 flex flex-col items-center gap-2">
+          <p className="text-tertiary text-sm">* Subject to your infrastructure capacity.</p>
+          <p className="text-tertiary text-sm">Cancel anytime.</p>
+        </div>
       </div>
     </section>
   );

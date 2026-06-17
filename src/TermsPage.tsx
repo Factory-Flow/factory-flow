@@ -68,10 +68,6 @@ export default function TermsPage() {
                 <p>Factory Flow offers three subscription plans — Basic, Pro, and Enterprise — each with different limits on the number of machines, members, facilities, alert rules, API tokens, and other resources. Current plan details and pricing are available on our website.</p>
               </div>
               <div>
-                <p className="text-white font-medium mb-1">Free trial</p>
-                <p>New organizations may be eligible for a free trial. Trials are available once per organization and are not available to organizations that have previously held a paid subscription.</p>
-              </div>
-              <div>
                 <p className="text-white font-medium mb-1">Billing</p>
                 <p>Subscriptions are billed through Stripe. By subscribing, you authorize us to charge your payment method on a recurring basis. All fees are non-refundable except where required by law.</p>
               </div>
