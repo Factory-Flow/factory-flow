@@ -35,6 +35,7 @@ jobs:
 
       - name: Disable Jekyll
         run: |
+          mkdir -p docs
           touch docs/.nojekyll
 
       - name: Upload artifact
