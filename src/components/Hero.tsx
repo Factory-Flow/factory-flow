@@ -29,7 +29,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-secondary leading-relaxed max-w-[680px] mx-auto mb-12">
-            Skip the expensive integrations and get real-time visibility across every machine in minutes.
+            Know exactly what's happening on your shop floor — without months of integration work.
           </p>
 
           {/* CTA */}

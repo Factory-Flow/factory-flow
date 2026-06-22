@@ -12,9 +12,11 @@ export default function Pricing() {
       price: '$199',
       cadence: 'CAD / month',
       features: [
-        'Track machine uptime and performance in real time',
-        'Visualize your factory layout and production lines',
-        'Analyze shift performance with built-in analytics',
+        'Track machine cycle time, OEE, production and downtime in real time',
+        'Performance insights at the machine, line, and facility level',
+        'Visualize your factory layout and production lines with overlaid analytics',
+        'Compare shift and machine performance side by side',
+        'Connect your systems via the Factory Flow API for seamless data ingestion'
       ],
       cta: {
         label: 'Get started',
@@ -27,10 +29,10 @@ export default function Pricing() {
       cadence: 'CAD / month',
       features: [
         'Everything in Basic',
-        'Automate alerts and notify the right people instantly',
-        'Collaborate with your team across facilities',
-        'Connect physical machines via Factory Flow Gateway',
-        'Maintain a full audit log for accountability',
+        'Invite your team to collaborate',
+        'Set up rules to notify your team the instant performance issues occur',
+        'Aggregate data from multiple sources with the included Factory Flow Gateway desktop collector',
+        'Full audit trail for compliance and accountability'
       ],
       cta: {
         label: 'Get started',
@@ -44,9 +46,9 @@ export default function Pricing() {
       cadence: 'CAD / month',
       features: [
         'Everything in Pro',
-        'Scale across your entire organization without constraints',
-        'Manage multiple sites under one account',
-        'Volume pricing as your connected fleet grows',
+        'Manage multiple facilities under one organization',
+        'Higher limits across machines, users, facilities, and more',
+        'Retain up to 1 year of historical data'
       ],
       cta: {
         label: 'Get started',
@@ -58,10 +60,10 @@ export default function Pricing() {
   const selfHostedFeatures = [
     'Deploy Factory Flow entirely within your own infrastructure',
     'Full data sovereignty — no data leaves your environment',
-    'Unlimited machines, facilities, users, and layouts',
-    'Custom integrations and white-label options',
-    'Dedicated onboarding and implementation support',
-    'SLA-backed uptime guarantees',
+    'Unlimited access across all resources and account limits',
+    'Configurable data retention and automated backup schedules',
+    'LDAP/Active Directory integration for user authentication',
+    'Custom SMTP configuration for email delivery',
   ];
 
   const usageTable = [
@@ -158,7 +160,10 @@ export default function Pricing() {
                 <Server className="h-5 w-5 text-white/70" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-white">Self-Hosted</h3>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-xl font-semibold text-white">Self-Hosted</h3>
+                  <span className="inline-flex items-center rounded-full bg-white/10 border border-white/15 px-2 py-0.5 text-[11px] font-medium text-white/60 tracking-wide">Coming Soon</span>
+                </div>
                 <p className="text-sm text-tertiary mt-0.5">On-premise deployment</p>
               </div>
             </div>
@@ -191,8 +196,8 @@ export default function Pricing() {
         {/* Usage limits table */}
         <div className="max-w-[1200px] mx-auto mt-16">
           <h3 id="plan-limits" className="text-lg font-semibold text-white mb-6">Plan limits</h3>
-          <div className="rounded-2xl border card-border overflow-hidden">
-            <table className="w-full text-sm">
+          <div className="rounded-2xl border card-border overflow-x-auto">
+            <table className="w-full min-w-[640px] text-sm">
               <thead>
                 <tr className="border-b border-white/20">
                   <th className="text-left px-6 py-4 text-xs uppercase tracking-[0.12em] text-tertiary font-medium w-1/3">Feature</th>
@@ -210,6 +215,9 @@ export default function Pricing() {
                   </th>
                   <th className="px-6 py-4 text-center text-secondary font-medium">
                     <div>Self-Hosted</div>
+                    <div className="flex justify-center mt-1">
+                      <span className="inline-flex items-center rounded-full bg-white/10 border border-white/15 px-2 py-0.5 text-[11px] font-medium text-white/60 tracking-wide">Coming Soon</span>
+                    </div>
                     <div className="text-xs text-tertiary font-normal mt-0.5">Contact sales</div>
                   </th>
                 </tr>

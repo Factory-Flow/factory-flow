@@ -1,4 +1,4 @@
-import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, Plug, ScrollText, KeyRound, Building2, ShieldAlert, Lock } from 'lucide-react';
+import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, Plug, ScrollText, KeyRound, Building2, Lock } from 'lucide-react';
 
 function LayoutViewMockup() {
   const lines = [
@@ -335,7 +335,6 @@ export default function Features() {
               { icon: KeyRound,    title: 'Two-Factor Auth',       description: 'Optional 2FA protects your account even if your password is compromised.', accent: '#f472b6' },
               { icon: Users,       title: 'Role-Based Permissions', description: 'Control exactly what each team member can see and do — Admin, Editor, or Viewer.', accent: '#a78bfa' },
               { icon: Code2,       title: 'Secure API Access',     description: 'Connect your systems with scoped API keys that can be revoked at any time.', accent: '#22d3ee' },
-              { icon: ShieldAlert, title: 'Breach Protection',     description: 'We block passwords known to be compromised in data breaches before they can be used.', accent: '#facc15' },
               { icon: Lock,        title: 'Encrypted Secrets',     description: 'Credentials and sensitive data are encrypted at rest — never stored in plaintext.', accent: '#34d399' },
               { icon: ShieldCheck, title: 'Single Sign-On',        description: 'Connect your identity provider. One set of credentials across your entire org.', accent: '#94a3b8' },
             ].map(f => (
