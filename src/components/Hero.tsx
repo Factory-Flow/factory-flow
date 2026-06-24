@@ -1,5 +1,6 @@
 
 import WaitlistInlineForm from './WaitlistInlineForm';
+import Lightbox from './Lightbox';
 
 export default function Hero() {
   return (
@@ -56,16 +57,18 @@ export default function Hero() {
         {/* Product Screenshot/Visual */}
         <div className="relative w-full max-w-[1120px] mx-auto">
           <div className="relative rounded-xl border card-border shadow-2xl overflow-hidden">
-            <img
-              src="/line-view-example.png"
-              alt="Factory Flow line view"
-              className="w-full h-auto block"
-              width={1120}
-              height={630}
-              fetchPriority="high"
-            />
+            <Lightbox src="/line-view-example.png" alt="Factory Flow line view" wrapperClassName="block">
+              <img
+                src="/line-view-example.png"
+                alt="Factory Flow line view"
+                className="w-full h-auto block"
+                width={1120}
+                height={630}
+                fetchPriority="high"
+              />
+            </Lightbox>
             {/* Bottom fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08090a] to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08090a] to-transparent pointer-events-none" />
           </div>
         </div>
       </div>

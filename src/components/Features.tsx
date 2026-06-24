@@ -1,68 +1,14 @@
 import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, Plug, ScrollText, KeyRound, Building2, Lock } from 'lucide-react';
+import Lightbox from './Lightbox';
 
 function LayoutViewMockup() {
-  const lines = [
-    {
-      label: 'Line 1', y: 30,
-      machines: [
-        { x: 8,   color: '#22c55e', oee: '94%' },
-        { x: 50,  color: '#22c55e', oee: '91%' },
-        { x: 92,  color: '#f97316', oee: '67%' },
-        { x: 134, color: '#22c55e', oee: '88%' },
-      ],
-    },
-    {
-      label: 'Line 2', y: 78,
-      machines: [
-        { x: 8,   color: '#22c55e', oee: '98%' },
-        { x: 50,  color: '#ef4444', oee: 'STOP' },
-        { x: 92,  color: '#22c55e', oee: '82%' },
-        { x: 134, color: '#22c55e', oee: '91%' },
-      ],
-    },
-    {
-      label: 'Line 3', y: 126,
-      machines: [
-        { x: 8,   color: '#22c55e', oee: '89%' },
-        { x: 50,  color: '#22c55e', oee: '95%' },
-        { x: 92,  color: '#f97316', oee: '71%' },
-        { x: 134, color: '#22c55e', oee: '86%' },
-      ],
-    },
-  ];
   return (
-    <div className="w-full h-full bg-[#0a0b0d] p-3 flex flex-col">
-      <div className="flex items-center justify-between mb-1">
-        <div className="text-[8px] text-white/30 tracking-wider uppercase">Layout View</div>
-        <div className="flex gap-2">
-          {([['#22c55e','Run'],['#f97316','Idle'],['#ef4444','Fault']] as const).map(([c,l]) => (
-            <span key={l} className="flex items-center gap-0.5 text-[7px] text-white/25">
-              <span className="w-1.5 h-1.5 rounded-sm flex-shrink-0" style={{backgroundColor: c}}/>{l}
-            </span>
-          ))}
-        </div>
+    <Lightbox src="/layout.png" alt="Layout View">
+      <div className="relative w-full h-full">
+        <img src="/layout.png" alt="Layout View" className="w-full h-full object-cover object-[center_30%]" />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 45%, #08090a 100%)' }} />
       </div>
-      <svg viewBox="0 0 180 158" className="flex-1 w-full">
-        {Array.from({length: 14}, (_, row) =>
-          Array.from({length: 18}, (_, col) => (
-            <circle key={`${row}-${col}`} cx={col * 11 + 5} cy={row * 11 + 5} r="0.5" fill="rgba(255,255,255,0.07)"/>
-          ))
-        )}
-        {lines.map(line => (
-          <g key={line.label}>
-            <text x="5" y={line.y - 5} fill="rgba(255,255,255,0.22)" fontSize="5.5">{line.label}</text>
-            <line x1="5" y1={line.y - 1} x2="175" y2={line.y - 1} stroke="rgba(255,255,255,0.07)" strokeWidth="0.5" strokeDasharray="2,2"/>
-            {line.machines.map((m, i) => (
-              <g key={i}>
-                <rect x={m.x} y={line.y + 1} width="34" height="24" fill={m.color} opacity="0.1" rx="2"/>
-                <rect x={m.x} y={line.y + 1} width="34" height="3" fill={m.color} opacity="0.65" rx="1"/>
-                <text x={m.x + 17} y={line.y + 19} textAnchor="middle" fill={m.color} fontSize="7.5" fontWeight="bold" opacity="0.85">{m.oee}</text>
-              </g>
-            ))}
-          </g>
-        ))}
-      </svg>
-    </div>
+    </Lightbox>
   );
 }
 
@@ -102,19 +48,19 @@ function LineViewMockup() {
 }
 
 function ProductionCountsMockup() {
-  return <img src="/panel-production.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="Production Counts" loading="lazy" />;
+  return <Lightbox src="/panel-production.png" alt="Production Counts"><img src="/panel-production.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="Production Counts" loading="lazy" /></Lightbox>;
 }
 
 function DowntimeLoggingMockup() {
-  return <img src="/panel-downtime.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="Downtime Logging" loading="lazy" />;
+  return <Lightbox src="/panel-downtime.png" alt="Downtime Logging"><img src="/panel-downtime.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="Downtime Logging" loading="lazy" /></Lightbox>;
 }
 
 function OEETrackingMockup() {
-  return <img src="/panel-oee.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="OEE Tracking" loading="lazy" />;
+  return <Lightbox src="/panel-oee.png" alt="OEE Tracking"><img src="/panel-oee.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="OEE Tracking" loading="lazy" /></Lightbox>;
 }
 
 function CycleTimeMockup() {
-  return <img src="/panel-cycle-time.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="Cycle Time" loading="lazy" />;
+  return <Lightbox src="/panel-cycle-time.png" alt="Cycle Time"><img src="/panel-cycle-time.png" className="w-full h-full object-contain bg-[#0a0b0d]" alt="Cycle Time" loading="lazy" /></Lightbox>;
 }
 
 function ThresholdAlertsMockup() {
