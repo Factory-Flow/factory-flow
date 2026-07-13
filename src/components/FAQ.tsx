@@ -23,7 +23,7 @@ export default function FAQ() {
     {
       id: 'panel4',
       question: 'Where is my data stored?',
-      answer: 'Our data center is in the USA and is operated by Laravel Cloud.'
+      answer: ['Factory Flow stores customer data in secure, managed PostgreSQL databases hosted in the cloud. All data is transmitted over encrypted connections and protected using industry-standard security and backup practices.', 'If your organization has specific data residency, security, or on-premise requirements, please contact us to discuss available deployment options.']
     }
   ];
 
@@ -53,11 +53,13 @@ export default function FAQ() {
               </button>
 
               <div
-                className={`transition-all duration-200 ease-in-out ${expanded.includes(faq.id) ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
+                className={`transition-all duration-200 ease-in-out ${expanded.includes(faq.id) ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
                   }`}
               >
-                <div className="px-5 pb-5 text-secondary text-[15px] leading-relaxed">
-                  {faq.answer}
+                <div className="px-5 pb-5 text-secondary text-[15px] leading-relaxed space-y-3">
+                  {Array.isArray(faq.answer)
+                    ? faq.answer.map((para, i) => <p key={i}>{para}</p>)
+                    : faq.answer}
                 </div>
               </div>
             </div>

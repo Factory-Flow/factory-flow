@@ -39,7 +39,7 @@ export default function Footer() {
               <SitemarkIcon />
             </div>
             <p className="text-secondary text-sm leading-relaxed mb-4">
-              Production monitoring for any machine.
+              Production monitoring for modern factories.
             </p>
           </div>
 
