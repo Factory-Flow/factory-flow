@@ -1,4 +1,4 @@
-import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, Plug, ScrollText, KeyRound, Building2, Lock } from 'lucide-react';
+import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, Plug, ScrollText, Building2, Lock } from 'lucide-react';
 import Lightbox from './Lightbox';
 
 function LayoutViewMockup() {
@@ -213,10 +213,10 @@ export default function Features() {
         </div>
 
         {/* Enterprise & Integration */}
-        <div className="mt-20 md:mt-28">
+        <div className="mt-20 md:mt-28 pt-16 md:pt-20 border-t border-white/[0.08]">
           {/* Header */}
           <div className="flex items-center gap-3 mb-3">
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-emerald-400/70 border border-emerald-500/20 bg-emerald-500/8 rounded-full px-3 py-1">Enterprise</span>
+            <span className="text-[11px] font-semibold tracking-widest uppercase text-white/50 border border-white/10 bg-white/[0.03] rounded-full px-3 py-1">Enterprise</span>
           </div>
           <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2">Built for enterprise</h3>
           <p className="text-sm text-secondary max-w-[480px] mb-8">Security, control, and deep integration for teams that need more than a dashboard.</p>
@@ -225,23 +225,37 @@ export default function Features() {
           <div className="relative bg-white/[0.02] border border-white/[0.12] rounded-2xl overflow-hidden mb-4">
             <div className="flex flex-col lg:flex-row">
               {/* Text */}
-              <div className="lg:w-[42%] p-8 flex flex-col gap-4 justify-center">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                  <Plug className="w-5 h-5 text-emerald-400" strokeWidth={2} />
+              <div className="lg:w-[38%] p-8 flex flex-col gap-4 justify-center border-b lg:border-b-0 lg:border-r border-white/[0.06]">
+                <div className="w-10 h-10 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center">
+                  <Plug className="w-5 h-5 text-white/70" strokeWidth={2} />
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-white mb-2">Factory Flow Gateway</h4>
                   <p className="text-sm text-secondary leading-relaxed">A lightweight agent that runs on-site and connects directly to your machines and data sources — streaming data securely to the platform. No cloud dependency required for data collection.</p>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-1">
-                  {['MQTT', 'OPC-UA', 'MT-Connect'].map(p => (
-                    <span key={p} className="text-[11px] font-semibold tracking-wide text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">{p}</span>
+                <div className="flex flex-wrap items-center gap-2.5 mt-1">
+                  {[
+                    { label: 'MQTT', logo: '/mqtt-logo.svg', logoClassName: 'h-4' },
+                    { label: 'Modbus', logo: '/modbus-logo.svg', logoClassName: 'h-5' },
+                    { label: 'GraphQL', logo: '/graphql-logo.svg', logoClassName: 'h-4' },
+                    { label: 'OPC-UA' },
+                    { label: 'MT-Connect' },
+                    { label: 'EtherNet/IP' },
+                    { label: 'HTTP (polling & webhook)' },
+                  ].map(p => (
+                    <span key={p.label} className="inline-flex items-center justify-center h-9 bg-white rounded-full px-4">
+                      {p.logo ? (
+                        <img src={p.logo} alt={p.label} className={p.logoClassName} />
+                      ) : (
+                        <span className="text-[13px] font-medium tracking-wide text-black/80">{p.label}</span>
+                      )}
+                    </span>
                   ))}
                 </div>
               </div>
 
               {/* Diagram */}
-              <div className="flex-1 border-t lg:border-t-0 lg:border-l border-white/[0.08] bg-[#0a0b0d] flex items-center justify-center p-6 min-h-[200px]">
+              <div className="flex-1 bg-[#0a0b0d] flex items-center justify-center p-6 min-h-[200px]">
                 <svg viewBox="0 0 320 140" className="w-full max-w-sm">
                   {/* Machines */}
                   {[{y:18,l:'CNC-01'},{y:52,l:'RB-01'},{y:86,l:'WS-01'},{y:120,l:'ML-01'}].map(m => (
@@ -253,42 +267,40 @@ export default function Features() {
                   {/* Protocol lines */}
                   {[{y:27,label:'MQTT'},{y:61,label:'OPC-UA'},{y:95,label:'MT-Connect'}].map(p => (
                     <g key={p.label}>
-                      <line x1="53" y1={p.y} x2="118" y2={p.y} stroke="rgba(52,211,153,0.25)" strokeWidth="0.75" strokeDasharray="3,2"/>
-                      <text x="85" y={p.y - 3} textAnchor="middle" fill="rgba(52,211,153,0.45)" fontSize="5.5">{p.label}</text>
+                      <line x1="53" y1={p.y} x2="118" y2={p.y} stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" strokeDasharray="3,2"/>
+                      <text x="85" y={p.y - 3} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="5.5">{p.label}</text>
                     </g>
                   ))}
                   {/* Gateway box */}
-                  <rect x="118" y="38" width="72" height="62" rx="8" fill="rgba(52,211,153,0.06)" stroke="rgba(52,211,153,0.25)" strokeWidth="1"/>
-                  <text x="154" y="68" textAnchor="middle" fill="rgba(52,211,153,0.85)" fontSize="9" fontWeight="600">Gateway</text>
-                  <text x="154" y="82" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="6">on-site agent</text>
+                  <rect x="118" y="38" width="72" height="62" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.25)" strokeWidth="1"/>
+                  <text x="154" y="68" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="9" fontWeight="600">Gateway</text>
+                  <text x="154" y="82" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="6">on-site agent</text>
                   {/* Arrow */}
                   <line x1="191" y1="69" x2="218" y2="69" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75"/>
                   <polygon points="218,66 224,69 218,72" fill="rgba(255,255,255,0.2)"/>
                   {/* Platform box */}
-                  <rect x="224" y="48" width="88" height="42" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)" strokeWidth="0.75"/>
-                  <text x="268" y="68" textAnchor="middle" fill="rgba(255,255,255,0.55)" fontSize="8" fontWeight="500">Factory Flow</text>
+                  <rect x="224" y="48" width="88" height="42" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.75"/>
+                  <text x="268" y="68" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8" fontWeight="500">Factory Flow</text>
                   <text x="268" y="80" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="6">platform</text>
                 </svg>
               </div>
             </div>
           </div>
 
-          {/* Admin feature cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {/* Security & access — spec sheet */}
+          <div className="rounded-2xl border border-white/[0.12] bg-white/[0.02] overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-y divide-x divide-white/[0.06]">
             {[
-              { icon: Building2,    title: 'Data Isolation',        description: 'Your data is fully isolated per organization — no cross-tenant access, ever.', accent: '#60a5fa' },
-              { icon: ScrollText,  title: 'Audit Trail',           description: 'Every change is logged with who did it and when, so nothing goes untracked.', accent: '#fb923c' },
-              { icon: KeyRound,    title: 'Two-Factor Auth',       description: 'Optional 2FA protects your account even if your password is compromised.', accent: '#f472b6' },
-              { icon: Users,       title: 'Role-Based Permissions', description: 'Control exactly what each team member can see and do — Admin, Editor, or Viewer.', accent: '#a78bfa' },
-              { icon: Code2,       title: 'Secure API Access',     description: 'Connect your systems with scoped API keys that can be revoked at any time.', accent: '#22d3ee' },
-              { icon: Lock,        title: 'Encrypted Secrets',     description: 'Credentials and sensitive data are encrypted at rest — never stored in plaintext.', accent: '#34d399' },
-              { icon: ShieldCheck, title: 'Single Sign-On',        description: 'Connect your identity provider. One set of credentials across your entire org.', accent: '#94a3b8' },
+              { icon: Building2,    title: 'Data Isolation',          description: 'Your data is fully isolated per organization — no cross-tenant access, ever.', color: 'text-blue-400' },
+              { icon: ScrollText,   title: 'Audit Trail',             description: 'Every change is logged with who did it and when, so nothing goes untracked.', color: 'text-orange-400' },
+              { icon: ShieldCheck,  title: '2FA & Single Sign-On',    description: 'Add 2FA or connect your identity provider for secure, centralized login.', color: 'text-green-400' },
+              { icon: Users,        title: 'Role-Based Permissions',  description: 'Control exactly what each team member can see and do — Admin, Editor, or Viewer.', color: 'text-purple-400' },
+              { icon: Code2,        title: 'Secure API Access',       description: 'Connect your systems with scoped API keys that can be revoked at any time.', color: 'text-cyan-400' },
+              { icon: Lock,         title: 'Encrypted Secrets',       description: 'Credentials and sensitive data are encrypted at rest — never stored in plaintext.', color: 'text-indigo-400' },
             ].map(f => (
-              <div key={f.title} className="bg-white/[0.02] border border-white/[0.12] rounded-2xl p-5 flex flex-col gap-3 relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{background: `linear-gradient(90deg, ${f.accent}40, ${f.accent}15)`}}/>
-                <f.icon className="w-5 h-5 mt-1" style={{color: f.accent}} strokeWidth={1.75}/>
+              <div key={f.title} className="p-6 flex flex-col gap-3">
+                <f.icon className={`w-4 h-4 ${f.color}`} strokeWidth={1.75}/>
                 <div>
-                  <h4 className="text-sm font-semibold text-white mb-1.5">{f.title}</h4>
+                  <h4 className="text-sm font-medium text-white mb-1">{f.title}</h4>
                   <p className="text-xs text-secondary leading-relaxed">{f.description}</p>
                 </div>
               </div>
