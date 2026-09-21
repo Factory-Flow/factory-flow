@@ -1,6 +1,7 @@
 import AppAppBar from './components/AppAppBar';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import GatewaySection from './components/gateway/GatewaySection';
 import Pricing from './components/Pricing';
 //import Highlights from './components/Highlights';
 import FAQ from './components/FAQ';
@@ -88,6 +89,7 @@ export default function MarketingPage() {
       <main>
         <Hero />
         <Features />
+        <GatewaySection />
         <Pricing />
         <FAQ />
       </main>

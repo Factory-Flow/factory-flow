@@ -1,4 +1,4 @@
-import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, Plug, ScrollText, Building2, Lock } from 'lucide-react';
+import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, ScrollText, Building2, Lock } from 'lucide-react';
 import Lightbox from './Lightbox';
 
 function LayoutViewMockup() {
@@ -212,82 +212,14 @@ export default function Features() {
           ))}
         </div>
 
-        {/* Enterprise & Integration */}
-        <div className="mt-20 md:mt-28 pt-16 md:pt-20 border-t border-white/[0.08]">
-          {/* Header */}
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-[11px] font-semibold tracking-widest uppercase text-white/50 border border-white/10 bg-white/[0.03] rounded-full px-3 py-1">Enterprise</span>
-          </div>
-          <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2">Built for enterprise</h3>
-          <p className="text-sm text-secondary max-w-[480px] mb-8">Security, control, and deep integration for teams that need more than a dashboard.</p>
-
-          {/* Gateway — hero card */}
-          <div className="relative bg-white/[0.02] border border-white/[0.12] rounded-2xl overflow-hidden mb-4">
-            <div className="flex flex-col lg:flex-row">
-              {/* Text */}
-              <div className="lg:w-[38%] p-8 flex flex-col gap-4 justify-center border-b lg:border-b-0 lg:border-r border-white/[0.06]">
-                <div className="w-10 h-10 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center">
-                  <Plug className="w-5 h-5 text-white/70" strokeWidth={2} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Factory Flow Gateway</h4>
-                  <p className="text-sm text-secondary leading-relaxed">A lightweight agent that runs on-site and connects directly to your machines and data sources — streaming data securely to the platform. No cloud dependency required for data collection.</p>
-                </div>
-                <div className="flex flex-wrap items-center gap-2.5 mt-1">
-                  {[
-                    { label: 'MQTT', logo: '/mqtt-logo.svg', logoClassName: 'h-4' },
-                    { label: 'Modbus', logo: '/modbus-logo.svg', logoClassName: 'h-5' },
-                    { label: 'GraphQL', logo: '/graphql-logo.svg', logoClassName: 'h-4' },
-                    { label: 'OPC-UA' },
-                    { label: 'MT-Connect' },
-                    { label: 'EtherNet/IP' },
-                    { label: 'HTTP (polling & webhook)' },
-                  ].map(p => (
-                    <span key={p.label} className="inline-flex items-center justify-center h-9 bg-white rounded-full px-4">
-                      {p.logo ? (
-                        <img src={p.logo} alt={p.label} className={p.logoClassName} />
-                      ) : (
-                        <span className="text-[13px] font-medium tracking-wide text-black/80">{p.label}</span>
-                      )}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Diagram */}
-              <div className="flex-1 bg-[#0a0b0d] flex items-center justify-center p-6 min-h-[200px]">
-                <svg viewBox="0 0 320 140" className="w-full max-w-sm">
-                  {/* Machines */}
-                  {[{y:18,l:'CNC-01'},{y:52,l:'RB-01'},{y:86,l:'WS-01'},{y:120,l:'ML-01'}].map(m => (
-                    <g key={m.l}>
-                      <rect x="0" y={m.y} width="52" height="18" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.75"/>
-                      <text x="26" y={m.y + 12} textAnchor="middle" fill="rgba(255,255,255,0.4)" fontSize="6.5" fontFamily="monospace">{m.l}</text>
-                    </g>
-                  ))}
-                  {/* Protocol lines */}
-                  {[{y:27,label:'MQTT'},{y:61,label:'OPC-UA'},{y:95,label:'MT-Connect'}].map(p => (
-                    <g key={p.label}>
-                      <line x1="53" y1={p.y} x2="118" y2={p.y} stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" strokeDasharray="3,2"/>
-                      <text x="85" y={p.y - 3} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="5.5">{p.label}</text>
-                    </g>
-                  ))}
-                  {/* Gateway box */}
-                  <rect x="118" y="38" width="72" height="62" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.25)" strokeWidth="1"/>
-                  <text x="154" y="68" textAnchor="middle" fill="rgba(255,255,255,0.9)" fontSize="9" fontWeight="600">Gateway</text>
-                  <text x="154" y="82" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="6">on-site agent</text>
-                  {/* Arrow */}
-                  <line x1="191" y1="69" x2="218" y2="69" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75"/>
-                  <polygon points="218,66 224,69 218,72" fill="rgba(255,255,255,0.2)"/>
-                  {/* Platform box */}
-                  <rect x="224" y="48" width="88" height="42" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.1)" strokeWidth="0.75"/>
-                  <text x="268" y="68" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="8" fontWeight="500">Factory Flow</text>
-                  <text x="268" y="80" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="6">platform</text>
-                </svg>
-              </div>
-            </div>
+        {/* Security & access */}
+        <div className="mt-10">
+          <div className="flex items-center justify-center gap-6 max-w-[900px] mx-auto mb-8">
+            <div className="flex-1 h-px bg-white/15 hidden sm:block" />
+            <p className="text-lg md:text-xl text-secondary max-w-[600px] text-center leading-relaxed min-w-0">Enterprise-ready security, compliance, and controls built in.</p>
+            <div className="flex-1 h-px bg-white/15 hidden sm:block" />
           </div>
 
-          {/* Security & access — spec sheet */}
           <div className="rounded-2xl border border-white/[0.12] bg-white/[0.02] overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-y divide-x divide-white/[0.06]">
             {[
               { icon: Building2,    title: 'Data Isolation',          description: 'Your data is fully isolated per organization — no cross-tenant access, ever.', color: 'text-blue-400' },

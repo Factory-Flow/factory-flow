@@ -75,7 +75,7 @@ export default function Pricing() {
     { label: 'Shifts',               basic: '3',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited*' },
     { label: 'Team members',         basic: '1',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited*' },
     { label: 'Connected machines',   basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited*' },
-    { label: 'Gateway licenses',     basic: '—',          pro: '1',          enterprise: '5',        selfHosted: 'Custom' },
+    { label: 'Gateway licenses',     basic: '—',          pro: '3',          enterprise: '5',        selfHosted: 'Custom' },
     { label: 'Alert rules',          basic: '—',          pro: '10',         enterprise: '50',       selfHosted: 'Unlimited*' },
     { label: 'Alert groups',         basic: '—',          pro: '3',          enterprise: '10',       selfHosted: 'Unlimited*' },
     { label: 'Alert group members',  basic: '—',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited*' },

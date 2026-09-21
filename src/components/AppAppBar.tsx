@@ -78,6 +78,12 @@ export default function AppAppBar() {
             Features
           </button>
           <button
+            onClick={() => scrollToSection("gateway")}
+            className="text-sm text-secondary hover:text-white transition-colors px-3 py-1.5 rounded-md hover:bg-white/5 cursor-pointer"
+          >
+            Gateway
+          </button>
+          <button
             onClick={() => scrollToSection("pricing")}
             className="text-sm text-secondary hover:text-white transition-colors px-3 py-1.5 rounded-md hover:bg-white/5 cursor-pointer"
           >
@@ -170,6 +176,12 @@ export default function AppAppBar() {
             className="text-left text-secondary hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-colors cursor-pointer"
           >
             Features
+          </button>
+          <button
+            onClick={() => scrollToSection("gateway")}
+            className="text-left text-secondary hover:text-white hover:bg-white/5 px-3 py-2 rounded-md transition-colors cursor-pointer"
+          >
+            Gateway
           </button>
           <button
             onClick={() => scrollToSection("pricing")}
