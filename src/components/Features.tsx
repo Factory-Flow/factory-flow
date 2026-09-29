@@ -1,4 +1,4 @@
-import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, ScrollText, Building2, Lock } from 'lucide-react';
+import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, ScrollText, Building2, Lock, KeyRound, Network } from 'lucide-react';
 import Lightbox from './Lightbox';
 
 function LayoutViewMockup() {
@@ -228,6 +228,8 @@ export default function Features() {
               { icon: Users,        title: 'Role-Based Permissions',  description: 'Control exactly what each team member can see and do — Admin, Editor, or Viewer.', color: 'text-purple-400' },
               { icon: Code2,        title: 'Secure API Access',       description: 'Connect your systems with scoped API keys that can be revoked at any time.', color: 'text-cyan-400' },
               { icon: Lock,         title: 'Encrypted Secrets',       description: 'Credentials and sensitive data are encrypted at rest — never stored in plaintext.', color: 'text-indigo-400' },
+              { icon: KeyRound,     title: 'Encryption in Transit',   description: 'All data is encrypted in transit via TLS between your browser, the Gateway, and Factory Flow.', color: 'text-yellow-400' },
+              { icon: Network,      title: 'Outbound-Only Gateway',   description: 'Factory Flow Gateway only makes outbound connections — never inbound — so it can sit on an isolated network.', color: 'text-pink-400' },
             ].map(f => (
               <div key={f.title} className="p-6 flex flex-col gap-3">
                 <f.icon className={`w-4 h-4 ${f.color}`} strokeWidth={1.75}/>
@@ -235,6 +237,23 @@ export default function Features() {
                   <h4 className="text-sm font-medium text-white mb-1">{f.title}</h4>
                   <p className="text-xs text-secondary leading-relaxed">{f.description}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-sm font-medium text-white/50 mt-8 mb-3">On our roadmap</p>
+          <div className="rounded-2xl border border-white/[0.12] bg-white/[0.02] overflow-hidden grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.06]">
+            {[
+              { name: 'SOC 2 Type II', scope: 'Audited controls over the security, availability, and confidentiality of customer data.' },
+              { name: 'ISO 27001',     scope: 'International standard for information security management across our organization.' },
+              { name: 'IEC 62443',     scope: 'Security requirements specific to industrial automation and control systems.' },
+            ].map(s => (
+              <div key={s.name} className="p-6 flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-sm font-medium text-white">{s.name}</h4>
+                  <span className="text-[10px] uppercase tracking-wide text-white/35">Planned</span>
+                </div>
+                <p className="text-xs text-secondary leading-relaxed">{s.scope}</p>
               </div>
             ))}
           </div>

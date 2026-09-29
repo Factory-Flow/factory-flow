@@ -1,30 +1,25 @@
-import { useState, useEffect, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ArrowLeftRight, Zap, Plug, Network, ShieldCheck, ScrollText, type LucideIcon } from 'lucide-react';
-import MiniConnect from './MiniConnect';
-import MiniNetworks from './MiniNetworks';
-import MiniLogging from './MiniLogging';
-import MiniSecurity from './MiniSecurity';
+import Lightbox from '../Lightbox';
 import ConnectionPill from './ConnectionPill';
 import { useRevealOnScroll } from './useRevealOnScroll';
 import { AppleIcon, WindowsIcon, LinuxIcon } from './PlatformIcons';
 
-const AUTO_ADVANCE_MS = 15000;
-
 const cards: Array<{
-  number: string;
   icon: LucideIcon;
+  iconColor: string;
+  iconBg: string;
   title: string;
   description: string;
-  visual: ReactNode;
   tags?: { label: string; description: string; url: string; icon: ReactNode; variant?: 'light' | 'dark'; showLabel?: boolean }[];
 }> = [
   {
-    number: '01',
     icon: Plug,
+    iconColor: 'text-cyan-400',
+    iconBg: 'bg-cyan-500/10',
     title: 'Universal connectivity',
     description:
       'Connect directly to your machines and control systems, or tap into your factory systems already collecting data. Factory Flow Gateway can ingest data from multiple sources at the same time using any of the following protocols:',
-    visual: <MiniConnect />,
     tags: [
       {
         label: 'OPC UA',
@@ -79,77 +74,56 @@ const cards: Array<{
     ],
   },
   {
-    number: '02',
     icon: Network,
+    iconColor: 'text-blue-400',
+    iconBg: 'bg-blue-500/10',
     title: 'Data mapping',
     description:
       'No custom Node.js or Node-RED scripts. Point the Gateway at a data source and map it to a machine in minutes. One machine is easy — hundreds, with addresses that shift over time, isn’t. Factory Flow Gateway handles that automatically.',
-    visual: <MiniNetworks />,
   },
   {
-    number: '03',
     icon: ShieldCheck,
+    iconColor: 'text-green-400',
+    iconBg: 'bg-green-500/10',
     title: 'Security',
     description:
       'Run one gateway per network segment to keep every network isolated from the rest of your IT. Factory Flow Gateway only makes outbound connections — never inbound — so it can sit on a network with no general internet access, as long as it can reach your self-hosted deployment or Factory Flow Cloud.',
-    visual: <MiniSecurity />,
   },
   {
-    number: '04',
     icon: ScrollText,
+    iconColor: 'text-orange-400',
+    iconBg: 'bg-orange-500/10',
     title: 'Activity logs',
     description:
       'Connection attempts, data sends, collector status, and server access are all logged for full auditability.',
-    visual: <MiniLogging />,
   },
 ];
 
-function GatewayNavItem({
-  card,
-  active,
-  onClick,
-}: {
-  card: (typeof cards)[number];
-  active: boolean;
-  onClick: () => void;
-}) {
+function GatewayHero() {
   return (
-    <button
-      type="button"
-      role="tab"
-      aria-selected={active}
-      onClick={onClick}
-      className={`w-full flex flex-col items-center md:items-start gap-2 px-4 py-3.5 rounded-lg border text-center md:text-left transition-colors ${
-        active ? 'bg-white/[0.06] border-white/[0.15]' : 'border-transparent hover:bg-white/[0.03]'
-      }`}
-    >
-      <card.icon className={`w-6 h-6 flex-shrink-0 ${active ? 'text-purple-300' : 'text-tertiary'}`} strokeWidth={1.75} />
-      <span className={`text-xs font-semibold leading-snug ${active ? 'text-white' : 'text-secondary'}`}>
-        {card.title}
-      </span>
-      <div className={`w-full h-0.5 rounded-full overflow-hidden ${active ? 'bg-white/10' : 'bg-transparent'}`}>
-        {active && (
-          <div
-            key={card.number}
-            className="gw-progress-fill h-full rounded-full bg-purple-400/70"
-            style={{ animationDuration: `${AUTO_ADVANCE_MS}ms` }}
-          />
-        )}
-      </div>
-    </button>
+    <div className="relative rounded-2xl border border-white/[0.12] bg-[#0a0b0d] overflow-hidden aspect-[2840/1896]">
+      <Lightbox src="/factory-flow-gateway-dashboard.png" alt="Factory Flow Gateway dashboard">
+        <img
+          src="/factory-flow-gateway-dashboard.png"
+          alt="Factory Flow Gateway dashboard"
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </Lightbox>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#08090a] to-transparent pointer-events-none" />
+    </div>
   );
 }
 
-function GatewayDetailPanel({ card }: { card: (typeof cards)[number] }) {
+function GatewayCard({ card }: { card: (typeof cards)[number] }) {
   return (
-    <div
-      key={card.number}
-      role="tabpanel"
-      className="gw-panel-in rounded-xl border border-white/[0.12] bg-white/[0.03] p-6 md:p-8 flex flex-col gap-6"
-    >
-      <div className="flex items-center justify-center min-h-48 border-b border-white/[0.06] pb-6">{card.visual}</div>
+    <div className="rounded-2xl border border-white/[0.12] bg-white/[0.02] p-6 flex flex-col gap-4 transition-colors hover:bg-white/[0.04]">
+      <div className={`w-10 h-10 rounded-lg ${card.iconBg} flex items-center justify-center`}>
+        <card.icon className={`w-5 h-5 ${card.iconColor}`} strokeWidth={2} />
+      </div>
       <div>
-        <h4 className="text-lg font-semibold text-white mb-2 leading-snug">{card.title}</h4>
+        <h4 className="text-base font-semibold text-white mb-2">{card.title}</h4>
         <p className="text-sm text-secondary leading-relaxed">{card.description}</p>
         {card.tags && (
           <div className="flex flex-wrap gap-1.5 mt-4">
@@ -172,15 +146,7 @@ function GatewayDetailPanel({ card }: { card: (typeof cards)[number] }) {
 }
 
 export default function GatewaySection() {
-  const [selected, setSelected] = useState(0);
   const { ref, inView } = useRevealOnScroll<HTMLDivElement>();
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setSelected((s) => (s + 1) % cards.length);
-    }, AUTO_ADVANCE_MS);
-    return () => clearInterval(id);
-  }, [selected]);
 
   return (
     <section id="gateway" className="pt-12 pb-24 md:pt-16 md:pb-32 relative">
@@ -211,16 +177,13 @@ export default function GatewaySection() {
           </div>
         </div>
 
-        <div
-          ref={ref}
-          className={`gw-reveal ${inView ? 'gw-in-view' : ''} grid grid-cols-1 md:grid-cols-[260px_1fr] gap-5 md:gap-8 max-w-[1000px] mx-auto`}
-        >
-          <div role="tablist" aria-orientation="vertical" className="flex flex-col gap-1.5">
-            {cards.map((card, i) => (
-              <GatewayNavItem key={card.number} card={card} active={i === selected} onClick={() => setSelected(i)} />
+        <div ref={ref} className={`gw-reveal ${inView ? 'gw-in-view' : ''} flex flex-col gap-8`}>
+          <GatewayHero />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {cards.map((card) => (
+              <GatewayCard key={card.title} card={card} />
             ))}
           </div>
-          <GatewayDetailPanel card={cards[selected]} />
         </div>
       </div>
     </section>

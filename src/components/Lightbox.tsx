@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 interface LightboxProps {
   src: string;
@@ -52,18 +53,20 @@ export default function Lightbox({ src, alt, children, wrapperClassName = 'w-ful
         </div>
       </div>
 
-      {open && (
-        <div
-          className={`fixed inset-0 z-50 flex items-center justify-center p-6 cursor-pointer transition-all duration-200 ${visible ? 'bg-black/85 backdrop-blur-sm' : 'bg-transparent backdrop-blur-none'}`}
-          onClick={handleClose}
-        >
-          <img
-            src={src}
-            alt={alt}
-            className={`max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl transition-all duration-200 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          />
-        </div>
-      )}
+      {open &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-50 flex items-center justify-center p-6 cursor-pointer transition-all duration-200 ${visible ? 'bg-black/85 backdrop-blur-sm' : 'bg-transparent backdrop-blur-none'}`}
+            onClick={handleClose}
+          >
+            <img
+              src={src}
+              alt={alt}
+              className={`max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl transition-all duration-200 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+            />
+          </div>,
+          document.body
+        )}
     </>
   );
 }
