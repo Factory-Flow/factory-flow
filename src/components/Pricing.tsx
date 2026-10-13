@@ -69,7 +69,6 @@ export default function Pricing() {
   const usageTable = [
     { label: 'Facilities',           basic: '1',          pro: '1',          enterprise: '3',        selfHosted: 'Unlimited*' },
     { label: 'Machines',             basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited*' },
-    { label: 'Price per machine',    basic: '~$40 CAD/mo',   pro: '~$20 CAD/mo',   enterprise: '~$8 CAD/mo',  selfHosted: '—' },
     { label: 'Layouts',              basic: '1',          pro: '2',          enterprise: '5',        selfHosted: 'Unlimited*' },
     { label: 'Production lines',     basic: '1',          pro: '3',          enterprise: '15',       selfHosted: 'Unlimited*' },
     { label: 'Shifts',               basic: '3',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited*' },
@@ -223,21 +222,18 @@ export default function Pricing() {
                 </tr>
               </thead>
               <tbody>
-                {usageTable.map((row, i) => {
-                  const isDerived = row.label === 'Price per machine';
-                  return (
+                {usageTable.map((row, i) => (
                   <tr
                     key={row.label}
-                    className={`border-b border-white/[0.1] last:border-0 ${isDerived ? 'bg-white/[0.04]' : i % 2 === 0 ? 'bg-white/[0.04]' : 'bg-white/[0.01]'}`}
+                    className={`border-b border-white/[0.1] last:border-0 ${i % 2 === 0 ? 'bg-white/[0.04]' : 'bg-white/[0.01]'}`}
                   >
-                    <td className={`px-6 py-3.5 ${isDerived ? 'text-tertiary text-xs pl-8' : 'text-secondary'}`}>{row.label}</td>
-                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.basic}</td>
-                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.pro}</td>
-                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.enterprise}</td>
-                    <td className={`px-6 py-3.5 text-center tabular-nums ${isDerived ? 'text-tertiary text-xs' : 'text-white/80'}`}>{row.selfHosted}</td>
+                    <td className="px-6 py-3.5 text-secondary">{row.label}</td>
+                    <td className="px-6 py-3.5 text-center tabular-nums text-white/80">{row.basic}</td>
+                    <td className="px-6 py-3.5 text-center tabular-nums text-white/80">{row.pro}</td>
+                    <td className="px-6 py-3.5 text-center tabular-nums text-white/80">{row.enterprise}</td>
+                    <td className="px-6 py-3.5 text-center tabular-nums text-white/80">{row.selfHosted}</td>
                   </tr>
-                  );
-                })}
+                ))}
               </tbody>
             </table>
           </div>
