@@ -9,7 +9,7 @@ const loopsEndpoint = loopsFormId
   ? `https://app.loops.so/api/newsletter-form/${loopsFormId}`
   : "";
 
-export default function WaitlistInlineForm() {
+export default function BetaSignupForm() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
@@ -29,7 +29,7 @@ export default function WaitlistInlineForm() {
   if (!loopsEndpoint) {
     return (
       <div className="p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400">
-        Waitlist submissions are not configured. Add `VITE_LOOPS_FORM_ID` to enable this form.
+        Beta signups are not configured. Add `VITE_LOOPS_FORM_ID` to enable this form.
       </div>
     );
   }
@@ -89,7 +89,7 @@ export default function WaitlistInlineForm() {
       const trimmedName = name.trim();
       const trimmedCompany = company.trim();
       const body = new URLSearchParams({
-        userGroup: "waitlist",
+        userGroup: "beta",
         mailingLists: "",
         email: email.trim(),
       });
@@ -139,7 +139,7 @@ export default function WaitlistInlineForm() {
     <div className="w-full">
       {formState === "success" ? (
         <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-center text-sm font-medium">
-          Thanks! We&apos;ll be in touch!
+          You're in! We&apos;ll email you shortly to get you set up.
         </div>
       ) : (
         <form ref={formRef} onSubmit={handleSubmit} noValidate className="flex flex-col gap-2.5">
@@ -185,7 +185,7 @@ export default function WaitlistInlineForm() {
               disabled={isSubmitting}
               className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all whitespace-nowrap text-[15px]"
             >
-              {isSubmitting ? "Please wait..." : "Join waitlist"}
+              {isSubmitting ? "Please wait..." : "Join the beta"}
             </button>
           </div>
 

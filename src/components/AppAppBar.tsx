@@ -150,7 +150,7 @@ export default function AppAppBar() {
             onClick={() => scrollToSection("hero")}
             className="text-sm bg-white text-black px-4 py-1.5 rounded-md font-medium hover:bg-white/90 transition-all ml-1 cursor-pointer"
           >
-            Join Waitlist
+            Join Beta
           </button>
         </div>
 
@@ -237,7 +237,7 @@ export default function AppAppBar() {
             onClick={() => scrollToSection("hero")}
             className="bg-white text-black px-4 py-2 rounded-md font-medium text-center hover:bg-white/90 transition-colors cursor-pointer"
           >
-            Join Waitlist
+            Join Beta
           </button>
         </div>
       )}

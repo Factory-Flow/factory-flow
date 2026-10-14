@@ -1,4 +1,4 @@
-import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, Users, Code2, ScrollText, Building2, Lock, KeyRound, Network } from 'lucide-react';
+import { Layers, Gauge, Timer, PauseCircle, PackageCheck, Bell, Box, ShieldCheck, ShieldAlert, Users, Code2, ScrollText, Building2, Lock, KeyRound, Network } from 'lucide-react';
 import Lightbox from './Lightbox';
 
 function LayoutViewMockup() {
@@ -222,6 +222,7 @@ export default function Features() {
 
           <div className="rounded-2xl border border-white/[0.12] bg-white/[0.02] overflow-hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 divide-y divide-x divide-white/[0.06]">
             {[
+              { icon: ShieldAlert,  title: 'Layered Protection', description: 'Secure authentication, Cloudflare-powered protection against bots and malicious traffic, role-based access controls, and authenticated machine connectivity safeguard your production data and operations.', color: 'text-red-400' },
               { icon: Building2,    title: 'Data Isolation',          description: 'Your data is fully isolated per organization — no cross-tenant access, ever.', color: 'text-blue-400' },
               { icon: ScrollText,   title: 'Audit Trail',             description: 'Every change is logged with who did it and when, so nothing goes untracked.', color: 'text-orange-400' },
               { icon: ShieldCheck,  title: '2FA & Single Sign-On',    description: 'Add 2FA or connect your identity provider for secure, centralized login.', color: 'text-green-400' },

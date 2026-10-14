@@ -1,5 +1,5 @@
 
-import WaitlistInlineForm from './WaitlistInlineForm';
+import BetaSignupForm from './BetaSignupForm';
 import Lightbox from './Lightbox';
 
 export default function Hero() {
@@ -12,14 +12,13 @@ export default function Hero() {
       <div className="max-w-[1280px] mx-auto px-8 relative z-10">
         {/* Announcement Badge */}
         <div className="flex flex-col items-center mb-8">
-          <a href="mailto:support@factoryflow.io?subject=Request%20Factory%20Flow%20access%20before%20launch" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border card-border hover:card-border-hover text-sm text-secondary hover:text-white transition-all group cursor-pointer mb-2">
+          <a href="mailto:support@factoryflow.io?subject=Request%20Factory%20Flow%20beta%20access" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border card-border hover:card-border-hover text-sm text-secondary hover:text-white transition-all group cursor-pointer mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-            <span>Early Access</span>
+            <span>Beta Now Open</span>
             <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </a>
-          <p className="text-xs text-white/40">Send us a message to try Factory Flow before launch</p>
         </div>
 
         {/* Hero Headline - Large, balanced typography */}
@@ -36,7 +35,8 @@ export default function Hero() {
           {/* CTA */}
           <div className="flex justify-center mb-20">
             <div className="w-full max-w-md">
-              <WaitlistInlineForm />
+              <BetaSignupForm />
+              <p className="mt-3 text-center text-xs text-amber-400/90">Limited spots available. Early members get 50% off their subscription for life.</p>
               <div className="mt-4 text-center">
                 <a
                   href="https://demo.factoryflow.io"
