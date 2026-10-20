@@ -50,6 +50,7 @@ export default function Footer() {
                 <li><button onClick={() => scrollToSection("features")} className="text-secondary hover:text-white transition-colors cursor-pointer">Features</button></li>
                 <li><button onClick={() => scrollToSection("pricing")} className="text-secondary hover:text-white transition-colors cursor-pointer">Pricing</button></li>
                 <li><button onClick={() => scrollToSection("faq")} className="text-secondary hover:text-white transition-colors cursor-pointer">FAQ</button></li>
+                <li><a href="/compare" className="text-secondary hover:text-white transition-colors cursor-pointer">Compare</a></li>
               </ul>
             </div>
 

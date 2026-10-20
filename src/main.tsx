@@ -17,6 +17,8 @@ import MarketingPage from "./MarketingPage.tsx";
 import TermsPage from "./TermsPage.tsx";
 import PrivacyPage from "./PrivacyPage.tsx";
 import CookiesPage from "./CookiesPage.tsx";
+import ComparePage from "./ComparePage.tsx";
+import CompareToolPage from "./CompareToolPage.tsx";
 
 const gaMeasurementId = "G-MBRSNLKTMD";
 const isAnalyticsEnabled = import.meta.env.PROD && Boolean(gaMeasurementId);
@@ -26,6 +28,20 @@ if (isAnalyticsEnabled) {
 } else if (import.meta.env.DEV) {
   // eslint-disable-next-line no-console -- surface missing configuration during development
   console.warn("Google Analytics measurement ID is not configured.");
+}
+
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      return;
+    }
+
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+
+  return null;
 }
 
 function AnalyticsTracker() {
@@ -72,6 +88,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
+        <ScrollToTop />
         <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<MarketingPage />} />
@@ -80,6 +97,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookies" element={<CookiesPage />} />
+          <Route path="/compare" element={<ComparePage />} />
+          <Route path="/compare/:slug" element={<CompareToolPage />} />
         </Routes>
       </Provider>
     </BrowserRouter>
