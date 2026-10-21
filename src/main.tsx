@@ -28,6 +28,20 @@ if (isAnalyticsEnabled) {
   console.warn("Google Analytics measurement ID is not configured.");
 }
 
+function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      return;
+    }
+
+    window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+
+  return null;
+}
+
 function AnalyticsTracker() {
   const location = useLocation();
 
@@ -72,6 +86,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider>
+        <ScrollToTop />
         <AnalyticsTracker />
         <Routes>
           <Route path="/" element={<MarketingPage />} />
@@ -80,6 +95,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookies" element={<CookiesPage />} />
+          <Route path="/compare" element={<Navigate to="/" replace />} />
+          <Route path="/compare/:slug" element={<Navigate to="/" replace />} />
         </Routes>
       </Provider>
     </BrowserRouter>

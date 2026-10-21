@@ -57,10 +57,7 @@ export default function Footer() {
               <h4 className="font-medium text-white text-sm mb-4">Platform</h4>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <span className="text-secondary inline-flex items-center gap-2 cursor-default">
-                    Application
-                    <span className="text-[10px] px-1.5 py-0.5 bg-white/10 text-white/60 rounded font-medium uppercase tracking-wider">Coming Soon</span>
-                  </span>
+                  <a href="https://app.factoryflow.io" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors">Application</a>
                 </li>
                 <li>
                   <a href="https://demo.factoryflow.io" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-white transition-colors">Demo</a>
