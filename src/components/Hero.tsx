@@ -10,17 +10,6 @@ export default function Hero() {
       <div className="absolute top-20 left-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full pointer-events-none hidden md:block" />
 
       <div className="max-w-[1280px] mx-auto px-8 relative z-10">
-        {/* Announcement Badge */}
-        <div className="flex flex-col items-center mb-8">
-          <a href="mailto:support@factoryflow.io?subject=Request%20Factory%20Flow%20beta%20access" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border card-border hover:card-border-hover text-sm text-secondary hover:text-white transition-all group cursor-pointer mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-            <span>Beta Now Open</span>
-            <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
         {/* Hero Headline - Large, balanced typography */}
         <div className="text-center max-w-[980px] mx-auto">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-[1.1] mb-6 text-white">
@@ -29,7 +18,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg md:text-xl text-secondary leading-relaxed max-w-[680px] mx-auto mb-12">
-            Know exactly what's happening on your shop floor — without months of integration work.
+            Know what's happening on your shop floor without months of integration work.
           </p>
 
           {/* CTA */}

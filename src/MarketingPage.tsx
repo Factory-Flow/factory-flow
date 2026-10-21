@@ -4,7 +4,6 @@ import Features from './components/Features';
 import GatewaySection from './components/gateway/GatewaySection';
 import Pricing from './components/Pricing';
 //import Highlights from './components/Highlights';
-import CompareTeaser from './components/CompareTeaser';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import CookieConsentToast from './components/CookieConsentToast';
@@ -92,7 +91,6 @@ export default function MarketingPage() {
         <Features />
         <GatewaySection />
         <Pricing />
-        <CompareTeaser />
         <FAQ />
       </main>
       <Footer />

@@ -146,12 +146,14 @@ export default function AppAppBar() {
           >
             Try Demo
           </a>
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="text-sm bg-white text-black px-4 py-1.5 rounded-md font-medium hover:bg-white/90 transition-all ml-1 cursor-pointer"
+          <a
+            href="https://app.factoryflow.io/register"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm bg-white text-black px-4 py-1.5 rounded-md font-medium hover:bg-white/90 transition-all ml-1"
           >
-            Join Beta
-          </button>
+            Get started
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -233,12 +235,14 @@ export default function AppAppBar() {
           >
             Try Demo
           </a>
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="bg-white text-black px-4 py-2 rounded-md font-medium text-center hover:bg-white/90 transition-colors cursor-pointer"
+          <a
+            href="https://app.factoryflow.io/register"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-black px-4 py-2 rounded-md font-medium text-center hover:bg-white/90 transition-colors"
           >
-            Join Beta
-          </button>
+            Get started
+          </a>
         </div>
       )}
     </nav>

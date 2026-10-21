@@ -17,8 +17,6 @@ import MarketingPage from "./MarketingPage.tsx";
 import TermsPage from "./TermsPage.tsx";
 import PrivacyPage from "./PrivacyPage.tsx";
 import CookiesPage from "./CookiesPage.tsx";
-import ComparePage from "./ComparePage.tsx";
-import CompareToolPage from "./CompareToolPage.tsx";
 
 const gaMeasurementId = "G-MBRSNLKTMD";
 const isAnalyticsEnabled = import.meta.env.PROD && Boolean(gaMeasurementId);
@@ -97,8 +95,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookies" element={<CookiesPage />} />
-          <Route path="/compare" element={<ComparePage />} />
-          <Route path="/compare/:slug" element={<CompareToolPage />} />
+          <Route path="/compare" element={<Navigate to="/" replace />} />
+          <Route path="/compare/:slug" element={<Navigate to="/" replace />} />
         </Routes>
       </Provider>
     </BrowserRouter>

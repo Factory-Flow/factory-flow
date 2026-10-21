@@ -20,7 +20,7 @@ export default function Pricing() {
       ],
       cta: {
         label: 'Get started',
-        href: 'https://app.factoryflow.io',
+        href: 'https://app.factoryflow.io/register',
       },
     },
     {
@@ -36,7 +36,7 @@ export default function Pricing() {
       ],
       cta: {
         label: 'Get started',
-        href: 'https://app.factoryflow.io',
+        href: 'https://app.factoryflow.io/register',
       },
       highlight: true,
     },
@@ -52,7 +52,7 @@ export default function Pricing() {
       ],
       cta: {
         label: 'Get started',
-        href: 'https://app.factoryflow.io',
+        href: 'https://app.factoryflow.io/register',
       },
     },
   ];
