@@ -14,9 +14,10 @@ export default function Pricing() {
       features: [
         'Track machine cycle time, OEE, production and downtime in real time',
         'Performance insights at the machine, line, and facility level',
-        'Visualize your factory layout and production lines with overlaid analytics',
+        'Visualize your factory in 3D with overlaid analytics',
         'Compare shift and machine performance side by side',
-        'Connect your systems via the Factory Flow API for seamless data ingestion'
+        'Connect your systems via the Factory Flow API for seamless data ingestion',
+        'Full audit trail for compliance and accountability'
       ],
       cta: {
         label: 'Get started',
@@ -31,8 +32,7 @@ export default function Pricing() {
         'Everything in Basic',
         'Invite your team to collaborate',
         'Set up rules to notify your team the instant performance issues occur',
-        'Aggregate data from multiple sources with the included Factory Flow Gateway desktop collector',
-        'Full audit trail for compliance and accountability'
+        'Connect directly to your data sources with Factory Flow Gateway'
       ],
       cta: {
         label: 'Get started',
@@ -79,7 +79,7 @@ export default function Pricing() {
     { label: 'Alert groups',         basic: '—',          pro: '3',          enterprise: '10',       selfHosted: 'Unlimited*' },
     { label: 'Alert group members',  basic: '—',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited*' },
     { label: 'Alert history',        basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
-    { label: 'Audit logs',           basic: '—',          pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
+    { label: 'Audit logs',           basic: '100',        pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
     { label: 'API tokens',           basic: '1',          pro: '5',          enterprise: '5',        selfHosted: 'Unlimited*' },
     { label: 'Email alerts / month', basic: '50',         pro: '500',        enterprise: '1,000',    selfHosted: 'Unlimited*' },
     { label: 'Data retention',       basic: '3 months',   pro: '6 months',   enterprise: '1 year',   selfHosted: 'Unlimited*' },
