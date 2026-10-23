@@ -67,7 +67,7 @@ export default function MarketingPage() {
       '@type': 'WebSite',
       name: 'Factory Flow',
       url: 'https://factoryflow.io/',
-      description: 'Production monitoring for any machine in minutes',
+      description: 'Production monitoring for modern factories',
       publisher: {
         '@type': 'Organization',
         name: 'Factory Flow',
