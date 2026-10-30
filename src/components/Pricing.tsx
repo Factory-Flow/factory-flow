@@ -14,7 +14,6 @@ export default function Pricing() {
       features: [
         'Track machine cycle time, OEE, production and downtime in real time',
         'Performance insights at the machine, line, and facility level',
-        'Visualize your factory in 3D with overlaid analytics',
         'Compare shift and machine performance side by side',
         'Connect your systems via the Factory Flow API for seamless data ingestion',
         'Full audit trail for compliance and accountability'
@@ -30,6 +29,7 @@ export default function Pricing() {
       cadence: 'CAD / month',
       features: [
         'Everything in Basic',
+        'Visualize your factory in 3D with overlaid analytics',
         'Invite your team to collaborate',
         'Set up rules to notify your team the instant performance issues occur',
         'Connect directly to your data sources with Factory Flow Gateway'
@@ -69,11 +69,11 @@ export default function Pricing() {
   const usageTable = [
     { label: 'Facilities',           basic: '1',          pro: '1',          enterprise: '3',        selfHosted: 'Unlimited*' },
     { label: 'Machines',             basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited*' },
-    { label: 'Layouts',              basic: '1',          pro: '2',          enterprise: '5',        selfHosted: 'Unlimited*' },
     { label: 'Production lines',     basic: '1',          pro: '3',          enterprise: '15',       selfHosted: 'Unlimited*' },
     { label: 'Shifts',               basic: '3',          pro: '5',          enterprise: '10',       selfHosted: 'Unlimited*' },
     { label: 'Team members',         basic: '1',          pro: '5',          enterprise: '20',       selfHosted: 'Unlimited*' },
     { label: 'Connected machines',   basic: '5',          pro: '25',         enterprise: '200',      selfHosted: 'Unlimited*' },
+    { label: 'Layouts',              basic: '—',          pro: '2',          enterprise: '5',        selfHosted: 'Unlimited*' },
     { label: 'Gateway licenses',     basic: '—',          pro: '3',          enterprise: '5',        selfHosted: 'Custom' },
     { label: 'Alert rules',          basic: '—',          pro: '10',         enterprise: '50',       selfHosted: 'Unlimited*' },
     { label: 'Alert groups',         basic: '—',          pro: '3',          enterprise: '10',       selfHosted: 'Unlimited*' },
