@@ -44,15 +44,12 @@ export default function ConnectionPill({
   description,
   url,
   icon,
-  variant = 'light',
   showLabel = false,
 }: {
   label: string;
   description: string;
   url: string;
   icon: ReactNode;
-  /** 'dark' for logos whose mark relies on a dark/colored backdrop (e.g. white-on-transparent artwork). */
-  variant?: 'light' | 'dark';
   /** True for generic (non-brand) icons that need the label spelled out, since the glyph alone isn't identifying. */
   showLabel?: boolean;
 }) {
@@ -62,11 +59,15 @@ export default function ConnectionPill({
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative inline-flex items-center justify-center w-24 h-7 rounded-md bg-white"
+        className="group relative inline-flex items-center justify-center w-28 h-9"
       >
-        <span className="flex items-center justify-center gap-1.5 max-w-full px-2 text-[10px] font-medium text-neutral-700 whitespace-nowrap overflow-hidden">
-          <span className="flex items-center justify-center w-3 h-3 flex-shrink-0">{icon}</span>
-          <span className="truncate">{label}</span>
+        <span className="flex items-center justify-center gap-1.5 max-w-full px-2 text-xs font-medium whitespace-nowrap overflow-hidden">
+          <span className="flex items-center justify-center w-4 h-4 flex-shrink-0 grayscale brightness-0 invert opacity-50 transition-all duration-200 group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100">
+            {icon}
+          </span>
+          <span className="truncate text-neutral-300 opacity-80 transition-opacity duration-200 group-hover:text-white group-hover:opacity-100">
+            {label}
+          </span>
         </span>
         <Tooltip label={label} description={description} icon={icon} url={url} />
       </a>
@@ -79,9 +80,11 @@ export default function ConnectionPill({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className={`group relative inline-flex items-center justify-center w-24 h-7 rounded-md ${variant === 'dark' ? 'bg-neutral-900' : 'bg-white'}`}
+      className="group relative inline-flex items-center justify-center w-28 h-9"
     >
-      <span className="flex items-center justify-center h-4 max-w-16">{icon}</span>
+      <span className="flex items-center justify-center h-7 max-w-24 grayscale brightness-0 invert opacity-50 transition-all duration-200 group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100">
+        {icon}
+      </span>
       <Tooltip label={label} description={description} icon={icon} url={url} />
     </a>
   );

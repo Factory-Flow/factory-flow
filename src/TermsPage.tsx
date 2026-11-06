@@ -153,7 +153,9 @@ export default function TermsPage() {
             <p className="mb-3">You agree not to:</p>
             <ul className="list-disc list-inside space-y-1 pl-2">
               <li>Use the platform to store or transmit unlawful, harmful, or abusive content</li>
-              <li>Attempt to gain unauthorized access to any part of the platform or another organization's data</li>
+              <li>Attempt to gain unauthorized access to any part of the platform, another organization's data, or any account not your own</li>
+              <li>Probe, scan, or test the vulnerability of the platform or its underlying servers, networks, or infrastructure, except as expressly permitted under Section 10 (Security Research and Responsible Disclosure)</li>
+              <li>Attempt to access, extract, or exfiltrate credentials, API keys, access tokens, environment variables, source code, or database contents other than your own</li>
               <li>Interfere with or degrade the performance of the platform for other users</li>
               <li>Reverse-engineer, decompile, or attempt to extract the source code of the platform</li>
               <li>Resell or sublicense access to the platform without our written consent</li>
@@ -162,18 +164,35 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">10. Integrations and Third-Party Services</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">10. Security Research and Responsible Disclosure</h3>
+            <p className="mb-3">We welcome good-faith security research aimed at improving the security of Factory Flow. If you believe you have found a vulnerability, please report it to{' '}
+              <a href="mailto:support@factoryflow.io" className="text-blue-400 hover:text-blue-300">
+                support@factoryflow.io
+              </a>{' '}
+              before disclosing it publicly or to any third party.
+            </p>
+            <p className="mb-3">Good-faith research means:</p>
+            <ul className="list-disc list-inside space-y-1 pl-2 mb-3">
+              <li>Testing only against your own account, organization, and infrastructure — not another organization's data or deployment</li>
+              <li>Avoiding service degradation, data destruction, or access to data beyond what is necessary to demonstrate the issue</li>
+              <li>Not exploiting a vulnerability beyond what is necessary to confirm it exists, and reporting it promptly rather than retaining access</li>
+            </ul>
+            <p>Provided your research complies with this policy, we will not pursue legal action against you for it, and we will work with you to investigate and resolve the issue. This policy does not authorize testing against third-party services we integrate with (such as Stripe or OAuth providers), testing that violates applicable law, or conduct otherwise prohibited under Section 9 (Acceptable Use).</p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-3">11. Integrations and Third-Party Services</h3>
             <p className="mb-3">Factory Flow integrates with third-party services including Stripe for billing and OAuth providers (Google, GitHub, Microsoft) for authentication. Your use of those services is governed by their respective terms.</p>
             <p>We are not responsible for the availability, reliability, or conduct of third-party services. Outages or failures affecting Stripe, OAuth providers, cloud infrastructure, or other upstream services may impact your ability to access billing functions, sign in, or use the platform. We are not liable for any loss or disruption resulting from the unavailability of third-party services.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">11. Intellectual Property</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">12. Intellectual Property</h3>
             <p>Factory Flow and its underlying software, design, and trademarks are owned by us. These terms do not grant you any right to use our name, logo, or trademarks. You retain all intellectual property rights in the data you submit to the platform.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">12. Termination</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">13. Termination</h3>
             <div className="space-y-4">
               <div>
                 <p className="text-white font-medium mb-1">By you</p>
@@ -198,7 +217,7 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">13. Disclaimers</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">14. Disclaimers</h3>
             <div className="space-y-4">
               <p>The platform is provided "as is" and "as available." We do not warrant that the platform will be uninterrupted, error-free, or suitable for any particular purpose.</p>
               <div>
@@ -225,32 +244,32 @@ export default function TermsPage() {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">14. Limitation of Liability</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">15. Limitation of Liability</h3>
             <p>To the maximum extent permitted by applicable law, Factory Flow's total liability for any claim arising out of or related to these terms or the platform shall not exceed the amount you paid us in the 12 months preceding the claim. We are not liable for indirect, incidental, consequential, or punitive damages.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">15. Indemnification</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">16. Indemnification</h3>
             <p>You agree to defend, indemnify, and hold harmless Factory Flow and its officers, directors, employees, and agents from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising out of or related to: (a) your use of the platform; (b) data you or your organization submit to the platform; (c) your violation of these terms; or (d) your violation of any applicable law or the rights of any third party.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">16. Force Majeure</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">17. Force Majeure</h3>
             <p>We are not liable for any failure or delay in performing our obligations under these terms where such failure or delay results from circumstances beyond our reasonable control, including but not limited to failures of cloud infrastructure or internet backbone providers, natural disasters, power outages, cyberattacks on upstream services, pandemics, or actions of governmental authorities. We will resume performance as soon as reasonably practicable following the cessation of such circumstances.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">17. Changes to These Terms</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">18. Changes to These Terms</h3>
             <p>We may update these terms from time to time. We will notify you of material changes by updating the date at the top of this page or by email. Continued use of the platform after changes take effect constitutes acceptance of the revised terms.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">18. Governing Law</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">19. Governing Law</h3>
             <p>These terms are governed by the laws of the jurisdiction in which Factory Flow operates, without regard to conflict of law principles.</p>
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-white mb-3">19. Contact</h3>
+            <h3 className="text-xl font-semibold text-white mb-3">20. Contact</h3>
             <p>
               For questions about these terms, contact{' '}
               <a href="mailto:support@factoryflow.io" className="text-blue-400 hover:text-blue-300">
@@ -263,7 +282,7 @@ export default function TermsPage() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/10 text-sm text-gray-500">
-          Last updated May 13, 2026.
+          Last updated November 5, 2026.
         </div>
       </main>
       <Footer />

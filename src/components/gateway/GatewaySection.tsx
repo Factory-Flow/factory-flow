@@ -5,74 +5,81 @@ import ConnectionPill from './ConnectionPill';
 import { useRevealOnScroll } from './useRevealOnScroll';
 import { AppleIcon, WindowsIcon, LinuxIcon } from './PlatformIcons';
 
+const connectivity: {
+  icon: LucideIcon;
+  iconColor: string;
+  iconBg: string;
+  title: string;
+  description: string;
+  tags: { label: string; description: string; url: string; icon: ReactNode; showLabel?: boolean }[];
+} = {
+  icon: Plug,
+  iconColor: 'text-cyan-400',
+  iconBg: 'bg-cyan-500/10',
+  title: 'Universal connectivity',
+  description:
+    'Connect directly to your machines and control systems, or tap into your factory systems already collecting data. Factory Flow Gateway can ingest data from multiple sources at the same time using any of the following protocols:',
+  tags: [
+    {
+      label: 'OPC UA',
+      description: 'Platform-independent industrial protocol for secure, structured machine data.',
+      url: 'https://opcfoundation.org/about/opc-technologies/opc-ua/',
+      icon: <img src="/opcua-logo.png" alt="OPC UA" className="h-full w-auto max-w-full object-contain" />,
+    },
+    {
+      label: 'Modbus',
+      description: 'Long-standing serial/TCP protocol for talking to PLCs and industrial devices.',
+      url: 'https://modbus.org/',
+      icon: <img src="/modbus-logo.svg" alt="Modbus" className="h-full w-auto max-w-full object-contain" />,
+    },
+    {
+      label: 'EtherNet/IP',
+      description: 'Industrial Ethernet protocol built on the Common Industrial Protocol (CIP).',
+      url: 'https://www.odva.org/technology-standards/key-technologies/ethernet-ip/',
+      icon: <img src="/ethernetip-logo.webp" alt="EtherNet/IP" className="h-full w-auto max-w-full object-contain" />,
+    },
+    {
+      label: 'MTConnect',
+      description: 'Open manufacturing standard for exchanging machine tool and equipment data.',
+      url: 'https://www.mtconnect.org/',
+      icon: <img src="/mtconnect-logo.png" alt="MTConnect" className="h-full w-auto max-w-full object-contain" />,
+    },
+    {
+      label: 'MQTT',
+      description: 'Lightweight publish/subscribe messaging protocol built for IoT devices.',
+      url: 'https://mqtt.org/',
+      icon: <img src="/mqtt-logo.svg" alt="MQTT" className="h-full w-auto max-w-full object-contain" />,
+    },
+    {
+      label: 'HTTP',
+      description: 'GET and POST requests to external APIs, or open a port to receive webhooks.',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP',
+      icon: <ArrowLeftRight className="w-full h-full text-cyan-400" strokeWidth={1.75} />,
+      showLabel: true,
+    },
+    {
+      label: 'GraphQL',
+      description: 'Query language for APIs that fetches exactly the data you ask for.',
+      url: 'https://graphql.org/',
+      icon: <img src="/graphql-logo.svg" alt="GraphQL" className="h-full w-auto max-w-full object-contain" />,
+    },
+    {
+      label: 'WebSocket',
+      description: 'Persistent, two-way connection for streaming real-time machine data.',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket',
+      icon: <Zap className="w-full h-full text-rose-400" strokeWidth={1.75} />,
+      showLabel: true,
+    },
+  ],
+};
+
 const cards: Array<{
   icon: LucideIcon;
   iconColor: string;
   iconBg: string;
   title: string;
   description: string;
-  tags?: { label: string; description: string; url: string; icon: ReactNode; variant?: 'light' | 'dark'; showLabel?: boolean }[];
 }> = [
-  {
-    icon: Plug,
-    iconColor: 'text-cyan-400',
-    iconBg: 'bg-cyan-500/10',
-    title: 'Universal connectivity',
-    description:
-      'Connect directly to your machines and control systems, or tap into your factory systems already collecting data. Factory Flow Gateway can ingest data from multiple sources at the same time using any of the following protocols:',
-    tags: [
-      {
-        label: 'OPC UA',
-        description: 'Platform-independent industrial protocol for secure, structured machine data.',
-        url: 'https://opcfoundation.org/about/opc-technologies/opc-ua/',
-        icon: <img src="/opcua-logo.png" alt="OPC UA" className="h-full w-auto max-w-full object-contain" />,
-      },
-      {
-        label: 'Modbus',
-        description: 'Long-standing serial/TCP protocol for talking to PLCs and industrial devices.',
-        url: 'https://modbus.org/',
-        icon: <img src="/modbus-logo.svg" alt="Modbus" className="h-full w-auto max-w-full object-contain" />,
-      },
-      {
-        label: 'EtherNet/IP',
-        description: 'Industrial Ethernet protocol built on the Common Industrial Protocol (CIP).',
-        url: 'https://www.odva.org/technology-standards/key-technologies/ethernet-ip/',
-        icon: <img src="/ethernetip-logo.webp" alt="EtherNet/IP" className="h-full w-auto max-w-full object-contain" />,
-      },
-      {
-        label: 'MTConnect',
-        description: 'Open manufacturing standard for exchanging machine tool and equipment data.',
-        url: 'https://www.mtconnect.org/',
-        icon: <img src="/mtconnect-logo.png" alt="MTConnect" className="h-full w-auto max-w-full object-contain" />,
-      },
-      {
-        label: 'MQTT',
-        description: 'Lightweight publish/subscribe messaging protocol built for IoT devices.',
-        url: 'https://mqtt.org/',
-        icon: <img src="/mqtt-logo.svg" alt="MQTT" className="h-full w-auto max-w-full object-contain" />,
-      },
-      {
-        label: 'HTTP',
-        description: 'GET and POST requests to external APIs, or open a port to receive webhooks.',
-        url: 'https://developer.mozilla.org/en-US/docs/Web/HTTP',
-        icon: <ArrowLeftRight className="w-full h-full text-cyan-400" strokeWidth={1.75} />,
-        showLabel: true,
-      },
-      {
-        label: 'GraphQL',
-        description: 'Query language for APIs that fetches exactly the data you ask for.',
-        url: 'https://graphql.org/',
-        icon: <img src="/graphql-logo.svg" alt="GraphQL" className="h-full w-auto max-w-full object-contain" />,
-      },
-      {
-        label: 'WebSocket',
-        description: 'Persistent, two-way connection for streaming real-time machine data.',
-        url: 'https://developer.mozilla.org/en-US/docs/Web/API/WebSocket',
-        icon: <Zap className="w-full h-full text-rose-400" strokeWidth={1.75} />,
-        showLabel: true,
-      },
-    ],
-  },
   {
     icon: Network,
     iconColor: 'text-blue-400',
@@ -125,21 +132,29 @@ function GatewayCard({ card }: { card: (typeof cards)[number] }) {
       <div>
         <h4 className="text-base font-semibold text-white mb-2">{card.title}</h4>
         <p className="text-sm text-secondary leading-relaxed">{card.description}</p>
-        {card.tags && (
-          <div className="flex flex-wrap gap-1.5 mt-4">
-            {card.tags.map((tag) => (
-              <ConnectionPill
-                key={tag.label}
-                label={tag.label}
-                description={tag.description}
-                url={tag.url}
-                icon={tag.icon}
-                variant={tag.variant}
-                showLabel={tag.showLabel}
-              />
-            ))}
-          </div>
-        )}
+      </div>
+    </div>
+  );
+}
+
+function ConnectivityLine() {
+  return (
+    <div className="flex flex-col items-center gap-4 text-center max-w-[720px] mx-auto">
+      <div>
+        <h4 className="text-base font-semibold text-white mb-2">{connectivity.title}</h4>
+        <p className="text-sm text-secondary leading-relaxed">{connectivity.description}</p>
+      </div>
+      <div className="flex flex-wrap justify-center gap-1.5">
+        {connectivity.tags.map((tag) => (
+          <ConnectionPill
+            key={tag.label}
+            label={tag.label}
+            description={tag.description}
+            url={tag.url}
+            icon={tag.icon}
+            showLabel={tag.showLabel}
+          />
+        ))}
       </div>
     </div>
   );
@@ -179,7 +194,8 @@ export default function GatewaySection() {
 
         <div ref={ref} className={`gw-reveal ${inView ? 'gw-in-view' : ''} flex flex-col gap-8`}>
           <GatewayHero />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ConnectivityLine />
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {cards.map((card) => (
               <GatewayCard key={card.title} card={card} />
             ))}
