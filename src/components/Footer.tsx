@@ -31,8 +31,15 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t card-border py-20">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <footer className="relative border-t card-border py-20 overflow-hidden">
+      {/* Ambient gradient background — same treatment as the hero, faded in from the top border */}
+      <div className="absolute inset-0 pointer-events-none [mask-image:linear-gradient(to_bottom,transparent,black_25%)]">
+        <div className="gradient-wash absolute inset-0" />
+        <div className="gradient-blob gradient-blob--b absolute hidden md:block" />
+        <div className="gradient-blob gradient-blob--c absolute hidden md:block" />
+      </div>
+
+      <div className="max-w-[1280px] mx-auto px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between gap-16 mb-12">
           <div className="max-w-xs">
             <div onClick={() => scrollToSection("hero")} className="cursor-pointer flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">

@@ -69,3 +69,81 @@ body {
   }
 }
 
+/* Ambient drifting gradient — shared accent used behind the hero and footer */
+.gradient-wash {
+  background-image: linear-gradient(100deg, #10192c 0%, #18213a 40%, #223a5e 75%, #3a4f70 100%);
+  opacity: 0.55;
+}
+
+.gradient-blob {
+  border-radius: 9999px;
+  filter: blur(100px);
+  mix-blend-mode: screen;
+}
+
+.gradient-blob--a {
+  top: -10%;
+  left: 15%;
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, #fff5ec 0%, transparent 70%);
+  opacity: 0.35;
+  animation: gradient-drift-a 26s ease-in-out infinite;
+}
+
+.gradient-blob--b {
+  top: 25%;
+  left: 55%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, #6f84a1 0%, transparent 72%);
+  opacity: 0.6;
+  animation: gradient-drift-b 32s ease-in-out infinite;
+}
+
+.gradient-blob--c {
+  top: 35%;
+  left: 5%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, #223a5e 0%, transparent 70%);
+  opacity: 0.6;
+  animation: gradient-drift-c 38s ease-in-out infinite;
+}
+
+.gradient-blob--d {
+  top: 0%;
+  left: 60%;
+  width: 40%;
+  height: 40%;
+  background: radial-gradient(circle, #d4d4d4 0%, transparent 75%);
+  opacity: 0.25;
+  animation: gradient-drift-d 20s ease-in-out infinite;
+}
+
+@keyframes gradient-drift-a {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(8%, 10%) scale(1.15); }
+}
+
+@keyframes gradient-drift-b {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(-10%, -6%) scale(0.9); }
+}
+
+@keyframes gradient-drift-c {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(6%, -8%) scale(1.1); }
+}
+
+@keyframes gradient-drift-d {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(-6%, 8%) scale(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-blob {
+    animation: none;
+  }
+}
+

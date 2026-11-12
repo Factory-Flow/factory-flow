@@ -128,6 +128,7 @@ const rowIcons: Record<string, LucideIcon> = {
   'Adding a new machine': PlusCircle,
   'Remote / mobile access': Smartphone,
   'Works without a network connection': WifiOff,
+  'Underlying stack': Database,
 };
 
 function RowIcon({ label }: { label: string }) {

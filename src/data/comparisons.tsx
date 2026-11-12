@@ -404,6 +404,71 @@ export const comparisons: ComparisonDefinition[] = [
       "Where it's a heavier lift is scale and flexibility: every machine needs its own hardware unit, rolling data up across lines or facilities takes extra work, and there's no way to check performance from your phone on the way into the plant. That's the gap a software-first platform like Factory Flow is built to close.",
     ],
   },
+  {
+    slug: 'grafana',
+    toolName: 'Custom Grafana dashboards',
+    logo: { kind: 'image', src: '/logos/grafana.svg', alt: 'Grafana' },
+    title: (
+      <>
+        Grafana makes a great dashboard.{' '}
+        <span className="text-gradient">Someone still has to build everything behind it.</span>
+      </>
+    ),
+    intro:
+      "A lot of plants start production monitoring by wiring PLC tags into a time-series database with a custom collector script, then building Grafana panels on top. Factory Flow Gateway does that same connection work out of the box — OPC UA, MQTT, and Modbus in, dashboards and OEE out, no database or panel-building required. Grafana is a genuinely good visualization tool — it just only shows what you've already collected, structured, and queried yourself.",
+    rows: [
+      {
+        label: 'Setup time',
+        alternative: { kind: 'no', text: 'Weeks wiring up a collector, a time-series database, and dashboard panels' },
+        factoryFlow: { kind: 'yes', text: 'Minutes — connect a machine and data starts flowing' },
+      },
+      {
+        label: 'Connecting to machines',
+        alternative: { kind: 'no', text: 'You write and maintain your own PLC/OPC UA/MQTT collector script' },
+        factoryFlow: { kind: 'yes', text: 'Factory Flow Gateway connects to OPC UA, MQTT, and Modbus sources out of the box — or log counts straight through the API' },
+      },
+      {
+        label: 'OEE calculation',
+        alternative: { kind: 'no', text: 'Custom queries and math you write yourself in the dashboard' },
+        factoryFlow: { kind: 'yes', text: 'Calculated automatically for every machine, live' },
+      },
+      {
+        label: 'Downtime causes',
+        alternative: { kind: 'partial', text: 'Only if you built a way to capture and tag them — most setups just show gaps' },
+        factoryFlow: { kind: 'yes', text: 'Captured automatically with a timestamp when it happens' },
+      },
+      {
+        label: 'Alerting on thresholds',
+        alternative: { kind: 'partial', text: 'Possible with Grafana alerting, but you configure every rule and notification channel yourself' },
+        factoryFlow: { kind: 'yes', text: 'Built in — set a threshold, get notified' },
+      },
+      {
+        label: 'Who maintains it',
+        alternative: { kind: 'no', text: 'Whoever built the stack — collector, database, and dashboards all break separately' },
+        factoryFlow: { kind: 'yes', text: 'We do — maintained, supported, and versioned for you' },
+      },
+      {
+        label: 'Multi-facility rollups',
+        alternative: { kind: 'partial', text: 'Possible, but you design the queries and panels for every new line or site' },
+        factoryFlow: { kind: 'yes', text: 'Built in — compare lines and facilities from one view' },
+      },
+      {
+        label: 'Access control',
+        alternative: { kind: 'partial', text: "Grafana has roles, but they're scoped to dashboards, not your production data model" },
+        factoryFlow: { kind: 'yes', text: 'Admin, Editor, and Viewer roles built in' },
+      },
+      {
+        label: 'Underlying stack',
+        alternative: { kind: 'no', text: "Grafana is just the dashboard — you still own a database, a collector, and the glue between them" },
+        factoryFlow: { kind: 'yes', text: 'One system — collection, storage, and dashboards included' },
+      },
+    ],
+    whenGoodTitle: 'When a custom Grafana setup is still the right call',
+    whenGoodParagraphs: [
+      "If you already run Grafana for other systems, have a time-series database in place, and have someone on staff who likes building dashboards, there's real flexibility in wiring production data into that same stack — you control every panel and query.",
+      "The cost shows up in who maintains it: a collector script, a database, and a set of hand-built panels are three separate things that can each break, and every new machine, line, or facility means more dashboards to build and keep up to date. That's usually the point where the time spent maintaining the stack costs more than the software it was built to avoid buying.",
+    ],
+  },
 ];
 
 export function getComparisonBySlug(slug: string | undefined): ComparisonDefinition | undefined {
