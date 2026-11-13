@@ -6,7 +6,7 @@ import { useRevealOnScroll } from './useRevealOnScroll';
 import { AppleIcon, WindowsIcon, LinuxIcon } from './PlatformIcons';
 import DownloadModal, { type Platform } from './DownloadModal';
 
-const SHOW_DOWNLOAD_BUTTON = import.meta.env.VITE_SHOW_GATEWAY_DOWNLOAD !== 'false';
+const SHOW_DOWNLOAD_BUTTON = import.meta.env.VITE_SHOW_GATEWAY_DOWNLOAD === 'true';
 
 function detectPlatform(): Platform {
   const ua = navigator.userAgent;
