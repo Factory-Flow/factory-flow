@@ -1,9 +1,19 @@
-import type { ReactNode } from 'react';
-import { ArrowLeftRight, Zap, Plug, Network, ShieldCheck, ScrollText, type LucideIcon } from 'lucide-react';
+import { useMemo, useState, type ReactNode } from 'react';
+import { ArrowLeftRight, Zap, Plug, Network, ShieldCheck, ScrollText, Download, type LucideIcon } from 'lucide-react';
 import Lightbox from '../Lightbox';
 import ConnectionPill from './ConnectionPill';
 import { useRevealOnScroll } from './useRevealOnScroll';
 import { AppleIcon, WindowsIcon, LinuxIcon } from './PlatformIcons';
+import DownloadModal, { type Platform } from './DownloadModal';
+
+const SHOW_DOWNLOAD_BUTTON = import.meta.env.VITE_SHOW_GATEWAY_DOWNLOAD !== 'false';
+
+function detectPlatform(): Platform {
+  const ua = navigator.userAgent;
+  if (/Win/.test(ua)) return 'win';
+  if (/Mac/.test(ua)) return 'mac-arm64';
+  return 'linux';
+}
 
 const connectivity: {
   icon: LucideIcon;
@@ -162,6 +172,14 @@ function ConnectivityLine() {
 
 export default function GatewaySection() {
   const { ref, inView } = useRevealOnScroll<HTMLDivElement>();
+  const [downloadOpen, setDownloadOpen] = useState(false);
+  const [downloadPlatform, setDownloadPlatform] = useState<Platform>('win');
+  const defaultPlatform = useMemo(() => detectPlatform(), []);
+
+  function openDownload(platform?: Platform) {
+    setDownloadPlatform(platform ?? defaultPlatform);
+    setDownloadOpen(true);
+  }
 
   return (
     <section id="gateway" className="pt-12 pb-24 md:pt-16 md:pb-32 relative">
@@ -176,7 +194,17 @@ export default function GatewaySection() {
             and connects your existing machines, controllers, and factory
             systems to Factory Flow — without ripping out what you already have.
           </p>
-          <div className="flex items-center justify-center gap-5 mt-4 text-white">
+          {SHOW_DOWNLOAD_BUTTON && (
+            <button
+              type="button"
+              onClick={() => openDownload()}
+              className="inline-flex items-center justify-center gap-2 mt-6 px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-white/90 transition-all text-[15px] cursor-pointer"
+            >
+              <Download className="w-4 h-4" />
+              Download Gateway
+            </button>
+          )}
+          <div className="flex items-center justify-center gap-5 mt-4 text-white/40">
             <span className="inline-flex items-center gap-2 text-sm font-medium">
               <AppleIcon className="w-[18px] h-[18px]" />
               macOS
@@ -202,6 +230,10 @@ export default function GatewaySection() {
           </div>
         </div>
       </div>
+
+      {SHOW_DOWNLOAD_BUTTON && (
+        <DownloadModal open={downloadOpen} onClose={() => setDownloadOpen(false)} initialPlatform={downloadPlatform} />
+      )}
     </section>
   );
 }
