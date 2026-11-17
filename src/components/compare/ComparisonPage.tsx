@@ -35,6 +35,7 @@ import {
   WifiOff,
   Circle,
   Target,
+  Bug,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AppAppBar from '../AppAppBar';
@@ -129,6 +130,10 @@ const rowIcons: Record<string, LucideIcon> = {
   'Remote / mobile access': Smartphone,
   'Works without a network connection': WifiOff,
   'Underlying stack': Database,
+  'Handling flaky sensors & missing data': WifiOff,
+  'Downtime & OEE definitions': Gauge,
+  'Testing against real failure modes': Bug,
+  'Access control & security': KeyRound,
 };
 
 function RowIcon({ label }: { label: string }) {

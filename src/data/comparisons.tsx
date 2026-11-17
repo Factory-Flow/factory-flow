@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ClipboardList } from 'lucide-react';
+import { ClipboardList, Sparkles } from 'lucide-react';
 import type { ComparisonRow } from '../components/compare/ComparisonPage';
 import type { ToolLogo } from '../components/compare/types';
 import NodeRedLogo from '../components/compare/NodeRedLogo';
@@ -467,6 +467,71 @@ export const comparisons: ComparisonDefinition[] = [
     whenGoodParagraphs: [
       "If you already run Grafana for other systems, have a time-series database in place, and have someone on staff who likes building dashboards, there's real flexibility in wiring production data into that same stack — you control every panel and query.",
       "The cost shows up in who maintains it: a collector script, a database, and a set of hand-built panels are three separate things that can each break, and every new machine, line, or facility means more dashboards to build and keep up to date. That's usually the point where the time spent maintaining the stack costs more than the software it was built to avoid buying.",
+    ],
+  },
+  {
+    slug: 'ai-built',
+    toolName: 'AI-built internal tools',
+    logo: { kind: 'icon', Icon: Sparkles, color: 'text-violet-400', bg: 'bg-violet-500/10' },
+    title: (
+      <>
+        AI can write the code in an afternoon.{' '}
+        <span className="text-gradient">Running it reliably for a year is a different job.</span>
+      </>
+    ),
+    intro:
+      "An AI-built internal tool — a dashboard someone built with Claude, Cursor, or ChatGPT pulling a few tags off a PLC — is a real, fast way to get a first look at a line, and we're not pretending otherwise. What AI speeds up is writing the first version. It doesn't do the design work of deciding what counts as downtime, the testing work of handling a sensor that drops out mid-shift, or the ongoing work of maintaining it as every new request gets prompted on top of the last — each one a little more code nobody fully reviewed, sitting on a foundation nobody originally designed for it. That's still a real job, and it compounds the longer the tool stays in use — Factory Flow has already put that time in.",
+    rows: [
+      {
+        label: 'Setup time',
+        alternative: { kind: 'yes', text: 'Genuinely fast — a prompt and an afternoon can get a first chart on screen' },
+        factoryFlow: { kind: 'yes', text: 'Minutes — connect a machine and data starts flowing' },
+      },
+      {
+        label: 'Connecting to machines',
+        alternative: { kind: 'partial', text: 'Whatever the AI wired up for your specific PLC — untested against your other machines or protocols' },
+        factoryFlow: { kind: 'yes', text: 'Factory Flow Gateway connects to OPC UA, MQTT, and Modbus sources out of the box — or log counts straight through the API' },
+      },
+      {
+        label: 'Handling flaky sensors & missing data',
+        alternative: { kind: 'no', text: "Whatever the first prompt happened to handle — a dropped connection can silently corrupt a shift's numbers" },
+        factoryFlow: { kind: 'yes', text: 'Built to handle flaky connections and missing data without corrupting the record' },
+      },
+      {
+        label: 'Downtime & OEE definitions',
+        alternative: { kind: 'partial', text: 'Only as consistent as the prompt that defined them — easy to calculate differently line to line' },
+        factoryFlow: { kind: 'yes', text: 'Calculated the same way, automatically, for every machine' },
+      },
+      {
+        label: 'Testing against real failure modes',
+        alternative: { kind: 'no', text: 'Tested against whatever data looked right when it was built — not a power blip, clock drift, or a sensor stuck mid-read' },
+        factoryFlow: { kind: 'yes', text: 'Built and tested against sensor dropouts, network blips, and clock drift before it ships' },
+      },
+      {
+        label: 'Who maintains it',
+        alternative: { kind: 'no', text: "Whoever wrote the prompts — every new feature prompted on top makes the next change riskier, and whoever's left has to untangle it" },
+        factoryFlow: { kind: 'yes', text: 'We do — maintained, supported, and versioned for you, with every update already designed and tested' },
+      },
+      {
+        label: 'Access control & security',
+        alternative: { kind: 'no', text: 'Usually one shared login, with secrets, encryption, and security review easy to skip entirely' },
+        factoryFlow: { kind: 'yes', text: 'Admin, Editor, and Viewer roles, 2FA or SSO, encrypted secrets at rest, and TLS in transit' },
+      },
+      {
+        label: 'Historical data & export',
+        alternative: { kind: 'partial', text: 'Depends on whether anyone thought to build retention and export, and tested that it actually works' },
+        factoryFlow: { kind: 'yes', text: 'Structured retention with export on demand' },
+      },
+      {
+        label: 'Multi-line / facility rollups',
+        alternative: { kind: 'partial', text: "Possible, but it's a new prompt, a new set of edge cases, and new testing for every line" },
+        factoryFlow: { kind: 'yes', text: 'Built in — compare lines and facilities from one view' },
+      },
+    ],
+    whenGoodTitle: 'When building it yourself still makes sense',
+    whenGoodParagraphs: [
+      "If you want a quick, disposable check on a single line — something to glance at this week, not run the plant on for the next three years — prompting your way to a dashboard is a genuinely reasonable way to get there fast, and there's nothing wrong with that.",
+      "The cost shows up as that dashboard starts to matter: a second line, a sensor that drops out mid-shift and corrupts a day of data, a report that's wrong because downtime was defined slightly differently on two lines, or the person who built it moving on. It also compounds — every new feature requested after the first afternoon gets prompted on top of code nobody fully reviewed, on a foundation nobody originally designed for it, and each one makes the next change slower and riskier. AI makes the code faster to write — it doesn't remove the design and operational work that makes a monitoring system something the plant can actually depend on, and that's exactly the work Factory Flow has already done.",
     ],
   },
 ];
